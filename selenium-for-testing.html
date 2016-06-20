@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+    <meta name="tags" contents="selenium" />
+    <meta name="tags" contents="unit testing" />
+    <meta name="tags" contents="python" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Selenium For Testing&nbsp;SegAnnDB
+    </h1>
+    <span class="post-date">Sun 12 June 2016</span>
+
+    <h3>Selenium</h3>
+<p>Selenium is a browser based testing framework which is very widely used for doing testing for various web centric apps. Selenium has bindings available for almost all the languages. Selenium is used exclusively for automating browser behaviour. In more simpler words, selenium can be described as an <span class="caps">API</span> for the browser. Selenium is also used in web&nbsp;scraping. </p>
+<p>For python, selenium can be installed by one single command - <code>pip install selenium</code></p>
+<p><strong>Browser based&nbsp;testing</strong> </p>
+<p>Browser based testing is automating browsers for running regression and functional tests, which further test the functionality of the web application. The aim is to reduce the number of regressions which might be introduced in further development of the&nbsp;application.</p>
+<p><strong>Python unit&nbsp;testing</strong></p>
+<p>Python unittest is a module which is used for writing tests in python. It provides various methods for running and setting up of&nbsp;tests.</p>
+<ul>
+<li>Each test case method should be prefixed with the name&nbsp;&#8220;test_&#8221;</li>
+<li>For defining the test sequence of methods, the format is - &#8220;test010_&#8221; , &#8220;test020_&#8221;&nbsp;etc.</li>
+<li>There should be a <code>setUp</code> method in the file. This method is called before running up of each test&nbsp;case.</li>
+<li>Method <code>tearDown</code> is called every time a test case method finishes&nbsp;executing.</li>
+</ul>
+<p><strong>Directory&nbsp;Structure</strong></p>
+<p>All the data related to the tests goes under <code>SegAnnDB/tests/</code> directory.</p>
+<p><strong>Test&nbsp;Profile</strong></p>
+<p>For doing the testing I am using a profile named <span class="caps">ES0004</span>. The script
+automatically checks for the existence of the test profile. In case, it does
+not exist it downloads it from my github repo and then the test suite
+execution begins. It expects that the test profile is inside <code>SegAnnDB/tests/</code></p>
+<p><a href="https://raw.githubusercontent.com/abstatic/SegAnnDB-tests/master/test_profile.bedGraph.gz">Test&nbsp;Profile</a></p>
+<h2>The Test Cases&nbsp;-</h2>
+<p>After some initial discussions, me and Toby (my mentor) decided that it would be good if I wrote test cases for checking the current functionality of application. The test cases are&nbsp;-</p>
+<ol>
+<li>
+<p>Test whether the application is starting properly or&nbsp;not</p>
+<p>Implementing this test case was trivial. We are just checking for the right value in the page title after succssfully loading the page.
+  <script src="https://gist.github.com/abstatic/08429f989ce571fbc1e954aae3f3f1a8.js"></script></p>
+</li>
+<li>
+<p>Login the&nbsp;user</p>
+<p>By far this was the trickiest part. The normal login flow in SegAnnDB is as follows&nbsp;- </p>
+<p>a) Click on the signin button<br />
+  b) A new pop up opens up for mozilla persona<br />
+  c) Enter the mail id<br />
+  d) The pop is redirected to appropriate oauth based server of your email provider for asking permissions.<br />
+  e) Enter your password andd authorize<br />
+  f) Redirects back to mozilla persona<br />
+  g) Pop up closes and the user is successfully logged&nbsp;in  </p>
+<p>Automating this many steps and handling so many steps was complicated. I was sure that other people must have tried to automate mozilla persona based logins.
+  I came across <strong><a href="https://mockmyid.com">mockmyid</a></strong> which is very useful for testing mozilla persona based applications for mock&nbsp;users.</p>
+<p><strong><a href="https://mockmyid.com">mockmyid</a></strong> provides mock user ids which can be used for logging in via mozilla persona. When using mockmyid the login flow is as follows&nbsp;-</p>
+<p>a) Click on signin button<br />
+  b) Persona popup opens<br />
+  c) Enter mockmyid based email<br />
+  d) Click on login<br />
+  e) Pop closes and the user is logged&nbsp;in.  </p>
+<p>Assertion for a successfull login works by checking for the presence of Sign Out&nbsp;field.</p>
+<p>Login is something which is used by every other test case, so I decided to make a method which can automatically log the user&nbsp;in.</p>
+<p><strong>The login function</strong>
+  <script src="https://gist.github.com/abstatic/f59103256e6f04c8cef37508efbd82d0.js"></script></p>
+</li>
+<li>
+<p>Upload a&nbsp;profile  </p>
+<p>Uploading a profile is also straightforward. The steps followed by webdriver are&nbsp;-</p>
+<p>a) Login the user <br />
+  b) Go to profile upload page<br />
+  c) Put in the path of test file<br />
+  d) Click on submit button<br />
+  e) Assert for existence of element with&nbsp;id=success  </p>
+<p><script src="https://gist.github.com/abstatic/ac3cab3c9164c42a0984755bd2d0ad09.js"></script></p>
+</li>
+<li>
+<p>Annotate a&nbsp;chromosome</p>
+<p>This test case works very differently when compared to other test cases. It uses selenium only for logging in the user. The annotation part is done by using
+  urllib2 module and sending out the get requests to the web server. The assertion works by checking for the 200 status code on the response of the request&nbsp;sent.</p>
+<p>But there is one more thing with this test. It needs to sleep for a while. This is because, it will get called directly after the profile is uploaded. 
+  Now, SegAnn needs some time to process a profile before it can be annotated. So the test for annotating chromosome waits for about a minute before doing&nbsp;anything.</p>
+</li>
+<li>
+<p>Delete a&nbsp;profile.</p>
+<p>Deleting of a profile is simple as well. The steps followed are&nbsp;-</p>
+<p>a) Login the user<br />
+  b) Send a delete request to the server<br />
+  c) Assert for word &#8220;deleted&#8221; on the source code of the&nbsp;response.  </p>
+<p>Now, as we will go on adding more features into SegAnn I plan to add tests for each of&nbsp;them.  </p>
+</li>
+</ol>
+<p>All the code related to above tests can be found at
+<a href="https://github.com/abstatic/SegAnnDB/blob/master/tests/tests.py">github</a>.</p>
+<h3>Waits in&nbsp;Selenium</h3>
+<p>Generally selenium is kindof procedural and does not handle latency very well. But with webapps, its sure that there will be some delays and waits while the page&nbsp;loads. </p>
+<p>To handle these kinds of scenarios we need to put in waits in selenium while checking for existence of various elements. So, basicallly what I&#8217;m doing is I poll the browser continuously for a max time limit, and check whether a certain element exists or&nbsp;not</p>
+<p>There are two major types of waits available in&nbsp;selenium- </p>
+<ul>
+<li>
+<p>Implicit Waits - An implicit wait is to tell web driver to poll the <span class="caps">DOM</span>
+    for a certain amount of time when trying to find and element or elements
+    if they are not immediately&nbsp;available. </p>
+<p>Example code - 
+<pre>
+from selenium import web driver
+driver = webdriver.Firefox()
+driver.implicitly_wait(30)
+driver.get("https://www.google.co.in/")
+driver.find_element_by_id(“lst-ib”)
+</pre></p>
+<p>In above example the implicit wait value is given as 30sec i.e., if web
+driver is able to find the element with in the given span 30sec, it
+returns true else, it will raise an&nbsp;exception.</p>
+</li>
+<li>
+<p>Explicit Waits- An explicit wait is code we define to wait for a certain
+    condition to occur before proceeding further in the code. <code>time.sleep()</code>
+    is one such&nbsp;example. </p>
+<p>I have extensively used explicit waits in the test suite to poll for
+a certain element and proceed only if it was found. Most commonly it is
+used in conjuntion with <span class="caps">EC</span> (Expected&nbsp;Condition)</p>
+<p>Example code-
+<pre>
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+driver = webdriver.Firefox()
+driver.get("https://www.google.co.in/")
+try:
+   WebDriverWait(driver, 10).until( EC.presence_of_element_located((By.ID,"element")))
+except:
+   pass
+</pre></p>
+<p>Above code waits until 10 seconds before throwing a <code>TimeoutException</code></p>
+<p>I have defined the default waiting time before throwing a timeout error as
+60&nbsp;seconds. </p>
+</li>
+</ul>
+<p><strong>Time Required</strong> - It mostly depends on internet and processor speed. Generally the test
+suite takes about 3-5 minutes in executing all the&nbsp;tests.s </p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "selenium-for-testing.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
