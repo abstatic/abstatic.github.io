@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+    <meta name="tags" contents="chromosome viewer" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      New Chromosome viewer for&nbsp;SegAnn
+    </h1>
+    <span class="post-date">Tue 21 June 2016</span>
+
+    <h2>Creating a new chromosome viewer for SegAnnDB : Design <span class="amp">&amp;</span> Implementation Details&nbsp;-</h2>
+<p><img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png" /></p>
+<div class="highlight"><pre>* The upper part is the overview of the chrome and is the standard zoom file.
+* The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
+here)
+</pre></div>
+
+
+<h3>1.Changes in storing&nbsp;images-</h3>
+<p>I have modified the file keeping scheme of segann. Now each generated goes into the chromosome folder as&nbsp;well.   </p>
+<div class="highlight"><pre>  secret
+  +
+  +---profile (e.g. ES0004)
+  + |
+  + |--------1
+  + |   *-&gt; ES0004_chr1_standard.png
+  + |   *-&gt; ES0004_chr1_profiles.png
+  + |   *-&gt; ES0004_chr1_chrome_ubuntu_1.png
+  + |
+  + |--------2
+</pre></div>
+
+
+<p>So all the images now go into their corresponding chromosome number folder. (its X for the last&nbsp;chr)</p>
+<p>Changes made in other parts of the application to accomodate the new file keeping&nbsp;scheme</p>
+<p><strong>File - <code>__init.py__</code></strong></p>
+<p>The route <code>secret</code> has been modified, on line number&nbsp;30</p>
+<p>Original  - 
+  <code>config.add_route("secret","/secret/{name:%s}{suffix}"%name_regex)</code></p>
+<p>Modified-
+  <code>config.add_route("secret","/secret/{profile_name}/{chr_num}/{name:%s}{suffix}"%name_regex)</code></p>
+<p><strong>File- <code>views.py</code> , <code>route="secret"</code></strong>  </p>
+<p>The new code for this route is as follows – (old code is commented&nbsp;out)  </p>
+<p><pre>
+  @view_config(route_name="secret")
+  def secret_new(request):
+      # fn = db.secret_file("%(name)s%(suffix)s" % request.matchdict)
+      # return FileResponse(fn, request=request)
+      profileName = request.matchdict["profile_name"]
+      chr_num = request.matchdict["chr_num"]
+      file_name = "%(name)s%(suffix)s" % request.matchdict
+      fn = db.secret_file(file_name, chr_num)
+      print fn
+      return FileResponse(fn, request=request)
+  </pre></p>
+<h3>2.Splitting of&nbsp;Images-</h3>
+<p>As discussed before, I have added the code to split all the large size images. I am using “<span class="caps">PILLOW</span>” module for doing this. We are alreading using this in
+  <code>scatterplot.py</code> file. </p>
+<p>Splitting criteria – I have changed the default width to 1250px from 1500px. Because 1250 evenly divides all the other zoom levels (ipad, windows,&nbsp;ubuntu)</p>
+<p>Code&nbsp;-</p>
+<p>The code for splitting images is in the file <code>db.py</code>. I have done modifications in two places. I have created a separete function to split the images, the 
+  method is called <code>split_image(...)</code> and this method is called from the <code>process(...)</code> method. Process method is called to create the scatterplots, calculate 
+  the segmentation and breakpoints data and store it into <span class="caps">BDB</span>. </p>
+<p>Modifications in <code>process(..)</code> method&nbsp;-</p>
+<p><pre>
+  ...
+  ...
+      meta["plots"][name] = {
+          "logratio_min": lr_min,
+          "logratio_max": lr_max,
+          "height_px": HEIGHT_PX,
+          "width_px": width,
+          "width_bases": bases[ch],
+          "file": scatterplot_file(pinfo["name"], ch, name,
+                                   lr_min, lr_max,
+                                   width, bases),
+          }
+      print "file created: ", meta["plots"][name]["file"]
+      print "---------------"
+      if meta["plots"][name]["width_px"] &gt; DEFAULT_WIDTH :
+          split_image(meta["plots"][name]["file"], ch, pinfo["name"], name, width)
+  # print "meta- ",meta
+  # print "\n\n\n\n----------\n\n\n\n\n"
+  ...
+  ...
+  </pre></p>
+<p>The <code>spilt_image(...)</code> method works as follows&nbsp;-</p>
+<p><pre>
+  def split_image(file_name, chr_num, profile_name, suffix, width):
+      """
+      Parameters-
+      file_name - the file name
+      chr_num - the chromosome number
+      profile_name - the profile id
+      suffix - the zoom level
+      width - the width_px of the image
+      """
+      file_location = SECRET_DIR + "/" + profile_name + "/" + chr_num + "/" + file_name
+      save_path = SECRET_DIR + "/" + profile_name + "/" +&nbsp;chr_num</p>
+<div class="highlight"><pre>  # now open the file
+  im = Image.open(file_location)
+
+  i = DEFAULT_WIDTH
+  j = 1
+
+  while i &lt;= width:
+      print i
+      box = (i - 1250, 0, i, 200)
+      img = im.crop(box)
+      fn = &quot;%s_chr%s_%s_%d.png&quot; % (profile_name, chr_num, suffix, j)
+      final_path = save_path + &quot;/&quot; + fn
+      img.save(final_path)
+      j += 1
+      i += 1250
+</pre></div>
+
+
+</pre>
+
+<p>The above method splits a image into smaller images. Each splitted image has the size of 1250 pixels.The images are named similarly to their parents only the 
+  index is added to the end to indicate their&nbsp;sequence. </p>
+<h3>3.New chromosome viewer&nbsp;-</h3>
+<p>I am implementing the new chromosome viewer for segann with help of&nbsp;offsetting.</p>
+<p>As you can see in the picture, we are dividing a very large png image into
+several small images of 1250px. All of these images are unique and are
+sequenced using the index, which is attached at the end of file&nbsp;name.</p>
+<p>Now we can render the same image of 1250 pixels everytime, but the user will
+have the choice, that which part of the chromosome he wants to&nbsp;annotate.</p>
+<p>Each image that is rendered can be&nbsp;annotated.</p>
+<p><strong><span class="caps">D3JS</span> Linear Scaling</strong>
+In our <span class="caps">JS</span> code <code>chromDisplay.js</code> we are making use of the <a href="https://github.com/d3/d3/wiki/Quantitative-Scales">linear
+scaling</a>. We are using
+linear scales to map the base pairs to the&nbsp;pixels</p>
+<p>To explain in a more general way, linear scale is&nbsp;- </p>
+<p><img alt="Linear Scaling" src="https://s3.amazonaws.com/dashingd3js/images/d3.js_scales_scale_domain_down_to_range_300x300.png" /></p>
+<p>In SegAnnDB we have the domain as the number of base pairs and the range is
+the width of the image, so that is fixed at 1250&nbsp;pixels.</p>
+<h2>Using offsets to display various&nbsp;sections**</h2>
+<p><img alt="handmade" src="http://i.imgur.com/0SD5gwz.jpg" /></p>
+<p><strong>Motivation -</strong> Using the offset based approach, it is zoom level agnostic,
+meaning with this approach we can create and view images of any zoom level&nbsp;efficiently.</p>
+<p>Currently how the annotation works in SegAnn is&nbsp;-</p>
+<ol>
+<li>
+<p>User drags the mouse on profile to do different type of annotation such as
+   breakpoint, and copy number. Its done in the shape of a&nbsp;rectangle.</p>
+</li>
+<li>
+<p>The event is detected by <code>chromDisplay.js</code> , and the x-coordinates of the
+   rectangular region are converted to base pair (min, max) with help of
+   invert function of linear scaling which allows a mapping from range to&nbsp;domain.</p>
+</li>
+<li>
+<p>After getting the min and mix basepairs, a simple http request is sent out
+   to the server, which stores the annotation in&nbsp;database.</p>
+</li>
+</ol>
+<p>Now, if we want to split out the large images into different images, and still
+be able to&nbsp;annotate. </p>
+<p>After doing a lot of brainstorming, I thought of just addding an offset value 
+to the x-coordinates, and then invert the values to get the correct width of 
+base&nbsp;pairs.</p>
+<p>So, how this will work is, that in every occurence of the x-coordinates, or
+inversion of coordinates, I am adding an offset value which will correspond to
+the right pixel on the original image. That way we can annotate different
+profiles with considerably high zoom&nbsp;levels.</p>
+<p>For example, while we are sending out the request to save an annotation <br />
+The function saveAnnotation would get modified as -
+<pre>
+    var saveAnnotation = function(){
+      var buttons = svg.selectAll("."+button_class);
+      buttons.remove();
+      var rect = svg.select("#"+trackType+"NEW");
+      var w = parseInt(rect.attr("width"));
+      // add the offset value here
+      var min_px = parseInt(rect.attr("x")) + offset_px;
+      var min = parseInt(x.invert(min_px));
+      var max = parseInt(x.invert(min_px+w));
+      var waiting = svg.append("text")
+      ...
+      ...
+      var url = "/add_region/"+profile_id+"/"+chromosome+"/"+
+    trackType+"/"+ann+"/"+min+"/"+max+"/";
+      d3.json(url,function(response){
+    if(response){
+      ...
+      ...
+      ...
+</pre></p>
+<p>So just by adding the correct offset value we inverse map the correct
+x coordinates of the svg to the correct base pairs in the&nbsp;domain.</p>
+<p><strong>New&nbsp;Route</strong></p>
+<p>For developing the new viewer, I have created a new route in <code>views.py</code>
+I have commented out the default route of <code>chrom</code> and created a new route for
+<code>chrom</code> along with a new template <code>new.pt</code> to support&nbsp;this</p>
+<p>Route - 
+<pre>
+@view_config(route_name='chrom', renderer='templates/new.pt')
+@add_userid
+@check_userprofiles
+def hello(request):
+    w = request.GET.get("width", "standard")
+    i = request.GET.get("index", "1")
+    md = request.matchdict
+    out = prof_info(md["name"], md["chr"].split(','), w)
+    out["name"] = md["name"]
+    out["width"] = w
+    out["others"] = [z for z in CHROM_ZOOMS if z != w]
+    out["chr"] =&nbsp;md["chr"]</p>
+<div class="highlight"><pre># in case of standard width we want to send the correct suffixes
+if w == &quot;standard&quot;:
+    out[&quot;index&quot;] = 0
+    out[&quot;index_next&quot;] = &quot;&quot;
+    out[&quot;index_prev&quot;] = &quot;&quot;
+    out[&quot;index_suffix&quot;] = &quot;&quot;
+else:
+    out[&quot;index&quot;] = i
+    out[&quot;index_suffix&quot;] = &quot;_&quot; + i
+
+    if int(i) == 1:
+        out[&quot;index_next&quot;] = str(int(i)+1)
+        out[&quot;index_prev&quot;] = &quot;1&quot;
+    else:
+        out[&quot;index_next&quot;] = str(int(i)+1)
+        out[&quot;index_prev&quot;] = str(int(i)-1)
+return out
+</pre></div>
+
+
+</pre>
+
+<h4>Code Explanation&nbsp;-</h4>
+<p>Lets talk about, the new parameters, that we are sending to the&nbsp;template-</p>
+<ul>
+<li>
+<p>We are also taking a new <span class="caps">GET</span> request parameter, which is the index of image,
+  if unsupplied it is set to&nbsp;1</p>
+</li>
+<li>
+<p>We are now sending out the index, index_next, index_prev parameters to the
+  template, these contain the index values corresponding to current, next and
+  previous indices of the image section that we are viewing right&nbsp;now</p>
+</li>
+<li>
+<p>We are also sending out index_suffix, it is used to create the filename
+  later on in the template and js&nbsp;code.</p>
+</li>
+</ul>
+<h2>Changes in the javascript&nbsp;code</h2>
+<p>We are also doing some changes in <span class="caps">JS</span> code in the template&nbsp;-</p>
+<pre>
+var data = ${plot};
+data[0][0]["width_px"] = 1250;
+data[0][0]["zoom"] = "${width}";
+data[0][0]["offset_px"] = (${index} - 1) * 1250;
+data[0][0]["index"] = ${index}
+data[0][0]["index_suffix"] = "${index_suffix}";
+var profile = new profilePlot(data);
+</pre>
+
+<p>That&#8217;s all for now. The next post will cover how the final thing was
+implemented along with any changes suggested by&nbsp;Toby.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "new-chromosome-viewer.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
