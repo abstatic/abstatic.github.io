@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-    <title>Coding Mantis - Tags</title>
+    <title>Coding Mantis</title>
 
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/theme/css/poole.css"/>
@@ -25,6 +25,14 @@
   ga('send', 'pageview');
 
 </script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="strings" />
+    <meta name="tags" contents="bash" />
+    <meta name="tags" contents="shell" />
+
   </head>
 
   <body>
@@ -91,40 +99,39 @@ styles, `#sidebar-checkbox` for behavior. -->
       </div>
 
       <div class="container content">
-    <h1>Tags for Coding Mantis</h1>        <li><a href="/tag/bash.html">bash</a> (1)</li>
-        <li><a href="/tag/binary.html">binary</a> (1)</li>
-        <li><a href="/tag/bitwise.html">Bitwise</a> (1)</li>
-        <li><a href="/tag/chromosome-viewer.html">chromosome viewer</a> (1)</li>
-        <li><a href="/tag/computational-genomics.html">computational genomics</a> (4)</li>
-        <li><a href="/tag/computer.html">computer</a> (1)</li>
-        <li><a href="/tag/computers.html">computers</a> (5)</li>
-        <li><a href="/tag/configuration.html">configuration</a> (1)</li>
-        <li><a href="/tag/dnf.html">dnf</a> (1)</li>
-        <li><a href="/tag/downloading.html">downloading</a> (1)</li>
-        <li><a href="/tag/fedora.html">Fedora</a> (1)</li>
-        <li><a href="/tag/filesystem.html">filesystem</a> (1)</li>
-        <li><a href="/tag/german.html">German</a> (1)</li>
-        <li><a href="/tag/google-summer-of-code.html">google summer of code</a> (4)</li>
-        <li><a href="/tag/gsoc.html">Gsoc</a> (4)</li>
-        <li><a href="/tag/lamp.html">LAMP</a> (2)</li>
-        <li><a href="/tag/life.html">Life</a> (1)</li>
-        <li><a href="/tag/linux.html">Linux</a> (6)</li>
-        <li><a href="/tag/mylife.html">MyLife</a> (5)</li>
-        <li><a href="/tag/networks.html">networks</a> (1)</li>
-        <li><a href="/tag/nfs.html">nfs</a> (1)</li>
-        <li><a href="/tag/partition.html">partition</a> (1)</li>
-        <li><a href="/tag/proc.html">proc</a> (1)</li>
-        <li><a href="/tag/pseudo-filesystem.html">pseudo filesystem</a> (1)</li>
-        <li><a href="/tag/python.html">python</a> (1)</li>
-        <li><a href="/tag/selenium.html">selenium</a> (1)</li>
-        <li><a href="/tag/shell.html">shell</a> (1)</li>
-        <li><a href="/tag/strings.html">strings</a> (1)</li>
-        <li><a href="/tag/tmux.html">tmux</a> (1)</li>
-        <li><a href="/tag/unit-testing.html">unit testing</a> (1)</li>
-        <li><a href="/tag/virtual-box.html">virtual box</a> (1)</li>
-        <li><a href="/tag/virtual-machines.html">virtual machines</a> (1)</li>
-        <li><a href="/tag/vm.html">vm</a> (1)</li>
-        <li><a href="/tag/wget.html">wget</a> (1)</li>
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Linux Strings&nbsp;Program
+    </h1>
+    <span class="post-date">Fri 24 June 2016</span>
+
+    <h3>Strings</h3>
+<p><code>strings</code> is a command line tool to read files. On regular files its function
+is same as less, more, or cat for that&nbsp;matter.</p>
+<p>But as per the man page-
+<code>strings prints the strings of printable character in files</code></p>
+<p>I feel like this progarm is godsend. With help of strings we can easily read
+files, which regular editors like vim, less fail to&nbsp;parse. </p>
+<p>Strings takes in the files, and scoures through it and prints out all the
+characters which can be parsed as string. On finding any non printable
+character the line is terminated. A new line is started from the next&nbsp;string.</p>
+<p>Try parsing the <code>/proc/[pid]/environ</code> file with help of cat, vim or less and
+then with strings, you will realize what the program is made&nbsp;for. </p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "strings program.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
       </div>
 
       <label for="sidebar-checkbox" class="sidebar-toggle"></label>

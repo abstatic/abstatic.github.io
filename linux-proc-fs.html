@@ -102,11 +102,11 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="posts">
 <div class="post">
     <h1 class="post-title">
-      Linux Proc Pseudo&nbsp;Filesystem`
+      Linux Proc Pseudo&nbsp;Filesystem
     </h1>
     <span class="post-date">Fri 24 June 2016</span>
 
-    <h3>The proc&nbsp;directory</h3>
+    <h2>The proc&nbsp;directory</h2>
 <p>Proc stands for process in linux. As we know, that &#8220;Everything is a file&#8221; in
 linux. Keeping true to this analogy, all the processes are organized and
 processed inside the proc&nbsp;directory.</p>
@@ -114,23 +114,23 @@ processed inside the proc&nbsp;directory.</p>
 processes have their directories inside the proc folder. The general syntax of
 directories is <code>/proc/[pid]</code> , You can easily find the <code>pid</code> of a running
 process by a simple <code>ps -A | grep &lt;process_name&gt;</code></p>
-<h4>File&nbsp;descriptors</h4>
+<h2>File&nbsp;descriptors</h2>
 <p>Each running process can have multiple file descriptors. All of the active
 file descriptors can be found at <code>/proc/[pid]/fd</code> folder. </p>
 <p>This subdirectory contains one entry for each file which the process has open,
 named by its file descriptor, and which is a sym link to the actual&nbsp;file.</p>
 <p>If you do a <code>ls -l</code> in the directory you will receive something similar&nbsp;- </p>
-<p><a href="http://i.imgur.com/pyYMx7D.png">!Screenshot</a></p>
+<p><img alt="Screenshot" src="http://i.imgur.com/pyYMx7D.png" /></p>
 <p>In linux, all the file descriptors are numbered.  0, 1, 2 are the reserved
 file descriptors for <span class="caps">STDIN</span>, <span class="caps">STDOUT</span>, <span class="caps">STDERR</span>&nbsp;recpectively.</p>
 <p>In the above screenshot, we can observe that file descriptor 14 points to the
-current music file that is being played. <the proces is the vlc media player></p>
+current music file that is being played. \&lt;the proces is the vlc media player></p>
 <p>There is one more interesting directory related to file descriptors of the
 process it is&nbsp;-</p>
 <p><strong><code>/proc/[pid]/fdinfo/</code></strong> - This subdirectory contains one entry for each of
 the file descriptors of the process. The files contains the position of the
 file descriptor and the flags with which the file has been&nbsp;opened</p>
-<h4>Other interesting findings&nbsp;-</h4>
+<h2>Other interesting findings&nbsp;-</h2>
 <p><strong><code>/proc/[pid]/exe</code></strong> - This symlinks to the executable file of the&nbsp;process.</p>
 <p><strong><code>/proc/[pid]/environ</code></strong> - This file contains all the environment variables
 that are available to the process. Best way to see it is using the strings
