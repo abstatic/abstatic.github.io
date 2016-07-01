@@ -40,7 +40,8 @@ and how i3wm is fulfulling all of these&amp;nbsp;-&lt;/p&gt;
    like keybindings&lt;/strong&gt; What else can I want more&amp;nbsp;?&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;To give you a overview of how I am using i3wm, here is what my screens look
-like - (I use triple&amp;nbsp;displays)&lt;/p&gt;
+like - (&lt;a href="http://abstatic.github.io/my-current-configuration.html"&gt;I use triple
+displays&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;img alt="My current screens" src="http://i.imgur.com/K1stHJt.png" title="Open image in a new tab to see zoomed in" /&gt; &lt;/p&gt;
 &lt;p&gt;The blank space is because two of my screens are set to 1366x768 px and one is
 set to 1920x1080px, but that&amp;#8217;s not the&amp;nbsp;point.&lt;/p&gt;
@@ -116,6 +117,7 @@ multiple&amp;nbsp;monitors. &lt;/p&gt;
 &lt;p&gt;By having to configure xrandr, it becomes a good learning exercise as&amp;nbsp;well.&lt;/p&gt;
 &lt;p&gt;Here is one command that I execute with every startup&amp;nbsp;- &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;exec --no-startup-id xrandr --output HDMI1 --left-of eDP1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;[My multiple monitor]&amp;nbsp;setup(http://abstatic.github.io/my-current-configuration.html)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Managing&amp;nbsp;wallpapers&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I use nitrogen for for managing wallpapers on my different displays. Its&amp;nbsp;awesome. &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;exec --no-startup-id nitrogen --restore&lt;/code&gt;&lt;/p&gt;
