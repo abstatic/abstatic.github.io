@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis</title><link href="http://abstatic.github.io/" rel="alternate"></link><link href="http://abstatic.github.io/feeds/all.atom.xml" rel="self"></link><id>http://abstatic.github.io/</id><updated>2016-07-01T01:00:00+05:30</updated><entry><title>i3 Window Manager FTW</title><link href="http://abstatic.github.io/how-i-use-i3wm.html" rel="alternate"></link><updated>2016-07-01T01:00:00+05:30</updated><author><name>Abhishek Shrivastava  &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-07-01:how-i-use-i3wm.html</id><summary type="html">&lt;h2&gt;Tiling Window What&amp;nbsp;?!&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Window Manager&lt;/strong&gt; - Okay, lets clear the most basic thing first, a window
+manager is the program which generally draws the &lt;span class="caps"&gt;GUI&lt;/span&gt; of your computer. Most of
+the time the &lt;span class="caps"&gt;WM&lt;/span&gt; is not just one program, but a suite of programs designed to
+fulfill most of the daily requirements of the&amp;nbsp;users. &lt;/p&gt;
+&lt;p&gt;Examples - &lt;span class="caps"&gt;GNOME&lt;/span&gt;, &lt;span class="caps"&gt;KDE&lt;/span&gt;, Unity,&amp;nbsp;Mate&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tiling Window&amp;nbsp;Managers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;WMs like &lt;span class="caps"&gt;GNOME&lt;/span&gt;, &lt;span class="caps"&gt;KDE&lt;/span&gt;, Unity, Mate etc are what we call floating window
+managers, these are the types of window managers in which the windows are
+floating are draggable, resizeable, overlapping and all the frilly&amp;nbsp;things.&lt;/p&gt;
+&lt;p&gt;Tiling window managers are a special class of window managers, where windows
+fit in the display just like tiles. The screen is organized into mutually
+non-overlapping&amp;nbsp;frame.&lt;/p&gt;
+&lt;p&gt;A rough idea of how tiling window managers look like&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;img alt="i3-screen" src="https://i3wm.org/screenshots/i3-9.bigthumb.png" /&gt;
+&lt;img alt="i3-screen2" src="http://i3wm.org/screenshots/i3-6.png" /&gt;&lt;/p&gt;
+&lt;p&gt;In tiling window managers you cannot just drag windows and stuff. Its very
+different from the usual desktop&amp;nbsp;managers.&lt;/p&gt;
+&lt;p&gt;To be honest I was never a fan of tiling window managers, but one day out of
+the blue I decided to give tiling window managers a try. Thus began endless
+googling about which tiling window manager should I use ? , and I setteledd
+for&amp;nbsp;i3wm.&lt;/p&gt;
+&lt;p&gt;Here are some of the conditions I had in my mind when evaluating various wms&amp;#8217;
+and how i3wm is fulfulling all of these&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;There should be ample and &lt;strong&gt;easy to understand documentation&lt;/strong&gt; - i3 has
+   excellent documentation, infact having ample and understandable
+   documentation is one of the design philosophies of this&amp;nbsp;wm.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration should be simple&lt;/strong&gt;, as I did not want to learn another
+   scripting language, just to configure my window manager - Configuration is
+   done using plaintext configuration files using human readable language,&amp;nbsp;keywords.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Easy installation&lt;/strong&gt;, it should not result in any downtime of my&amp;nbsp;machine&lt;/li&gt;
+&lt;li&gt;i3wm package is available for almost all of the distros, and its strctly
+     a wm, no extra package is installed, only one kickass window&amp;nbsp;manager&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Good tutorials, and user base&lt;/strong&gt; - Tons of information on reddit, forums and
+   youtube tutorials are&amp;nbsp;available.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Excellent support for multiple monitors&lt;/strong&gt; - Most screen efficient&amp;nbsp;display.&lt;/li&gt;
+&lt;li&gt;Support for good keybindings, hence minimizing the use for mouse - &lt;strong&gt;Has vim
+   like keybindings&lt;/strong&gt; What else can I want more&amp;nbsp;?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To give you a overview of how I am using i3wm, here is what my screens look
+like - (I use triple&amp;nbsp;displays)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="My current screens" src="http://i.imgur.com/K1stHJt.png" title="Open image in a new tab to see zoomed in" /&gt; &lt;/p&gt;
+&lt;p&gt;The blank space is because two of my screens are set to 1366x768 px and one is
+set to 1920x1080px, but that&amp;#8217;s not the&amp;nbsp;point.&lt;/p&gt;
+&lt;p&gt;Here are some official videos about i3wm and the containers and tree data
+strucutres it uses&amp;nbsp;- &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Wx0eNaGzAZU"&gt;i3 Basics&lt;/a&gt; - This video covers the bare basics of i3wm and various modes
+Before we get out hands dirty with 
+  it&amp;nbsp;supports&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=AWA8Pl57UBY"&gt;Containers and tree data structure of
+  i3&lt;/a&gt; - Great video which covers how
+  the windows are handled in i3 using tree data structure. Must watch if you
+  want to understand how to manipulate containers and other&amp;nbsp;stuff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;i3 Conf&lt;/strong&gt; - Out of the box, i3 is okay-ish. But with the right configuration
+this &lt;span class="caps"&gt;WM&lt;/span&gt; becomes very&amp;nbsp;powerful. &lt;/p&gt;
+&lt;p&gt;Here is my i3 &lt;a href="https://github.com/abstatic/config/blob/master/i3conf/config"&gt;conf file&lt;/a&gt; 
+The default location for this file is &lt;code&gt;~/.i3/config&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The first screen has one vertical container and two horizontally tiled&amp;nbsp;containers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The second screen has only one program open,&amp;nbsp;vim.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The third screen has tabbed layout,  with multiple tabs&amp;nbsp;open.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;dmenu&lt;/strong&gt; - dmenu is the built in i3 launcher. Its activated my pressing &lt;code&gt;$mod
++ d&lt;/code&gt; , and is used for launching various applications and stuff. You can also
+  use other launchers. I find dmenu to be sufficient and use it most of the
+  time. You might want to check out rofi, its an excellent alternative and is
+  feature&amp;nbsp;filled.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;i3bar&lt;/strong&gt; - The bar at the bottom of each screen is i3bar, its a simple
+program which shows the output of either the inbuilt or third party program.
+It shows the system status and other&amp;nbsp;things.&lt;/p&gt;
+&lt;p&gt;I use py3status for outputting the status. You can install py3status using pip
+or your distributions package&amp;nbsp;manager. &lt;/p&gt;
+&lt;p&gt;The status line is configured using the i3status.conf file. Here is my 
+configuration
+&lt;a href="https://github.com/abstatic/config/blob/master/i3conf/i3status.conf"&gt;file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Marks&lt;/strong&gt; - Marks allow you to mark a window and then you can easily do a goto
+on that mark from any random window that you are&amp;nbsp;on.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keybindings&lt;/strong&gt; - I have kept the keybingds similar to that of vim. Its very
+handy and easy to&amp;nbsp;remember.&lt;/p&gt;
+&lt;h3&gt;Managing Audio, Networks and other&amp;nbsp;stuff&lt;/h3&gt;
+&lt;p&gt;Managing audio and networks can be cumbersome from the terminal. For this 
+I use two excellent programs&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;nm-applet - Used for managing the wireless&amp;nbsp;networks.&lt;/li&gt;
+&lt;li&gt;pavucontrol - Pulse audio volume control, this software is really great and
+   allows to manage your audio and card from a nice &lt;span class="caps"&gt;GUI&lt;/span&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;While I manually execute &lt;code&gt;pavucontrol&lt;/code&gt; , I have added &lt;code&gt;nm-applet&lt;/code&gt; to the
+startup&amp;nbsp;entry.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;exec nm-applet&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File manager&lt;/strong&gt; - Its unwise to file managers like Files (Gnome) or
+Nautilus(Ubuntu) on i3, as they try to manage your desktop as well. I use
+pcman file manager as my file manager. Its extremely lightweigt and does the&amp;nbsp;job.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GTk themes&lt;/strong&gt; - Install &lt;code&gt;lxappearance&lt;/code&gt; , if you want to tinker with &lt;span class="caps"&gt;GTK&lt;/span&gt;
+themes and&amp;nbsp;stuff.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;VLC&lt;/span&gt;&lt;/strong&gt; - This is one my favourite tasks, you can fill applications like &lt;span class="caps"&gt;VLC&lt;/span&gt;,
+and other players in the containers. To do this, first go to full screen, and
+then press &lt;code&gt;$MOe + F&lt;/code&gt;, the program will now fill the container in which it is&amp;nbsp;in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Adjusting sound and brightness&lt;/strong&gt; - I use custom keyboard shortcuts for
+changing sound and&amp;nbsp;brightness.  &lt;/p&gt;
+&lt;h3&gt;Using multiple&amp;nbsp;monitors&lt;/h3&gt;
+&lt;p&gt;i3wm is great for people using multiple monitors. It detects all the connected
+displays right of the box. There is no extra program to manage your monitors,
+so you have to learn to configure xrandr options to make full use of your
+multiple&amp;nbsp;monitors. &lt;/p&gt;
+&lt;p&gt;By having to configure xrandr, it becomes a good learning exercise as&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;Here is one command that I execute with every startup&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;exec --no-startup-id xrandr --output HDMI1 --left-of eDP1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Managing&amp;nbsp;wallpapers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I use nitrogen for for managing wallpapers on my different displays. Its&amp;nbsp;awesome. &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;exec --no-startup-id nitrogen --restore&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Conclusions&lt;/h3&gt;
+&lt;p&gt;Till now my experience with i3wm has been awesome. Its minamilist nature is
+really good. You get all of the screen space to yourself and can utilize it
+any way you&amp;nbsp;want.&lt;/p&gt;</summary><category term="Linux"></category><category term="configuration"></category><category term="i3"></category><category term="i3window manager"></category><category term="i3wm"></category><category term="developer configuration"></category></entry><entry><title>My Configuration</title><link href="http://abstatic.github.io/my-current-configuration.html" rel="alternate"></link><updated>2016-07-01T01:00:00+05:30</updated><author><name>Abhishek Shrivastava  &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-07-01:my-current-configuration.html</id><summary type="html">&lt;p&gt;Okay, so this blog post is about my current computer configuration that I use
+for day to day development. This post will cover each and everything related
+to my developer configuration. Right from the mouse and keyboard to the
+intracies of i3wm, the tiling window manager that I use&amp;nbsp;;) &lt;/p&gt;
+&lt;p&gt;Here is my old setup&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;img alt="old setup" src="http://i.imgur.com/xc43jrq.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;and here is &amp;#8220;The&amp;#8221; Setup, my laptop remained same though :P&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;img alt="new setup" src="http://i.imgur.com/l5bUH95.jpg" /&gt;&lt;/p&gt;
+&lt;h2&gt;The&amp;nbsp;Machine&lt;/h2&gt;
+&lt;p&gt;Powering all of my day to day tasks is my &lt;a href="http://www.flipkart.com/acer-aspire-e5-e5-573-587q-core-i5-4th-gen-4-gb-1-tb-hdd-linux-128-mb-graphics-notebook-nx-mvhsi-068/p/itmecq2b72uhje8d"&gt;acer&amp;nbsp;laptop&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Its an entry level laptop with a good processor. The configuration is as
+follows&amp;nbsp;-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Processor - Intel Core i5 - 4th Generation, 1.7Ghz -&amp;nbsp;2.7Ghz&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;RAM&lt;/span&gt; - &lt;span class="caps"&gt;4GB&lt;/span&gt; &lt;span class="caps"&gt;DDR3&lt;/span&gt; Memory (which, soon will be upgraded to&amp;nbsp;8gigs)&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;HDD&lt;/span&gt; - &lt;span class="caps"&gt;1TB&lt;/span&gt; (Pretty standard these&amp;nbsp;days)&lt;/li&gt;
+&lt;li&gt;Graphics - Intel &lt;span class="caps"&gt;HD&lt;/span&gt; 4400 (with 2048mb, can play dota2 at 40fps normal&amp;nbsp;settings)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The best part about this laptop is the graphics card, honestly. It has
+ separte slots for &lt;span class="caps"&gt;VGA&lt;/span&gt; and &lt;span class="caps"&gt;HDMI&lt;/span&gt;. If you connect two separate outputs to these
+ you get an extended display of three monitors (including the&amp;nbsp;laptop).&lt;/p&gt;
+&lt;p&gt;It works flawlessly, and this is the &lt;span class="caps"&gt;USP&lt;/span&gt; of this laptop for&amp;nbsp;me!&lt;/p&gt;
+&lt;h2&gt;Keyboard, Mouse and&amp;nbsp;Audio&lt;/h2&gt;
+&lt;p&gt;I have been using Dragonwar Q2 set of keyboard and mouse for quite some time&amp;nbsp;now.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keyboard&lt;/strong&gt; - The keyboard is semi mechanical with &lt;span class="caps"&gt;LED&lt;/span&gt; lights, which is the
+central feature for me, as I spend a lot of time coding in the&amp;nbsp;night. &lt;/p&gt;
+&lt;p&gt;The cable is braided kevlar which is of very high quality and is more than
+sufficient in length. The only downside of this keyboard is that its
+multimedia keys are not supported in linux, and sadly there is no fix for
+this. (What, a&amp;nbsp;sham)&lt;/p&gt;
+&lt;p&gt;The backlight is color can be changed as well or turned of&amp;nbsp;entirely.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="keyboard" src="http://i.imgur.com/fXlywFL.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Typing is a breeze in this keyboard, and it feels effortlesss to press the&amp;nbsp;keys. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mouse&lt;/strong&gt; - The mouse model is &lt;span class="caps"&gt;GKM&lt;/span&gt;-001. It is a pretty cool and the major
+features that I found are the extra buttons and the capability to change the
+dpi. The &lt;span class="caps"&gt;LED&lt;/span&gt; eyecandy doesn&amp;#8217;t hurt as&amp;nbsp;well!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Mouse" src="http://i.imgur.com/acK8Ra1.jpg" title="Not a GoT fan, it was a gift :)" /&gt;&lt;/p&gt;
+&lt;p&gt;Currently I use my mouse at 3200 &lt;span class="caps"&gt;DPI&lt;/span&gt;. Yes, its really sensitive. But then again you
+need a sensitive mouse, in order to navigate three displays. At &lt;span class="caps"&gt;3200DPI&lt;/span&gt; I can
+traverse through all the three displays by moving my mouse only a few&amp;nbsp;centimeters&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt; - I use my &lt;a href="http://www.mi.com/in/headphones_basic2/"&gt;Mi Earphones&lt;/a&gt;
+for all of my audio needs. They are awesome and best bargain for their price 
+range. Also include an inbuilt microphone and are compatible with all&amp;nbsp;phones.&lt;/p&gt;
+&lt;h2&gt;The&amp;nbsp;Displays&lt;/h2&gt;
+&lt;p&gt;Inspired from &lt;a href="https://blog.codinghorror.com/three-monitors-for-every-user/"&gt;Jeff
+Atwood&lt;/a&gt; I have
+recently shifted to using triple&amp;nbsp;displays. &lt;/p&gt;
+&lt;p&gt;I tell you, once you start working with multiple displays, there is no turning
+back. At&amp;nbsp;all.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.codinghorror.com/blog/archives/000740.html"&gt;Joining the prestigious Three Monitor&amp;nbsp;Club:&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Larry Page: I have a weird setup in my office. I have one computer with three
+monitors: one flat-screen monitor and two regular ones. I have my browser on
+one screen, my schedule on another and my e-mail on another. I can drag things
+to different screens. I also have a projector. So if I&amp;#8217;m talking with everyone
+in my office, I can move stuff onto a big&amp;nbsp;screen.&lt;/p&gt;
+&lt;p&gt;Bill Gates: If you look at this office, there isn&amp;#8217;t much paper in it. On my
+desk I have three screens, synchronized to form a single desktop. I can drag
+items from one screen to the next. Once you have that large display area,
+you&amp;#8217;ll never go back, because it has a direct impact on&amp;nbsp;productivity.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I use triple monitors for maximum&amp;nbsp;productivity. &lt;/p&gt;
+&lt;p&gt;Output 1 : Dell &lt;span class="caps"&gt;HD&lt;/span&gt; &lt;span class="caps"&gt;IPS&lt;/span&gt; &lt;span class="caps"&gt;LED&lt;/span&gt; @ 1920 x 1080 &lt;span class="caps"&gt;FHD&lt;/span&gt; (On &lt;span class="caps"&gt;HDMI&lt;/span&gt;)&lt;br /&gt;
+Output 2 : Laptop Display @ 1366 x 768&lt;br /&gt;
+Output 3 : &lt;span class="caps"&gt;AOC&lt;/span&gt; E970Sw @ 1366 x 768 (On &lt;span class="caps"&gt;VGA&lt;/span&gt;)  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="working" src="http://i.imgur.com/savUlZy.jpg" title="Why would I ever want to get up from my chair ?" /&gt;&lt;/p&gt;
+&lt;p&gt;Tell me, why would I ever want to get up from my chair again&amp;nbsp;?&lt;/p&gt;
+&lt;p&gt;Every programmer must try these high resolution monitors, the amount of
+content that you see on a 1080p monitor is crazy. Every thing looks so big and
+you can see so much of the content at one time, mindboggling.  The clarity and
+the colors are&amp;nbsp;unparalleled.&lt;/p&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;OS&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;Right now I am using Ubuntu 14.04 &lt;span class="caps"&gt;LTS&lt;/span&gt; dual booted with windows 10 for quite
+some time. Both of these will be replaced by either Fedora or Arch and windows 7
+after I am done with my gsoc&amp;nbsp;project.&lt;/p&gt;
+&lt;p&gt;I use i3wm for my window&amp;nbsp;management.&lt;/p&gt;</summary><category term="Linux"></category><category term="configuration"></category><category term="dragonwar"></category><category term="i3"></category><category term="i3window manager"></category><category term="i3wm"></category><category term="developer configuration"></category></entry><entry><title>DGPLUG Summer Training</title><link href="http://abstatic.github.io/dgplug-summer-training.html" rel="alternate"></link><updated>2016-06-27T16:42:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2016-06-27:dgplug-summer-training.html</id><summary type="html">&lt;h3&gt;What is a &lt;span class="caps"&gt;LUG&lt;/span&gt; and &lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&amp;nbsp;?&lt;/h3&gt;
+&lt;p&gt;&lt;span class="caps"&gt;LUG&lt;/span&gt; is a often used term in computer communities. It stands for &amp;#8220;Linux Users
+Group&amp;#8221; , &lt;a href="https://dgplug.org/"&gt;&lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&lt;/a&gt; stands for &amp;#8220;Linux Users&amp;#8217; Group of&amp;nbsp;Durgapur&amp;#8221; &lt;/p&gt;
+&lt;p&gt;Check out their website for more information about the community. Every year
+&lt;a href="https://dgplug.org/"&gt;&lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&lt;/a&gt; conducts 
+a &lt;a href="https://dgplug.org/summertraining16.html"&gt;summer training&lt;/a&gt; program every 
+year, to further increase open source development. Its free and anyone from 
+anywhere can join&amp;nbsp;in!&lt;/p&gt;
+&lt;h3&gt;How I came to know about &lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&amp;nbsp;?&lt;/h3&gt;
+&lt;p&gt;Well, it was through PyCon India. I was going through the past blog posts
+about pycon and read about this group &amp;#8220;which meets every year by the stairs&amp;#8221;
+, it piqued my interest and I did some googling. And here I am now, part of
+their summer training&amp;nbsp;program.&lt;/p&gt;
+&lt;h3&gt;The&amp;nbsp;team&lt;/h3&gt;
+&lt;p&gt;Our sessions are genearlly handled by senior members of the community. I feel
+so lucky to get hands on training from them, I mean who on earth gets the
+opportunity to train with actual software engineers from fedora, redhat !!
+Being a linux and redhat fanboy, its like a dream come&amp;nbsp;true.&lt;/p&gt;
+&lt;h3&gt;My Experience Till&amp;nbsp;Now&lt;/h3&gt;
+&lt;p&gt;Pre-requisites - Although there are no pre-requisites as such for the training
+but we are expected to go through past years&amp;#8217; &lt;a href="https://dgplug.org/irclogs/"&gt;irc logs&lt;/a&gt;.
+In case a student misses a session he can also follow along in the
+&lt;a href="https://dgplug.org/irclogs/"&gt;logs&lt;/a&gt;.1&lt;/p&gt;
+&lt;p&gt;Almost 2 weeks of training have passed and I must say it is awesome. We have
+regular session or &amp;#8220;classes&amp;#8221; everyday at 18:30 &lt;span class="caps"&gt;IST&lt;/span&gt; on #dgplug at freenode (Funny, address right ?). 
+I really like the class structure, it almost feels like being in a real 
+classroom. We have this roll call thing where all of us call out their names
+and give their&amp;nbsp;attendance.&lt;/p&gt;
+&lt;p&gt;After the usual roll call, the session proceeds, first we discuss any doubts
+or questions from the previous class and after that we discusss and read up on
+a new topic. So far we have learnt about&amp;nbsp;- &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to use &lt;span class="caps"&gt;IRC&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Mailing and Chat&amp;nbsp;Etiquettes&lt;/li&gt;
+&lt;li&gt;How to ask questions and use&amp;nbsp;google.&lt;/li&gt;
+&lt;li&gt;Basic Shell Command&amp;nbsp;Usage&lt;/li&gt;
+&lt;li&gt;Linux Filesystem&amp;nbsp;Hierarchy&lt;/li&gt;
+&lt;li&gt;Using command line text editor &lt;span class="caps"&gt;VIM&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;RST&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Documentation using&amp;nbsp;sphinx&lt;/li&gt;
+&lt;li&gt;Blogging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although I was already familiar with most of these, but inspite of that
+I learnt many new things, especially about sphinx and documentation in python.
+Moreover, this training is about making you an &amp;#8220;open source contributor&amp;#8221; which
+I have wanted to be for a long&amp;nbsp;time. &lt;/p&gt;
+&lt;p&gt;Apart from that, I have gotten to meet and communicate with so many smart people,
+with which normally I wouldn&amp;#8217;t have ever known. Infact, most of the regular
+previous years&amp;#8217; participants are now good software engineers in various big
+firms. So, that doesn&amp;#8217;t hurt as&amp;nbsp;well. &lt;/p&gt;
+&lt;p&gt;The best part till now which I have found is the community. It feels really
+good to be a part of open source community, where the main aim is to &amp;#8220;learn
+and&amp;nbsp;share&amp;#8221;. &lt;/p&gt;
+&lt;p&gt;Hoping that after this summer training, I will become a regular open source
+contributor to something linux related (Again, once a fanboy, always a fanboy&amp;nbsp;:P)&lt;/p&gt;</summary><category term="Linux"></category><category term="dgplug"></category><category term="open source"></category><category term="foss"></category></entry><entry><title>Linux Proc Pseudo Filesystem</title><link href="http://abstatic.github.io/linux-proc-fs.html" rel="alternate"></link><updated>2016-06-24T14:09:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2016-06-24:linux-proc-fs.html</id><summary type="html">&lt;h2&gt;The proc&amp;nbsp;directory&lt;/h2&gt;
+&lt;p&gt;Proc stands for process in linux. As we know, that &amp;#8220;Everything is a file&amp;#8221; in
+linux. Keeping true to this analogy, all the processes are organized and
+processed inside the proc&amp;nbsp;directory.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/proc/&lt;/code&gt; is the process information and pseudo filesystem. All the running
+processes have their directories inside the proc folder. The general syntax of
+directories is &lt;code&gt;/proc/[pid]&lt;/code&gt; , You can easily find the &lt;code&gt;pid&lt;/code&gt; of a running
+process by a simple &lt;code&gt;ps -A | grep &amp;lt;process_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;File&amp;nbsp;descriptors&lt;/h2&gt;
+&lt;p&gt;Each running process can have multiple file descriptors. All of the active
+file descriptors can be found at &lt;code&gt;/proc/[pid]/fd&lt;/code&gt; folder. &lt;/p&gt;
+&lt;p&gt;This subdirectory contains one entry for each file which the process has open,
+named by its file descriptor, and which is a sym link to the actual&amp;nbsp;file.&lt;/p&gt;
+&lt;p&gt;If you do a &lt;code&gt;ls -l&lt;/code&gt; in the directory you will receive something similar&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenshot" src="http://i.imgur.com/pyYMx7D.png" /&gt;&lt;/p&gt;
+&lt;p&gt;In linux, all the file descriptors are numbered.  0, 1, 2 are the reserved
+file descriptors for &lt;span class="caps"&gt;STDIN&lt;/span&gt;, &lt;span class="caps"&gt;STDOUT&lt;/span&gt;, &lt;span class="caps"&gt;STDERR&lt;/span&gt;&amp;nbsp;recpectively.&lt;/p&gt;
+&lt;p&gt;In the above screenshot, we can observe that file descriptor 14 points to the
+current music file that is being played. \&amp;lt;the proces is the vlc media player&gt;&lt;/p&gt;
+&lt;p&gt;There is one more interesting directory related to file descriptors of the
+process it is&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/fdinfo/&lt;/code&gt;&lt;/strong&gt; - This subdirectory contains one entry for each of
+the file descriptors of the process. The files contains the position of the
+file descriptor and the flags with which the file has been&amp;nbsp;opened&lt;/p&gt;
+&lt;h2&gt;Other interesting findings&amp;nbsp;-&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/exe&lt;/code&gt;&lt;/strong&gt; - This symlinks to the executable file of the&amp;nbsp;process.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/environ&lt;/code&gt;&lt;/strong&gt; - This file contains all the environment variables
+that are available to the process. Best way to see it is using the strings
+program. &lt;code&gt;strings environ&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/cwd&lt;/code&gt;&lt;/strong&gt; - It points to the current working directory of the
+process. Symlink to the current working&amp;nbsp;directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/io&lt;/code&gt;&lt;/strong&gt; - Contains all the I/O stats for the process. Like how
+many bytes the process has read, written, number of syscalls&amp;nbsp;etc.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;/proc/[pid]/oom_score&lt;/code&gt;&lt;/strong&gt; - Linux kernel has a thing called &amp;#8220;Out Of Memory&amp;#8221;
+killer. &lt;span class="caps"&gt;OOM&lt;/span&gt; killer kills a process in case the system is running out of
+memory. Higher the &lt;span class="caps"&gt;OOM&lt;/span&gt; score of a process, higher is the likelihood that it
+will be killed by the&amp;nbsp;kernel. &lt;/p&gt;
+&lt;p&gt;The &lt;span class="caps"&gt;OOM&lt;/span&gt; score of a process is calculated on basis of what percentage of memory
+the process is using. The &lt;span class="caps"&gt;OOM&lt;/span&gt; score can vary between -16 to +15. Score of -17
+means that the process cannot be killed by &lt;span class="caps"&gt;OOM&lt;/span&gt;&amp;nbsp;killer.&lt;/p&gt;
+&lt;p&gt;That is all, although far from complete. &lt;code&gt;/proc/&lt;/code&gt; contains tons of information
+about the system, which I did not found as&amp;nbsp;relevant.&lt;/p&gt;</summary><category term="Linux"></category><category term="proc"></category><category term="filesystem"></category><category term="pseudo filesystem"></category></entry><entry><title>Linux Strings Program</title><link href="http://abstatic.github.io/strings%20program.html" rel="alternate"></link><updated>2016-06-24T01:15:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2016-06-24:strings program.html</id><summary type="html">&lt;h3&gt;Strings&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;strings&lt;/code&gt; is a command line tool to read files. On regular files its function
+is same as less, more, or cat for that&amp;nbsp;matter.&lt;/p&gt;
+&lt;p&gt;But as per the man page-
+&lt;code&gt;strings prints the strings of printable character in files&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I feel like this progarm is godsend. With help of strings we can easily read
+files, which regular editors like vim, less fail to&amp;nbsp;parse. &lt;/p&gt;
+&lt;p&gt;Strings takes in the files, and scoures through it and prints out all the
+characters which can be parsed as string. On finding any non printable
+character the line is terminated. A new line is started from the next&amp;nbsp;string.&lt;/p&gt;
+&lt;p&gt;Try parsing the &lt;code&gt;/proc/[pid]/environ&lt;/code&gt; file with help of cat, vim or less and
+then with strings, you will realize what the program is made&amp;nbsp;for. &lt;/p&gt;</summary><category term="Linux"></category><category term="strings"></category><category term="bash"></category><category term="shell"></category></entry><entry><title>New Chromosome viewer for SegAnn</title><link href="http://abstatic.github.io/new-chromosome-viewer.html" rel="alternate"></link><updated>2016-06-21T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-06-21:new-chromosome-viewer.html</id><summary type="html">&lt;h2&gt;Creating a new chromosome viewer for SegAnnDB : Design &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Implementation Details&amp;nbsp;-&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;* The upper part is the overview of the chrome and is the standard zoom file.
+* The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
+here)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.Changes in storing&amp;nbsp;images-&lt;/h3&gt;
+&lt;p&gt;I have modified the file keeping scheme of segann. Now each generated goes into the chromosome folder as&amp;nbsp;well.   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  secret
+  +
+  +---profile (e.g. ES0004)
+  + |
+  + |--------1
+  + |   *-&amp;gt; ES0004_chr1_standard.png
+  + |   *-&amp;gt; ES0004_chr1_profiles.png
+  + |   *-&amp;gt; ES0004_chr1_chrome_ubuntu_1.png
+  + |
+  + |--------2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So all the images now go into their corresponding chromosome number folder. (its X for the last&amp;nbsp;chr)&lt;/p&gt;
+&lt;p&gt;Changes made in other parts of the application to accomodate the new file keeping&amp;nbsp;scheme&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File - &lt;code&gt;__init.py__&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The route &lt;code&gt;secret&lt;/code&gt; has been modified, on line number&amp;nbsp;30&lt;/p&gt;
+&lt;p&gt;Original  - 
+  &lt;code&gt;config.add_route("secret","/secret/{name:%s}{suffix}"%name_regex)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Modified-
+  &lt;code&gt;config.add_route("secret","/secret/{profile_name}/{chr_num}/{name:%s}{suffix}"%name_regex)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File- &lt;code&gt;views.py&lt;/code&gt; , &lt;code&gt;route="secret"&lt;/code&gt;&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;The new code for this route is as follows – (old code is commented&amp;nbsp;out)  &lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  @view_config(route_name="secret")
+  def secret_new(request):
+      # fn = db.secret_file("%(name)s%(suffix)s" % request.matchdict)
+      # return FileResponse(fn, request=request)
+      profileName = request.matchdict["profile_name"]
+      chr_num = request.matchdict["chr_num"]
+      file_name = "%(name)s%(suffix)s" % request.matchdict
+      fn = db.secret_file(file_name, chr_num)
+      print fn
+      return FileResponse(fn, request=request)
+  &lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;2.Splitting of&amp;nbsp;Images-&lt;/h3&gt;
+&lt;p&gt;As discussed before, I have added the code to split all the large size images. I am using “&lt;span class="caps"&gt;PILLOW&lt;/span&gt;” module for doing this. We are alreading using this in
+  &lt;code&gt;scatterplot.py&lt;/code&gt; file. &lt;/p&gt;
+&lt;p&gt;Splitting criteria – I have changed the default width to 1250px from 1500px. Because 1250 evenly divides all the other zoom levels (ipad, windows,&amp;nbsp;ubuntu)&lt;/p&gt;
+&lt;p&gt;Code&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;The code for splitting images is in the file &lt;code&gt;db.py&lt;/code&gt;. I have done modifications in two places. I have created a separete function to split the images, the 
+  method is called &lt;code&gt;split_image(...)&lt;/code&gt; and this method is called from the &lt;code&gt;process(...)&lt;/code&gt; method. Process method is called to create the scatterplots, calculate 
+  the segmentation and breakpoints data and store it into &lt;span class="caps"&gt;BDB&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;Modifications in &lt;code&gt;process(..)&lt;/code&gt; method&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  ...
+  ...
+      meta["plots"][name] = {
+          "logratio_min": lr_min,
+          "logratio_max": lr_max,
+          "height_px": HEIGHT_PX,
+          "width_px": width,
+          "width_bases": bases[ch],
+          "file": scatterplot_file(pinfo["name"], ch, name,
+                                   lr_min, lr_max,
+                                   width, bases),
+          }
+      print "file created: ", meta["plots"][name]["file"]
+      print "---------------"
+      if meta["plots"][name]["width_px"] &amp;gt; DEFAULT_WIDTH :
+          split_image(meta["plots"][name]["file"], ch, pinfo["name"], name, width)
+  # print "meta- ",meta
+  # print "\n\n\n\n----------\n\n\n\n\n"
+  ...
+  ...
+  &lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;spilt_image(...)&lt;/code&gt; method works as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  def split_image(file_name, chr_num, profile_name, suffix, width):
+      """
+      Parameters-
+      file_name - the file name
+      chr_num - the chromosome number
+      profile_name - the profile id
+      suffix - the zoom level
+      width - the width_px of the image
+      """
+      file_location = SECRET_DIR + "/" + profile_name + "/" + chr_num + "/" + file_name
+      save_path = SECRET_DIR + "/" + profile_name + "/" +&amp;nbsp;chr_num&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;  # now open the file
+  im = Image.open(file_location)
+
+  i = DEFAULT_WIDTH
+  j = 1
+
+  while i &amp;lt;= width:
+      print i
+      box = (i - 1250, 0, i, 200)
+      img = im.crop(box)
+      fn = &amp;quot;%s_chr%s_%s_%d.png&amp;quot; % (profile_name, chr_num, suffix, j)
+      final_path = save_path + &amp;quot;/&amp;quot; + fn
+      img.save(final_path)
+      j += 1
+      i += 1250
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/pre&gt;
+
+&lt;p&gt;The above method splits a image into smaller images. Each splitted image has the size of 1250 pixels.The images are named similarly to their parents only the 
+  index is added to the end to indicate their&amp;nbsp;sequence. &lt;/p&gt;
+&lt;h3&gt;3.New chromosome viewer&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;I am implementing the new chromosome viewer for segann with help of&amp;nbsp;offsetting.&lt;/p&gt;
+&lt;p&gt;As you can see in the picture, we are dividing a very large png image into
+several small images of 1250px. All of these images are unique and are
+sequenced using the index, which is attached at the end of file&amp;nbsp;name.&lt;/p&gt;
+&lt;p&gt;Now we can render the same image of 1250 pixels everytime, but the user will
+have the choice, that which part of the chromosome he wants to&amp;nbsp;annotate.&lt;/p&gt;
+&lt;p&gt;Each image that is rendered can be&amp;nbsp;annotated.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;D3JS&lt;/span&gt; Linear Scaling&lt;/strong&gt;
+In our &lt;span class="caps"&gt;JS&lt;/span&gt; code &lt;code&gt;chromDisplay.js&lt;/code&gt; we are making use of the &lt;a href="https://github.com/d3/d3/wiki/Quantitative-Scales"&gt;linear
+scaling&lt;/a&gt;. We are using
+linear scales to map the base pairs to the&amp;nbsp;pixels&lt;/p&gt;
+&lt;p&gt;To explain in a more general way, linear scale is&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Linear Scaling" src="https://s3.amazonaws.com/dashingd3js/images/d3.js_scales_scale_domain_down_to_range_300x300.png" /&gt;&lt;/p&gt;
+&lt;p&gt;In SegAnnDB we have the domain as the number of base pairs and the range is
+the width of the image, so that is fixed at 1250&amp;nbsp;pixels.&lt;/p&gt;
+&lt;h2&gt;Using offsets to display various&amp;nbsp;sections**&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="handmade" src="http://i.imgur.com/0SD5gwz.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Motivation -&lt;/strong&gt; Using the offset based approach, it is zoom level agnostic,
+meaning with this approach we can create and view images of any zoom level&amp;nbsp;efficiently.&lt;/p&gt;
+&lt;p&gt;Currently how the annotation works in SegAnn is&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;User drags the mouse on profile to do different type of annotation such as
+   breakpoint, and copy number. Its done in the shape of a&amp;nbsp;rectangle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The event is detected by &lt;code&gt;chromDisplay.js&lt;/code&gt; , and the x-coordinates of the
+   rectangular region are converted to base pair (min, max) with help of
+   invert function of linear scaling which allows a mapping from range to&amp;nbsp;domain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After getting the min and mix basepairs, a simple http request is sent out
+   to the server, which stores the annotation in&amp;nbsp;database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, if we want to split out the large images into different images, and still
+be able to&amp;nbsp;annotate. &lt;/p&gt;
+&lt;p&gt;After doing a lot of brainstorming, I thought of just addding an offset value 
+to the x-coordinates, and then invert the values to get the correct width of 
+base&amp;nbsp;pairs.&lt;/p&gt;
+&lt;p&gt;So, how this will work is, that in every occurence of the x-coordinates, or
+inversion of coordinates, I am adding an offset value which will correspond to
+the right pixel on the original image. That way we can annotate different
+profiles with considerably high zoom&amp;nbsp;levels.&lt;/p&gt;
+&lt;p&gt;For example, while we are sending out the request to save an annotation &lt;br /&gt;
+The function saveAnnotation would get modified as -
+&lt;pre&gt;
+    var saveAnnotation = function(){
+      var buttons = svg.selectAll("."+button_class);
+      buttons.remove();
+      var rect = svg.select("#"+trackType+"NEW");
+      var w = parseInt(rect.attr("width"));
+      // add the offset value here
+      var min_px = parseInt(rect.attr("x")) + offset_px;
+      var min = parseInt(x.invert(min_px));
+      var max = parseInt(x.invert(min_px+w));
+      var waiting = svg.append("text")
+      ...
+      ...
+      var url = "/add_region/"+profile_id+"/"+chromosome+"/"+
+    trackType+"/"+ann+"/"+min+"/"+max+"/";
+      d3.json(url,function(response){
+    if(response){
+      ...
+      ...
+      ...
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;So just by adding the correct offset value we inverse map the correct
+x coordinates of the svg to the correct base pairs in the&amp;nbsp;domain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New&amp;nbsp;Route&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For developing the new viewer, I have created a new route in &lt;code&gt;views.py&lt;/code&gt;
+I have commented out the default route of &lt;code&gt;chrom&lt;/code&gt; and created a new route for
+&lt;code&gt;chrom&lt;/code&gt; along with a new template &lt;code&gt;new.pt&lt;/code&gt; to support&amp;nbsp;this&lt;/p&gt;
+&lt;p&gt;Route - 
+&lt;pre&gt;
+@view_config(route_name='chrom', renderer='templates/new.pt')
+@add_userid
+@check_userprofiles
+def hello(request):
+    w = request.GET.get("width", "standard")
+    i = request.GET.get("index", "1")
+    md = request.matchdict
+    out = prof_info(md["name"], md["chr"].split(','), w)
+    out["name"] = md["name"]
+    out["width"] = w
+    out["others"] = [z for z in CHROM_ZOOMS if z != w]
+    out["chr"] =&amp;nbsp;md["chr"]&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# in case of standard width we want to send the correct suffixes
+if w == &amp;quot;standard&amp;quot;:
+    out[&amp;quot;index&amp;quot;] = 0
+    out[&amp;quot;index_next&amp;quot;] = &amp;quot;&amp;quot;
+    out[&amp;quot;index_prev&amp;quot;] = &amp;quot;&amp;quot;
+    out[&amp;quot;index_suffix&amp;quot;] = &amp;quot;&amp;quot;
+else:
+    out[&amp;quot;index&amp;quot;] = i
+    out[&amp;quot;index_suffix&amp;quot;] = &amp;quot;_&amp;quot; + i
+
+    if int(i) == 1:
+        out[&amp;quot;index_next&amp;quot;] = str(int(i)+1)
+        out[&amp;quot;index_prev&amp;quot;] = &amp;quot;1&amp;quot;
+    else:
+        out[&amp;quot;index_next&amp;quot;] = str(int(i)+1)
+        out[&amp;quot;index_prev&amp;quot;] = str(int(i)-1)
+return out
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/pre&gt;
+
+&lt;h4&gt;Code Explanation&amp;nbsp;-&lt;/h4&gt;
+&lt;p&gt;Lets talk about, the new parameters, that we are sending to the&amp;nbsp;template-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We are also taking a new &lt;span class="caps"&gt;GET&lt;/span&gt; request parameter, which is the index of image,
+  if unsupplied it is set to&amp;nbsp;1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We are now sending out the index, index_next, index_prev parameters to the
+  template, these contain the index values corresponding to current, next and
+  previous indices of the image section that we are viewing right&amp;nbsp;now&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We are also sending out index_suffix, it is used to create the filename
+  later on in the template and js&amp;nbsp;code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Changes in the javascript&amp;nbsp;code&lt;/h2&gt;
+&lt;p&gt;We are also doing some changes in &lt;span class="caps"&gt;JS&lt;/span&gt; code in the template&amp;nbsp;-&lt;/p&gt;
+&lt;pre&gt;
+var data = ${plot};
+data[0][0]["width_px"] = 1250;
+data[0][0]["zoom"] = "${width}";
+data[0][0]["offset_px"] = (${index} - 1) * 1250;
+data[0][0]["index"] = ${index}
+data[0][0]["index_suffix"] = "${index_suffix}";
+var profile = new profilePlot(data);
+&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#8217;s all for now. The next post will cover how the final thing was
+implemented along with any changes suggested by&amp;nbsp;Toby.&lt;/p&gt;</summary><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="chromosome viewer"></category></entry><entry><title>Selenium For Testing SegAnnDB</title><link href="http://abstatic.github.io/selenium-for-testing.html" rel="alternate"></link><updated>2016-06-12T09:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-06-12:selenium-for-testing.html</id><summary type="html">&lt;h3&gt;Selenium&lt;/h3&gt;
+&lt;p&gt;Selenium is a browser based testing framework which is very widely used for doing testing for various web centric apps. Selenium has bindings available for almost all the languages. Selenium is used exclusively for automating browser behaviour. In more simpler words, selenium can be described as an &lt;span class="caps"&gt;API&lt;/span&gt; for the browser. Selenium is also used in web&amp;nbsp;scraping. &lt;/p&gt;
+&lt;p&gt;For python, selenium can be installed by one single command - &lt;code&gt;pip install selenium&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Browser based&amp;nbsp;testing&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Browser based testing is automating browsers for running regression and functional tests, which further test the functionality of the web application. The aim is to reduce the number of regressions which might be introduced in further development of the&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python unit&amp;nbsp;testing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Python unittest is a module which is used for writing tests in python. It provides various methods for running and setting up of&amp;nbsp;tests.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each test case method should be prefixed with the name&amp;nbsp;&amp;#8220;test_&amp;#8221;&lt;/li&gt;
+&lt;li&gt;For defining the test sequence of methods, the format is - &amp;#8220;test010_&amp;#8221; , &amp;#8220;test020_&amp;#8221;&amp;nbsp;etc.&lt;/li&gt;
+&lt;li&gt;There should be a &lt;code&gt;setUp&lt;/code&gt; method in the file. This method is called before running up of each test&amp;nbsp;case.&lt;/li&gt;
+&lt;li&gt;Method &lt;code&gt;tearDown&lt;/code&gt; is called every time a test case method finishes&amp;nbsp;executing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Directory&amp;nbsp;Structure&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;All the data related to the tests goes under &lt;code&gt;SegAnnDB/tests/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Test&amp;nbsp;Profile&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For doing the testing I am using a profile named &lt;span class="caps"&gt;ES0004&lt;/span&gt;. The script
+automatically checks for the existence of the test profile. In case, it does
+not exist it downloads it from my github repo and then the test suite
+execution begins. It expects that the test profile is inside &lt;code&gt;SegAnnDB/tests/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://raw.githubusercontent.com/abstatic/SegAnnDB-tests/master/test_profile.bedGraph.gz"&gt;Test&amp;nbsp;Profile&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;The Test Cases&amp;nbsp;-&lt;/h2&gt;
+&lt;p&gt;After some initial discussions, me and Toby (my mentor) decided that it would be good if I wrote test cases for checking the current functionality of application. The test cases are&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Test whether the application is starting properly or&amp;nbsp;not&lt;/p&gt;
+&lt;p&gt;Implementing this test case was trivial. We are just checking for the right value in the page title after succssfully loading the page.
+  &lt;script src="https://gist.github.com/abstatic/08429f989ce571fbc1e954aae3f3f1a8.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Login the&amp;nbsp;user&lt;/p&gt;
+&lt;p&gt;By far this was the trickiest part. The normal login flow in SegAnnDB is as follows&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;a) Click on the signin button&lt;br /&gt;
+  b) A new pop up opens up for mozilla persona&lt;br /&gt;
+  c) Enter the mail id&lt;br /&gt;
+  d) The pop is redirected to appropriate oauth based server of your email provider for asking permissions.&lt;br /&gt;
+  e) Enter your password andd authorize&lt;br /&gt;
+  f) Redirects back to mozilla persona&lt;br /&gt;
+  g) Pop up closes and the user is successfully logged&amp;nbsp;in  &lt;/p&gt;
+&lt;p&gt;Automating this many steps and handling so many steps was complicated. I was sure that other people must have tried to automate mozilla persona based logins.
+  I came across &lt;strong&gt;&lt;a href="https://mockmyid.com"&gt;mockmyid&lt;/a&gt;&lt;/strong&gt; which is very useful for testing mozilla persona based applications for mock&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://mockmyid.com"&gt;mockmyid&lt;/a&gt;&lt;/strong&gt; provides mock user ids which can be used for logging in via mozilla persona. When using mockmyid the login flow is as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Click on signin button&lt;br /&gt;
+  b) Persona popup opens&lt;br /&gt;
+  c) Enter mockmyid based email&lt;br /&gt;
+  d) Click on login&lt;br /&gt;
+  e) Pop closes and the user is logged&amp;nbsp;in.  &lt;/p&gt;
+&lt;p&gt;Assertion for a successfull login works by checking for the presence of Sign Out&amp;nbsp;field.&lt;/p&gt;
+&lt;p&gt;Login is something which is used by every other test case, so I decided to make a method which can automatically log the user&amp;nbsp;in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The login function&lt;/strong&gt;
+  &lt;script src="https://gist.github.com/abstatic/f59103256e6f04c8cef37508efbd82d0.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upload a&amp;nbsp;profile  &lt;/p&gt;
+&lt;p&gt;Uploading a profile is also straightforward. The steps followed by webdriver are&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Login the user &lt;br /&gt;
+  b) Go to profile upload page&lt;br /&gt;
+  c) Put in the path of test file&lt;br /&gt;
+  d) Click on submit button&lt;br /&gt;
+  e) Assert for existence of element with&amp;nbsp;id=success  &lt;/p&gt;
+&lt;p&gt;&lt;script src="https://gist.github.com/abstatic/ac3cab3c9164c42a0984755bd2d0ad09.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Annotate a&amp;nbsp;chromosome&lt;/p&gt;
+&lt;p&gt;This test case works very differently when compared to other test cases. It uses selenium only for logging in the user. The annotation part is done by using
+  urllib2 module and sending out the get requests to the web server. The assertion works by checking for the 200 status code on the response of the request&amp;nbsp;sent.&lt;/p&gt;
+&lt;p&gt;But there is one more thing with this test. It needs to sleep for a while. This is because, it will get called directly after the profile is uploaded. 
+  Now, SegAnn needs some time to process a profile before it can be annotated. So the test for annotating chromosome waits for about a minute before doing&amp;nbsp;anything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete a&amp;nbsp;profile.&lt;/p&gt;
+&lt;p&gt;Deleting of a profile is simple as well. The steps followed are&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Login the user&lt;br /&gt;
+  b) Send a delete request to the server&lt;br /&gt;
+  c) Assert for word &amp;#8220;deleted&amp;#8221; on the source code of the&amp;nbsp;response.  &lt;/p&gt;
+&lt;p&gt;Now, as we will go on adding more features into SegAnn I plan to add tests for each of&amp;nbsp;them.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All the code related to above tests can be found at
+&lt;a href="https://github.com/abstatic/SegAnnDB/blob/master/tests/tests.py"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Waits in&amp;nbsp;Selenium&lt;/h3&gt;
+&lt;p&gt;Generally selenium is kindof procedural and does not handle latency very well. But with webapps, its sure that there will be some delays and waits while the page&amp;nbsp;loads. &lt;/p&gt;
+&lt;p&gt;To handle these kinds of scenarios we need to put in waits in selenium while checking for existence of various elements. So, basicallly what I&amp;#8217;m doing is I poll the browser continuously for a max time limit, and check whether a certain element exists or&amp;nbsp;not&lt;/p&gt;
+&lt;p&gt;There are two major types of waits available in&amp;nbsp;selenium- &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Implicit Waits - An implicit wait is to tell web driver to poll the &lt;span class="caps"&gt;DOM&lt;/span&gt;
+    for a certain amount of time when trying to find and element or elements
+    if they are not immediately&amp;nbsp;available. &lt;/p&gt;
+&lt;p&gt;Example code - 
+&lt;pre&gt;
+from selenium import web driver
+driver = webdriver.Firefox()
+driver.implicitly_wait(30)
+driver.get("https://www.google.co.in/")
+driver.find_element_by_id(“lst-ib”)
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;In above example the implicit wait value is given as 30sec i.e., if web
+driver is able to find the element with in the given span 30sec, it
+returns true else, it will raise an&amp;nbsp;exception.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Explicit Waits- An explicit wait is code we define to wait for a certain
+    condition to occur before proceeding further in the code. &lt;code&gt;time.sleep()&lt;/code&gt;
+    is one such&amp;nbsp;example. &lt;/p&gt;
+&lt;p&gt;I have extensively used explicit waits in the test suite to poll for
+a certain element and proceed only if it was found. Most commonly it is
+used in conjuntion with &lt;span class="caps"&gt;EC&lt;/span&gt; (Expected&amp;nbsp;Condition)&lt;/p&gt;
+&lt;p&gt;Example code-
+&lt;pre&gt;
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+driver = webdriver.Firefox()
+driver.get("https://www.google.co.in/")
+try:
+   WebDriverWait(driver, 10).until( EC.presence_of_element_located((By.ID,"element")))
+except:
+   pass
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Above code waits until 10 seconds before throwing a &lt;code&gt;TimeoutException&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I have defined the default waiting time before throwing a timeout error as
+60&amp;nbsp;seconds. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Time Required&lt;/strong&gt; - It mostly depends on internet and processor speed. Generally the test
+suite takes about 3-5 minutes in executing all the&amp;nbsp;tests.s &lt;/p&gt;</summary><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="selenium"></category><category term="unit testing"></category><category term="python"></category></entry><entry><title>Getting Selected In GSoC</title><link href="http://abstatic.github.io/getting-selected-gsoc.html" rel="alternate"></link><updated>2016-05-03T09:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-05-03:getting-selected-gsoc.html</id><summary type="html">&lt;h3&gt;D-Day&lt;/h3&gt;
+&lt;p&gt;For me this was 23rd April 00:30 &lt;span class="caps"&gt;AM&lt;/span&gt;. After a month I had been &amp;#8216;not very patiently&amp;#8217; waiting for my GSoC result. I had high expectations. I wanted to get selected so bad. I was really nervous whole day, and to cope with it I was playing Dota2 with my friends. Then one of my friends called me up and asked me to check the results. Trembling I visited the GSoC dashboard&amp;#8230;&lt;br /&gt;
+and &lt;span class="caps"&gt;VOILA&lt;/span&gt; I was selected ! I had made it. Finally, and that too on my first attempt. It is the happiest moment of my life till now. 
+I am the first student ever from my college to get selected in Google Summer of Code. I only have one person to thank for my selection in GSoC, who motivated me through&amp;nbsp;everything.&lt;/p&gt;
+&lt;h3&gt;Back to the&amp;nbsp;project&lt;/h3&gt;
+&lt;p&gt;As mentioned in the previous post, I will be working on a computational genomics project under Canadian Centre of Computational&amp;nbsp;Genomics.&lt;/p&gt;
+&lt;p&gt;My project is titled &lt;a href="https://summerofcode.withgoogle.com/projects/#6611818353000448"&gt;&amp;#8220;Improving SegAnnDB&amp;nbsp;Webapp&amp;#8221;&lt;/a&gt; &lt;/p&gt;
+&lt;h3&gt;What is SegAnnDB&amp;nbsp;?&lt;/h3&gt;
+&lt;p&gt;SegAnnDB is Segmentation Annotation Database. It is a webapp which is used for identifying gain, loss, amplification in a &lt;span class="caps"&gt;DNA&lt;/span&gt; segment. It is used in copy number analysis. &lt;a href="http://bioviz.rocq.inria.fr/"&gt;Here&lt;/a&gt; is a working instance of&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;h3&gt;Copy number&amp;nbsp;variations&lt;/h3&gt;
+&lt;p&gt;As per wikipedia&amp;nbsp;- &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copy-number variations (CNVs) are a form of structural variation that manifest as deletions or duplications in the genome. For example, the chromosome that normally has sections in order as A-B-C-D might instead have sections A-B-C-C-D (a duplication of &amp;#8220;C&amp;#8221;) or A-B-D (a deletion of &amp;#8220;C&amp;#8221;). Cells with CNVs have abnormal or, for certain genes, normal variations in their copy&amp;nbsp;number.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="CNV Image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Gene-duplication.png/170px-Gene-duplication.png" title="CNV Image" /&gt;&lt;/p&gt;
+&lt;p&gt;Study of copy number variation is closely related to tumors. Although copy number variations are common in humans, but many studies have found that copy number variations in genes are related to diseases like tumors, cancers, alzheimers. Progress made in field of &lt;span class="caps"&gt;CNV&lt;/span&gt; will help greatly in demystifying the causes and cures behind these&amp;nbsp;diseases.&lt;/p&gt;
+&lt;p&gt;SegAnnDB focuses on helping researchers analyse th copy number alterations in a&amp;nbsp;chromosome.&lt;/p&gt;
+&lt;h3&gt;Project Aim&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;There is already a working version of SegAnnDB in which we can do basic but very accurate genomic segmentation. It visualizes by plotting the log ratio against chromosome length. It is one of the most accurate systems for&amp;nbsp;annotations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Add appropriate unit tests and a regression testing suite &lt;/strong&gt; using selenium testing&amp;nbsp;framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Render plots based on chromosome region &lt;/strong&gt; the user wants to&amp;nbsp;see/annotate.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Permission System&lt;/strong&gt;, whereby a user can grant permissions like &lt;code&gt;read&lt;/code&gt;, &lt;code&gt;write&lt;/code&gt; to other&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. Social Annotations&lt;/strong&gt; - One user will be able to share his/her annotations with other&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. Faster Deletion of Profiles&lt;/strong&gt; - Aims to optimize the deletion algorithm from O(&lt;span class="caps"&gt;ND&lt;/span&gt;) to&amp;nbsp;O(1)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. Safe Deletion of Log Files&lt;/strong&gt; - Have a cron job which will periodically delete all the unused log&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. Docker container&lt;/strong&gt; - Package SegAnnDB as a docker&amp;nbsp;container.&lt;/p&gt;
+&lt;h3&gt;Time&amp;nbsp;line-&lt;/h3&gt;
+&lt;p&gt;The project timeline is as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Project Milestones and&amp;nbsp;Deliverables&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Community Bonding Period (April 22-May 22)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Become more familiar with the codebase and how it works.
+        Realize how and what the test cases should be about. Also, find out that what would be the most efficient way of coding the other parts as well.
+        Towards the last week, start coding the unit tests using Selenium test
+        framework.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;May 23 - May 30 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Using Selenium Web Driver Framework, start writing code for the regression testing suite. I will decide what tests need to be written in my community bonding period.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;May 31 - June 13 (2 Weeks)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Work on replacing large pngs, with functionality to view subregions of chromosome.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 14 - June 20 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Permission System - Implement a permission system so that users can grant read/write permissions on profiles.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Midterm Evaluations&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Submit midterm evaluation by June 22. Then continue coding.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 22 - June 28 (1 week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Wrap up the remaining work on permission system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 29 - July 12 (2 Weeks)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Work on Social Annotations. &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;July 13 - July 26 (2 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Faster deletion of profiles. Optimize O(&lt;span class="caps"&gt;ND&lt;/span&gt;) to O(1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;July 27 - August 2(1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Cron Job for safe deletion of log files of BerkeleyDB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;August 3 - August 9 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Create Docker Image. Package SegAnnDB as a standalone docker container and upload it to dockerhub.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Remaining days&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Reserved as a buffer period in case something takes longer than expected or unforeseen difficulties arise. If everything runs as per the timeline then this period will be used for more code cleanup, better testing and more documentation.
+    &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+
+&lt;h3&gt;Technologies and Frameworks Involved&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Languages&lt;/strong&gt; - Python, Javascript and Berkeley &lt;span class="caps"&gt;DB&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 1. Pyramid framework - &lt;/strong&gt; As SegAnnDB is a webapp. So it is built using pyramid web application&amp;nbsp;framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Selenium Unit testing - &lt;/strong&gt; For creating unit testing framework, I will use python bindings of&amp;nbsp;selenium.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. D3 &lt;span class="caps"&gt;JS&lt;/span&gt; - &lt;/strong&gt; It is a &lt;span class="caps"&gt;JS&lt;/span&gt; library for visualizing data on the client side. It handles showing annotations and also, uploading them to&amp;nbsp;ssrver.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. PruneDP and Segannot - &lt;/strong&gt; SegAnnDB uses machine learning for getting accurate breakpoints beforehand, then the user can verify and add his&amp;nbsp;own.&lt;/p&gt;
+&lt;p&gt;I hope I have well explained the project. If you still have doubts please feel free to comment here or email me at&amp;nbsp;x.abhishek.flyhigh@gmail.com&lt;/p&gt;</summary><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category></entry><entry><title>Starting Out In GSoC</title><link href="http://abstatic.github.io/preparing-for-gsoc.html" rel="alternate"></link><updated>2016-05-02T10:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-05-02:preparing-for-gsoc.html</id><summary type="html">&lt;p&gt;Hello&amp;nbsp;all,&lt;/p&gt;
+&lt;p&gt;This is the first post in a series of posts, in which I will cover my Google Summer Of Code(GSoC)&amp;nbsp;experience. &lt;/p&gt;
+&lt;p&gt;I remember that I had heard about GSoC back when I was in my first year of college education, but I never actually tried to participate in the event thinking that its just only for the elite programmers. But finally on my third year of college education, I finally thought &amp;#8220;I should atleast try&amp;#8221; and with that I started my preparations for GSoC&amp;#8216;16. I started preparing for the event from early&amp;nbsp;January. &lt;/p&gt;
+&lt;p&gt;I started out with visiting all the previously selected organizations, and collected information specifically on&amp;nbsp;-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What kind of proposals get selected, and which ones&amp;nbsp;don&amp;#8217;t&lt;/li&gt;
+&lt;li&gt;What are different steps involved in participating in&amp;nbsp;GSoC&lt;/li&gt;
+&lt;li&gt;What are the various pre requisites for various organizations and&amp;nbsp;projects&lt;/li&gt;
+&lt;li&gt;Read all possible links related to summer of code, and about the&amp;nbsp;program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After my initial analysis of various organizations, I started picking out various organizations with which I would like to work with over the summer. I already had set my mind that I will only work on projects involving python as I had recently learned that langauge and was excited to further strenthen my skills in it. Already knowing what tech stack I wanted to work with really helped me out in selecting the&amp;nbsp;organization.&lt;/p&gt;
+&lt;p&gt;Some of the organizations that I had selected were&amp;nbsp;-  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span class="caps"&gt;C3G&lt;/span&gt;&lt;/strong&gt; : Canadian Centre for Computational Genomics, org working on computational&amp;nbsp;genomics  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BioJS&lt;/strong&gt; : Another awesome org working on computational biology and&amp;nbsp;visualization  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ScraPy&lt;/strong&gt; :  Related to web&amp;nbsp;scraping  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span class="caps"&gt;CC&lt;/span&gt; Extractor&lt;/strong&gt; :  I was interested in their infrastructure related project&amp;nbsp;idea.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;myhdl&lt;/strong&gt; : Org with projects on Hardware Descripting Languages in&amp;nbsp;python  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ascend&lt;/strong&gt; : Org focussing on computational&amp;nbsp;chemistry  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After short listing orgs, I started sending out emails to the prospective mentors &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; mailing lists of the projects that I was interested in. I got a lot of psotive feedback from many mentors. And then, I started focussing on the projects that really interested me. Out of all of them &lt;strong&gt;SegAnnDB project idea, from &lt;span class="caps"&gt;C3G&lt;/span&gt;&lt;/strong&gt; stood out to&amp;nbsp;me.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;The Org&lt;/strong&gt;&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;&lt;span class="caps"&gt;C3G&lt;/span&gt; is a org completely focussed on computational biology. Mind you, it was a field that I literally knew nothing about. But, I really wanted to understand this, and do this project. It was a nice challenge as well. So after 5 years I started learning about biology and genomics&amp;nbsp;again.  &lt;/p&gt;
+&lt;p&gt;I studied computational genomics day and night for a few days, so that I can better understand all the intricacies involved with the project. This was a very crucial step and it really helped in understanding my project inside&amp;nbsp;out.  &lt;/p&gt;
+&lt;p&gt;Needless to say, a lot of credit goes to my project mentor Toby Hocking as well. He is a wonderful guy and he pointed me to all the correct resources to read&amp;nbsp;through.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;The Proposal&lt;/strong&gt;&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;After some good and positive discussions about the project with my mentor, I started working on my project proposal. As for &lt;span class="caps"&gt;C3G&lt;/span&gt; we already had a proposal template. And after some modifications in my draft, I finally submitted it to google and then the month long wait started. It was the longest wait ever, I remember I used to check GSoC dashboard alomst on an hourly basis&amp;nbsp;everyday.&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s it for now. In my next post I will cover more details about my project and what I plan to acheive in this coming&amp;nbsp;summer. &lt;/p&gt;</summary><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category></entry><entry><title>Learning A New Language</title><link href="http://abstatic.github.io/learning-german.html" rel="alternate"></link><updated>2016-03-01T02:03:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2016-03-01:learning-german.html</id><summary type="html">&lt;p&gt;I have been trying to learn German for quite some time, on and off again,
+using all the online tools available at my disposal. To be honest, learning
+a new language is hard. Especially&amp;nbsp;German. &lt;/p&gt;
+&lt;p&gt;But I have observed that with learning a new language we open up a lot of new
+frontiers. When learning a language we don&amp;#8217;t learn only the &amp;#8220;language&amp;#8221;,
+instead we learn about the society, the heirarchy in society, the culture, the
+music and the litereature. I feel this is a priceless&amp;nbsp;bargain.  &lt;/p&gt;
+&lt;p&gt;We can learn a lot about a society, its culture by learning the language it
+speaks. German as a language has a rich cultural and musical heritage. And it
+shows. In the language and the society&amp;nbsp;itself. &lt;/p&gt;
+&lt;p&gt;Moreover when we learn a new language, we also open up new possibilities in
+music and literature. I have been listening to German music for some hours now
+and I find it so calming and beautiful, even though I don&amp;#8217;t understand most of
+it.&amp;nbsp;xD&lt;/p&gt;</summary><category term="Life"></category><category term="German"></category></entry><entry><title>Dotfiles</title><link href="http://abstatic.github.io/dotfiles.html" rel="alternate"></link><updated>2016-01-27T16:10:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2016-01-27:dotfiles.html</id><summary type="html">&lt;div dir="ltr" style="text-align: left;"&gt;
+
+Dotfiles are vital to any developer configuration. Currently I am
+setting up all of my dotfiles for a linux fedora configuration. After I
+am done, I will upload all of these to a github repository.  
+
+First is Vim  
+
+For my vim configuration I use a ton of plugins, most of which are
+gathered from here and there.  
+
+For plugin management I use pathogen, couldn&amp;#8217;t find anything easier.  
+Coupled with NERDTree , syntastic, and git gutter this setup is pretty
+ideal to me.
+
+&lt;/div&gt;
+
+&lt;/p&gt;</summary></entry><entry><title>DNF Configuration</title><link href="http://abstatic.github.io/dnf-configuration.html" rel="alternate"></link><updated>2015-09-04T20:56:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2015-09-04:dnf-configuration.html</id><summary type="html">&lt;p&gt;With arrival of Fedora 22, dnf has become the distro&amp;#8217;s default package manager, by
+replacing legacy yum package manager. For those of you who didn&amp;#8217;t know, dnf has been part of Fedora all the way back from Fedora 18.&lt;br /&gt;
+dnf has been proven to be faster than yum, and is better and faster in handling&amp;nbsp;dependencies.  &lt;/p&gt;
+&lt;p&gt;Configuration of dnf&amp;nbsp;:&lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;TBH&lt;/span&gt;, I find the default configuration of dnf pretty horrendous. So, I took the time to go through the documentation and configure a optimum
+dnf config file applicable to anyone, the dnf config file can be found
+at &lt;em&gt;/etc/dnf/dnf.conf&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. clean_requirements_on_remove:&lt;/strong&gt; Use this option if you want to
+delete unused dependencies when&lt;br /&gt;
+you run dnf&amp;nbsp;remove.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. clean_requirements_on_remove=true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;2. debuglevel:&lt;/strong&gt; Use this when you want to have more of debug data printed out to stdout, when any transaction&amp;nbsp;fails.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. debuglevel=2 (range of 0-10)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;3. keepcache:&lt;/strong&gt; We definitely need this value set to true. This value was set to true by default in yum.
+Basically what it does, is it preserves your downloaded packages if, in case your transaction fails or quits due to connectivity&amp;nbsp;issues.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. keepcache=true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you start to run out of data due to cache you can just sudo in and delete all the cache data, its&amp;nbsp;harmless.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. deltarpm:&lt;/strong&gt; Delta &lt;span class="caps"&gt;RPM&lt;/span&gt; packages contain the difference between an old and a new
+version of an &lt;span class="caps"&gt;RPM&lt;/span&gt; package. Applying a delta &lt;span class="caps"&gt;RPM&lt;/span&gt; on an old &lt;span class="caps"&gt;RPM&lt;/span&gt; results in the complete new &lt;span class="caps"&gt;RPM&lt;/span&gt;.
+ Always set to true. Using delta &lt;span class="caps"&gt;RPM&lt;/span&gt; takes &lt;span class="caps"&gt;CPU&lt;/span&gt; and I/O cycles&amp;nbsp;though.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. deltarpm=true
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;5. metadata_expire:&lt;/strong&gt; Set to -1 as I don&amp;#8217;t live on the bleeding edge and
+don&amp;#8217;t want to download 20-30Mb of metadata everytime I want to install a package. Another
+alternative to this is to use the command line flag -C while executing dnf, this will force dnf to use the system 
+cache even if the metadata is&amp;nbsp;expired.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. metadata_expire=-1 (-1 for never or time in seconds for between expirations)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;6. fastestmirror:&lt;/strong&gt; Set to true to override the repo default metrics and prefer the fastest mirror&amp;nbsp;first.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    e.g. fastestmirror=true
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="computers"></category><category term="configuration"></category><category term="dnf"></category><category term="Fedora"></category><category term="Linux"></category></entry><entry><title>Moving to a remote work environment: Motivation</title><link href="http://abstatic.github.io/moving-to-a-remote-work-environment-motivation.html" rel="alternate"></link><updated>2015-08-30T08:17:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2015-08-30:moving-to-a-remote-work-environment-motivation.html</id><summary type="html">&lt;p&gt;How many times has this happened to you&amp;nbsp;-  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;Your system crashed and all of your configuration that you
+    spent nights setting up was also - &lt;em&gt;gone&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;You were trying to install a new &lt;span class="caps"&gt;OS&lt;/span&gt;, (probably a new flavor of
+    linux), you had to setup your dev env all over again. Its a real
+    nightmare installing all those libraries, dlls, and what&amp;nbsp;not!&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;You are in a remote area, and you have to do some urgent work
+    or code modification, but you just can&amp;#8217;t work without your dev&amp;nbsp;environment.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span&gt;We all spend countless hours in setting up our development env
+just right and its really annoying to set it up all over again. Imagine
+it would have been so much easier if your dev env was portable and all
+you had to do was either ssh into it or deploy the &lt;span class="caps"&gt;VM&lt;/span&gt; and that&amp;#8217;s it. You
+are ready.&lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;After my recent fiasco (read as System function failing miserably)
+with Windows I have decided that I really need a remote work environment
+which is independent of the client that I am operating upon.&lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;&lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;I have tried to create a remote and portable development
+environment but everytime I got sidetracked. But none of that this time.
+Losing a ideal development environment is really a nightmare and it
+takes nearly days to set it all up again.&lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;&lt;br /&gt;
+&lt;/span&gt;&lt;span&gt;So, after scouring the internet for days I have developed a
+roadmap for working with remotes and nurturing my own remote and
+protable development environment. In the coming series of article I am
+going to share with you all the procedures and software that I am going
+to use to initialize my development environment. &lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;&lt;br /&gt;
+&lt;/span&gt;&lt;span&gt;First up is is working with remotes. As part of my
+internship at &lt;a href="http://www.techshanty.com/"&gt;TechShanty&lt;/a&gt; I have constant
+access to a DigitalOcean &lt;span class="caps"&gt;VM&lt;/span&gt;. I have decided to utilize this remote as
+much as possible. I will be setting up a apache server, terminal
+multiplexing and user access level for everyone using it.&lt;/span&gt;&lt;br /&gt;
+&lt;span&gt;&lt;br /&gt;
+&lt;/span&gt;&lt;span&gt;Next will be setting up my own portable development
+environment. I haven&amp;#8217;t yet decided on whether I want a headless env or
+full &lt;span class="caps"&gt;GUI&lt;/span&gt;. For making my development environment portable I will use
+virtual machines. I have shortlisted (but haven&amp;#8217;t yet tested) two
+machines for this purpose. First is, &lt;span class="caps"&gt;CS50&lt;/span&gt; Appliance 19 based on Ubuntu
+and second is the appliance that I am using in &lt;span class="caps"&gt;CS162&lt;/span&gt; which is again
+based on&amp;nbsp;Ubuntu. &lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;Technologies that I work with on a regular&amp;nbsp;basis:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span&gt;C/C++ : Low level to gui&amp;nbsp;level&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Web: Nodejs, php, html, css, js, sql,&amp;nbsp;phpmyadmin&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Java: Including awt and&amp;nbsp;swing&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Java: Netbeans, glassfish :( , j2ee, jersey,&amp;nbsp;tomcat&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span&gt;Miscellaneous: Can range from Photoshop to python, anything
+    thats of&amp;nbsp;interest&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;span&gt;I realize for a optimum performance I will need to setup some
+tools on client as well. But it will be minimum. Only what is absolutely
+required. Setting up environment for java will be a problem, our current
+work method requires a &lt;span class="caps"&gt;GUI&lt;/span&gt;, Netbeans and glassfish; all resource hogs. I
+might use vagrant for further automation or manually setup Virtualbox
+and take a snapshot of the machine at the ideal state.&lt;/span&gt;&lt;br /&gt;
+&lt;div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;More to come&amp;nbsp;later.&lt;/span&gt;&lt;/p&gt;</summary><category term="computers"></category><category term="Linux"></category><category term="tmux"></category><category term="virtual box"></category><category term="virtual machines"></category><category term="vm"></category></entry><entry><title>BitWise Operators</title><link href="http://abstatic.github.io/bitwise-operators.html" rel="alternate"></link><updated>2014-03-06T11:52:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2014-03-06:bitwise-operators.html</id><summary type="html">&lt;p&gt;Let&amp;#8217;s talk about bitwise operations this time. Broadly defined the bitwise operations are operations which take place at the level of individual bits. Typically the bitwise operations on almost all of the processors are faster than
+any of the arithmetic operations like &amp;#8216;+&amp;#8217;, &amp;#8216;-&amp;#8216;, &amp;#8216;*&amp;#8217;,&amp;nbsp;&amp;#8216;/&amp;#8217;    &lt;/p&gt;
+&lt;p&gt;The bitwise operators give us the power to manipulate bits, &lt;em&gt;the lowest
+level of data representation in any computer&lt;/em&gt;. Bitwise operators can be
+used to to speed up your program or to perform neat&amp;nbsp;tricks.  &lt;/p&gt;
+&lt;p&gt;There are six bitwise operators, &amp;#8216;|&amp;#8217;, &amp;#8216;&amp;amp;&amp;#8217;, &amp;#8216;^&amp;#8217;, &amp;#8216;~&amp;#8217;, &amp;#8216;&amp;lt;&amp;lt;&amp;#8217;,&amp;nbsp;&amp;#8216;&amp;gt;&amp;gt;&amp;#8217;  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. &amp;#8216;|&amp;#8217; Operator:&lt;/strong&gt; The &amp;#8216;|&amp;#8217; denotes the bitwise &amp;#8220;or&amp;#8221; operator. This is
+operator or&amp;#8217;s all the individual bits of any two digits. It works same
+like the logical &lt;span class="caps"&gt;OR&lt;/span&gt; || &amp;nbsp;operator.  &lt;/p&gt;
+&lt;p&gt;The truth table is as&amp;nbsp;follows:-  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; Bit A   Bit B   Result A | B
+  ------- ------- --------------
+  0       1       1
+  1       0       1
+  1       1       1
+  0       0       0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So you can see that the truth table is same as of logical ||&amp;nbsp;.  &lt;/p&gt;
+&lt;p&gt;Now lets get to the fun part. We will find the | value of two&amp;nbsp;integers.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Int    A    =   6 = 0110  
+Int    B    =   9 = 1001  
+So,   A|B   = 6|9 = 1111 = 15
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The answer makes perfect&amp;nbsp;sense.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.&amp;#8217;&amp;amp;&amp;#8217; Operator:&lt;/strong&gt;&amp;#8216;&amp;amp;&amp;#8217; is the bitwise &amp;#8216;and &amp;#8216; operator again it works the
+same as the logical &lt;span class="caps"&gt;AND&lt;/span&gt; operator but this one works on the bit sequence
+of two given bits. The truth table is given&amp;nbsp;below:-  &lt;/p&gt;
+&lt;table border="1"&gt;
+        &lt;tbody&gt;
+                &lt;tr&gt;
+                        &lt;th&gt;Bit A&lt;/th&gt;
+                        &lt;th&gt;Bit B&lt;/th&gt;
+                        &lt;th&gt;Result A &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; B&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+        &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Okay, now once again let&amp;#8217;s take a example with the slightly different&amp;nbsp;digits.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Int    A    =   7      = 0111  
+Int    B    =   9      = 1001  
+So,    A&amp;amp;B  = 7&amp;amp;9      = 0001 = 1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Again the answer makes perfect&amp;nbsp;sense.   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. &amp;#8216;^&amp;#8217; Operator:&lt;/strong&gt; &amp;#8216;^&amp;#8217; is the bitwise &amp;#8216;eXclusive &lt;span class="caps"&gt;OR&lt;/span&gt;&amp;#8217; &lt;span class="caps"&gt;XOR&lt;/span&gt; operator.
+This is a slightly different operator. Here when we have an exact &amp;#8216;or&amp;#8217;
+condition then only then the operator returns true, i.e. 0 ^ 1 will
+return 1 but 1 ^ 1 will not return 1. It will return&amp;nbsp;0.  &lt;/p&gt;
+&lt;p&gt;The truth table is as&amp;nbsp;follows:   &lt;/p&gt;
+&lt;table border="1"&gt;
+        &lt;tbody&gt;
+                &lt;tr&gt;
+                        &lt;th&gt;Bit A&lt;/th&gt;
+                        &lt;th&gt;Bit B&lt;/th&gt;
+                        &lt;th&gt;Result A \^ B&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+        &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Okay, now once again let&amp;#8217;s take a example with the slightly different&amp;nbsp;digits.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Int    A    =   7    = 0111  
+Int    B    =   9    = 1001  
+So,    A^B  = 7^9    = 1110  = 14
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;4. &amp;#8216;~&amp;#8217; Operator:&lt;/strong&gt; &amp;#8216;~&amp;#8217; or &amp;#8216;Tilde&amp;#8217; is the bitwise unary operator which
+operates only on a single bit. This operator perform the bit flipping,
+i.e. it forms the ones&amp;#8217; complement of a given bit sequence. In laymans&amp;#8217;
+terms thie operator turns 0&amp;#8217;s to 1&amp;#8217;s and 1&amp;#8217;s to&amp;nbsp;0&amp;#8217;s  &lt;/p&gt;
+&lt;p&gt;The truth table is relatively&amp;nbsp;simple  &lt;/p&gt;
+&lt;table border="1"&gt;
+        &lt;tbody&gt;
+                &lt;tr&gt;
+                        &lt;th&gt;Bit A&lt;/th&gt;
+                        &lt;th&gt;Result ~A&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;0&lt;/td&gt;
+                &lt;/tr&gt;
+        &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Let&amp;#8217;s take an example to understand the ones&amp;#8217; complement&amp;nbsp;clearly.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Int    A    =   7    = 0111  
+
+So,   ~A    =  ~7    = 1000  = 8  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;5. &amp;#8216;&amp;lt;&amp;lt;&amp;#8217; Operator:&lt;/strong&gt; &amp;#8216;&amp;lt;&amp;lt;&amp;#8217; is the bitwise left shift operator.
+Technically, &amp;#8216;&amp;lt;&amp;lt;&amp;#8217; this  is a bit shift operator as it shifts a given
+bit sequence to the left. Just like ones&amp;#8217; complement this operator works
+on a single bit&amp;nbsp;sequence.  &lt;/p&gt;
+&lt;p&gt;The generaly syntax of using &amp;#8216;&amp;lt;&amp;lt;&amp;#8217;&amp;nbsp;is  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;~~~~ {.example}
+[variable]&amp;lt;&amp;lt;[number of places]&amp;nbsp;~~~~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Whilst shifting, 0s are added as padding from the&amp;nbsp;right.  &lt;/p&gt;
+&lt;p&gt;Example-  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Int    A        =   7         = 0111  
+
+So,   A&amp;lt;&amp;lt;2  =  7&amp;lt;&amp;lt;2    = 11100   
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;6. &amp;#8216;&amp;gt;&amp;gt;&amp;#8217; Operator:&lt;/strong&gt;&amp;#8216;&amp;gt;&amp;gt;&amp;#8217; is the bitwise right shift operator. Works
+same as the left shift operator. But it shifts all the bits to the&amp;nbsp;right.&lt;/p&gt;</summary><category term="Bitwise"></category><category term="binary"></category><category term="computer"></category></entry><entry><title>Do you love yourself ?</title><link href="http://abstatic.github.io/do-you-love-yourself.html" rel="alternate"></link><updated>2014-03-05T15:01:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2014-03-05:do-you-love-yourself.html</id><summary type="html">&lt;p&gt;&lt;em&gt;10:16pm&lt;/em&gt; This entry a little philosophical but its really close to my
+heart and thinking. Its adapted from &amp;#8220;The Speaking Tree&amp;#8221;. With a few
+additions here and there from my&amp;nbsp;side.  &lt;/p&gt;
+&lt;p&gt;People feel lonely; they need somebody to fill their loneliness. They
+call it love. They show love because that is the only way to hook the
+other. the other also calls ot love because that the only way to hook
+you. but who knows whether there is love or not ? Love is just a game.
+Real love is possible, but that happens only when you don&amp;#8217;t need&amp;nbsp;anybody!  &lt;/p&gt;
+&lt;p&gt;If you go to a bank and you need money, they will not give you any. If
+you don&amp;#8217;t need money, you have enough, they will come to you and they
+will always be ready to give you. Same is the case with love,&amp;nbsp;guys.  &lt;/p&gt;
+&lt;p&gt;When you don&amp;#8217;t need a person at all, when you are totally sufficient
+unto yourself, when you can be alone and tremendously happy and
+ecstatic, then love is possible. But then too you can be certain about
+only one thing: whether your love is real. How can you be certain about
+the other ? But then there is no&amp;nbsp;need.  &lt;/p&gt;
+&lt;p&gt;This continuous anxiety - whether the other&amp;#8217;s love is real or not-
+simply shows one thing: that your love is not real. Why be worried about
+it ? Enjoy it while it lasts! Be together while you can be together! It
+is a fiction, but you need fiction, right&amp;nbsp;?   &lt;/p&gt;
+&lt;p&gt;Behind declarations of love there is nothing but need. You want your
+lover to be with you to fill you emptiness and so too is the case with
+her. You are both trying to use each other as a&amp;nbsp;means.  &lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s why lovers, so-called lovers, are always in conflict - because
+nobody wants to be used, because when you use a person the person
+becomes a thing, you have reduced him to a&amp;nbsp;commodity.  &lt;/p&gt;
+&lt;p&gt;Do you love yourself ? You have not even asked the question. When you
+are really blissful on your own, you don&amp;#8217;t want to use anybody. You
+simply want to share it. And you will feel thankful that somebody was
+ready to receive, not to take. That is the full&amp;nbsp;point.   &lt;/p&gt;
+&lt;p&gt;There is no way to be certain about the other- first be ceratin about
+yourself. And a person who is certain about himself is ceratin about the
+whole world. Settled, centred, grounded in yourself, you never worry
+about such things. You&amp;nbsp;accept.  &lt;/p&gt;
+&lt;p&gt;If somebody loves you, you accept it because you love yourself. You are
+happy with yourself; somebody else is happy- good ! While it lasts, live
+the fiction as beautifully as possible- it will not last forever.
+Nothing lasts&amp;nbsp;forever.  &lt;/p&gt;
+&lt;p&gt;When a love is finished, you start thinking it was false- that&amp;#8217;s why it
+has come to an end. No, not necessarily. It may have had some glimmer of
+truth in it, but you were not capable of&amp;nbsp;it.   &lt;/p&gt;
+&lt;p&gt;When you are aware, a totally different kind of love wil arise in your
+heart- which is absolutely true, which is part of eternity. But that is
+not need- it is a luxury. And you have so much of it that you hanker for
+somebody to share it&amp;nbsp;with.&lt;/p&gt;</summary><category term="MyLife"></category></entry><entry><title>Chronosphere.</title><link href="http://abstatic.github.io/chronosphere.html" rel="alternate"></link><updated>2014-02-25T16:31:00+05:30</updated><author><name>Abhishek Shrivastava (xabhishekflyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2014-02-25:chronosphere.html</id><summary type="html">&lt;div dir="ltr" style="text-align: left;"&gt;
+
+I wrote this poem in my last week in Kota. Shit. I&amp;#8217;ve come a really long
+way from back then.  
+
+Chronosphere is a place in space where everything seems to have stopped,
+even time. So, here it goes.  
+
+As I sit here, watching the hands tick by,  
+Listening to the birds, fill up the sky.  
+Thoughts floating round my head,  
+ricking back and forth in my bed.  
+Emotions are rising, clouding my heart  
+Yet another day, How on earth do I start ?  
+The tears well up, but still never fall,  
+I wish, I wish I was strong enought to end this all. :(  
+
+As my mind monsters catch up, my heart fills with dread  
+Why couldn&amp;#8217;t I be someone else instead ?!  
+Someone with a passion for this life we &amp;#8220;live&amp;#8221;  
+Someone more than just hate to give.  
+
+I try to think of How I got here.  
+I tread a troubled track. My odds are stacked.  
+How have I reached such a horrible place ?  
+Where everything is just to scary to face.  
+Is it just that I&amp;#8217;m not born to this life ?  
+
+Confusion, pain &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; sadness fill my heart.  
+Maybe today-I hope- I&amp;#8217;ll bring me my new fresh start.  
+
+&lt;/div&gt;
+
+&lt;/p&gt;</summary><category term="MyLife"></category></entry><entry><title>A Long time…perhaps ?</title><link href="http://abstatic.github.io/a-long-time-perhaps.html" rel="alternate"></link><updated>2014-02-25T16:18:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2014-02-25:a-long-time-perhaps.html</id><summary type="html">&lt;p&gt;So finally I can allow myself the luxury of blogging&amp;#8230;Well, college life is demanding. These blasted profs , kuch kehna hi bekar hai and my
+fellow branch mates ! , Believe it or not one guy in my class thinks that the &lt;span class="caps"&gt;CPU&lt;/span&gt; is an input device!! Just wanted to shoot myself then -_-
+, and the most irritating thing about all of them is that they think
+Windows is better than Linux , &lt;span class="caps"&gt;WAKE&lt;/span&gt; &lt;span class="caps"&gt;UP&lt;/span&gt; from your slumber guys otherwise
+just be windows using minions for all I care &gt;.\&amp;lt; . I mean &lt;span class="caps"&gt;CS&lt;/span&gt; majors
+are supposed to be a class apart, smarter than everyone in the room.
+&amp;#8230;..But anyways I do hope to find someone as interested as me in&amp;nbsp;computers.   &lt;/p&gt;
+&lt;p&gt;But the college campus and infrastructure is nice , wi-fi and a working
+leaseline connection and a &lt;span class="caps"&gt;LAN&lt;/span&gt; network of more than 200-300 computers.
+&lt;strong&gt;Edit: Shittiest college ever. Nothing&amp;nbsp;works.&lt;/strong&gt;   &lt;/p&gt;
+&lt;p&gt;The biggest downside of coming to Bhopal in &lt;span class="caps"&gt;UIT&lt;/span&gt; so far is I&amp;#8217;ve
+completely forgotten &lt;span class="caps"&gt;HTML&lt;/span&gt; &lt;span class="caps"&gt;CSS&lt;/span&gt;, &lt;span class="caps"&gt;JS&lt;/span&gt;, which is really sad :( , and it all
+happened due to using Sublime Text. Infact from now on I will be using
+GVim even though the learning curve is really steep but at least I will
+remember the syntax then and Vi is way more powerful than any of the
+text editors around and its the only text editor around with a &lt;span class="caps"&gt;CLI&lt;/span&gt;.  &lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;PS&lt;/span&gt;:- The next entry is not gonna be so melodramatic , its gonna be about
+Auto &lt;span class="caps"&gt;FS&lt;/span&gt; mounting in&amp;nbsp;Linux.&lt;/p&gt;</summary><category term="MyLife"></category></entry><entry><title>Mounting a NFS partition</title><link href="http://abstatic.github.io/mounting-a-nfs-partition.html" rel="alternate"></link><updated>2014-02-24T14:26:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2014-02-24:mounting-a-nfs-partition.html</id><summary type="html">&lt;p&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt; is network file system. It is a type of partition which allows you
+to store off your data into different physical computers which are
+connected via &lt;span class="caps"&gt;LAN&lt;/span&gt;. This is what adds to the appeal of &lt;span class="caps"&gt;NFS&lt;/span&gt; and makes it so
+different from other &lt;span class="caps"&gt;FS&lt;/span&gt; types. It allows the system administrator by
+availing the same &lt;span class="caps"&gt;FS&lt;/span&gt; to be mounted off in different&amp;nbsp;machines.  &lt;/p&gt;
+&lt;p&gt;So you can see why &lt;span class="caps"&gt;NFS&lt;/span&gt; is so cool. Just imagine having your same home
+directory on all of your machines , and that too without needing extra
+disk space&amp;nbsp;!  &lt;/p&gt;
+&lt;p&gt;Setting up &lt;span class="caps"&gt;NFS&lt;/span&gt; is pretty easy too. To setup up &lt;span class="caps"&gt;NFS&lt;/span&gt; you need atleast one
+server and one client. I used Fedora 20, as my server and a CentOS 6.5
+based &lt;span class="caps"&gt;VM&lt;/span&gt; as my client. to be honest it took me nearly 5 hours to
+configure &lt;span class="caps"&gt;NFS&lt;/span&gt; on these&amp;nbsp;machines.  &lt;/p&gt;
+&lt;p&gt;First of all you need to install the packages  for &lt;span class="caps"&gt;NFS&lt;/span&gt; on both of the
+machines. To do that you would&amp;nbsp;execute  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo yum install nfs-utils nfs-utils-lib
+sudo yum install portmap (not required with NFSv4)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now start the services&amp;nbsp;by:-  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;service nfs start
+service rpcbind start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might be thinking why do we  need to start the &lt;span class="caps"&gt;RPC&lt;/span&gt; (Remote
+Procedure Call) service ? Its because its the backbone of &lt;span class="caps"&gt;NFS&lt;/span&gt; suite. All
+of its services are provided via the help of &lt;span class="caps"&gt;RPC&lt;/span&gt;.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setting up the &lt;span class="caps"&gt;NFS&lt;/span&gt;&amp;nbsp;server:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After that you need to edit your /etc/exports file on your server. This
+file contains the information about what directories the server will
+share via &lt;span class="caps"&gt;NFS&lt;/span&gt; and with whom it will share. You need to be the super user
+to edit the exports&amp;nbsp;file.  &lt;/p&gt;
+&lt;p&gt;The syntax of an exports file entry looks like&amp;nbsp;this  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;directory client-ip(Permissions)&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;Example: /home/xxx/music 172.164.145.555(rw,no\_root\_squash,sync)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In the above example, there is a directory in &lt;strong&gt;/&lt;/strong&gt; partition named
+“&lt;strong&gt;nfsshare&lt;/strong&gt;” is being shared with client &lt;span class="caps"&gt;IP&lt;/span&gt; “172.164.145.555&amp;#8221; with
+&lt;strong&gt;read&lt;/strong&gt; and &lt;strong&gt;write&lt;/strong&gt; (&lt;strong&gt;rw&lt;/strong&gt;) privilege, you can also use &lt;strong&gt;hostname&lt;/strong&gt;
+of the client in the place of &lt;strong&gt;&lt;span class="caps"&gt;IP&lt;/span&gt;&lt;/strong&gt; in above&amp;nbsp;example.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt;&amp;nbsp;Options&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Some other options we can use in “&lt;strong&gt;/etc/exports&lt;/strong&gt;” file for file
+sharing is as&amp;nbsp;follows:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ro&lt;/strong&gt;: With the help of this option we can provide &lt;strong&gt;read only
+    access&lt;/strong&gt; to the shared files i.e &lt;strong&gt;client&lt;/strong&gt; will only be able to
+    &lt;strong&gt;read&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;rw&lt;/strong&gt;: This option allows the &lt;strong&gt;client server&lt;/strong&gt; to both &lt;strong&gt;read&lt;/strong&gt;
+    and &lt;strong&gt;write&lt;/strong&gt; access within the shared&amp;nbsp;directory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;sync&lt;/strong&gt;: Sync confirms requests to the shared directory only once
+    the &lt;strong&gt;changes&lt;/strong&gt; have been&amp;nbsp;committed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;no_subtree_check&lt;/strong&gt;: This option prevents the &lt;strong&gt;subtree&lt;/strong&gt;
+    checking. When a shared directory is the subdirectory of a larger
+    file system, &lt;strong&gt;nfs&lt;/strong&gt; performs scans of every directory above it, in
+    order to verify its permissions and details. Disabling the
+    &lt;strong&gt;subtree&lt;/strong&gt; check may increase the reliability of &lt;strong&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt;&lt;/strong&gt;, but
+    reduce &lt;strong&gt;security&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;no_root_squash&lt;/strong&gt;: This phrase allows &lt;strong&gt;root&lt;/strong&gt; to &lt;strong&gt;connect&lt;/strong&gt; to
+    the designated directory. Be careful though, sometimes you might not
+    want to give root&amp;nbsp;access.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For more options with “&lt;strong&gt;/etc/exports&lt;/strong&gt;“, you are recommended to read
+the &lt;strong&gt;man pages&lt;/strong&gt; for &lt;strong&gt;export&lt;/strong&gt;.  &lt;/p&gt;
+&lt;p&gt;Now, if your server is a fedora machine then you also need to follow
+these additional&amp;nbsp;steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add the list of allowed clients in your &lt;em&gt;/etc/hosts.allow&lt;/em&gt; file. The syntax for addition in this file is:&lt;br /&gt;
+&lt;code&gt;name-of-service clients_allowed_ip&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In my configuration I had the following&amp;nbsp;entries  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;portmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ALL&lt;/span&gt;  
+&lt;span class="n"&gt;rpc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;mountd&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ALL&lt;/span&gt;  
+&lt;span class="n"&gt;rpc&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;nfsd&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ALL&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here the &lt;span class="caps"&gt;ALL&lt;/span&gt; keyword indicates that everyone can access these&amp;nbsp;services.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After setting up the hosts.allow file. We need to configure nfs
+    config file stored in &lt;em&gt;/etc/sysconfig/nfs&lt;/em&gt;&lt;br /&gt;
+   In this config files we need to explicitely specify what ports will
+    be used in &lt;span class="caps"&gt;NFS&lt;/span&gt;.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All in all, your nfs config file must have the following entries&amp;nbsp;(uncommented)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    MOUNTD_PORT=892               
+    STATD_PORT=662                          
+    STATD_OUTGOING_PORT=2020  
+    LOCKD_TCPPORT=32803              
+    LOCKD_UDPPORT=32769
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Now we need to deal with the overhelpful firewall of fedora. We need to adjust the iptables such that the ports used in &lt;span class="caps"&gt;NFS&lt;/span&gt; are&amp;nbsp;open.   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To do that, fire up your firewall &lt;span class="caps"&gt;GUI&lt;/span&gt; daemon, and add ports
+    2049(&lt;span class="caps"&gt;NFS&lt;/span&gt;) and 111(&lt;span class="caps"&gt;RPC&lt;/span&gt;) as open ports. You need to open these ports
+    to &lt;span class="caps"&gt;TCP&lt;/span&gt; as well as &lt;span class="caps"&gt;UDP&lt;/span&gt;&amp;nbsp;protocols.  &lt;/p&gt;
+&lt;p&gt;After this we need to edit the iptables file. Generally its found in
+    &lt;em&gt;/etc/sysconfig/&lt;/em&gt;  &lt;/p&gt;
+&lt;p&gt;Add the following entries to your iptables&amp;nbsp;file:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;   -A INPUT -m state --state NEW -m udp -p udp --dport 2049 -j ACCEPT     
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 2049 -j ACCEPT  
+   -A INPUT -m state --state NEW -m udp -p udp --dport 111 -j ACCEPT 
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 111 -j ACCEPT   
+   -A INPUT -m state --state NEW -m udp -p udp --dport 892 -j ACCEPT       
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 892 -j ACCEPT         
+   -A INPUT -m state --state NEW -m udp -p udp --dport 875 -j ACCEPT       
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 875 -j ACCEPT         
+   -A INPUT -m state --state NEW -m udp -p udp --dport 662 -j ACCEPT       
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 662 -j ACCEPT 
+   -A INPUT -m state --state NEW -m tcp -p tcp --dport 32803 -j ACCEPT     
+   -A INPUT -m state --state NEW -m udp -p udp --dport 32769 -j ACCEPT
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Now restart your firewall by:&lt;br /&gt;
+&lt;code&gt;service iptables restart&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;And we&amp;#8217;re done ! , With the Server configuration of course&amp;nbsp;:P&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;Setting up the &lt;span class="caps"&gt;NFS&lt;/span&gt; client&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After configuring the &lt;strong&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt;&lt;/strong&gt; server, we need to &lt;strong&gt;mount&lt;/strong&gt; that shared
+directory or partition in the &lt;strong&gt;client&lt;/strong&gt;&amp;nbsp;server.  &lt;/p&gt;
+&lt;h4&gt;Mount Shared Directories on &lt;span class="caps"&gt;NFS&lt;/span&gt;&amp;nbsp;Client&lt;/h4&gt;
+&lt;p&gt;Now at the &lt;strong&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt; client&lt;/strong&gt; end, we need to &lt;strong&gt;mount&lt;/strong&gt; that directory in
+our server to access it locally. To do so, first we need to find out
+that shares available on the remote server or &lt;span class="caps"&gt;NFS&lt;/span&gt;&amp;nbsp;Server.  &lt;/p&gt;
+&lt;p&gt;showmount -e 192.168.0.100
+Export list for 192.168.0.100:/nfsshare&amp;nbsp;192.168.0.101&lt;/p&gt;
+&lt;p&gt;Now, create the directory that will contain the &lt;span class="caps"&gt;NFS&lt;/span&gt; shared&amp;nbsp;files   &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mkdir -p /mnt/nfs/home&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now at the &lt;strong&gt;&lt;span class="caps"&gt;NFS&lt;/span&gt; client&lt;/strong&gt; end, we need to &lt;strong&gt;mount&lt;/strong&gt; that directory in
+our server to access it locally. To do so, first we need to find out
+that shares available on the remote server or &lt;span class="caps"&gt;NFS&lt;/span&gt;&amp;nbsp;Server.   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;showmount -e 192.168.0.100
+&amp;gt;&amp;gt;Export list for 192.168.0.100:/nfsshare 192.168.0.101
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then go ahead and mount&amp;nbsp;it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mount &amp;lt;ip-address_of_host&amp;gt;:&amp;lt;directory_in_exportsfile&amp;gt; &amp;lt;where_to_mount&amp;gt;
+Example: mount 12.34.56.789:/home /mnt/nfs/home
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you are having problems then try stopping your firewall daemon by&amp;nbsp;using  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;service iptables stop&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If all goes well then you will be able to access all the information
+stored in your&amp;nbsp;server.&lt;/p&gt;</summary><category term="nfs"></category><category term="partition"></category><category term="linux"></category><category term="networks"></category></entry><entry><title>Python</title><link href="http://abstatic.github.io/python.html" rel="alternate"></link><updated>2013-09-06T14:13:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2013-09-06:python.html</id><summary type="html">&lt;p&gt;Today I programmed for the first time in python and believe me when I
+say it felt better than an orgasm&amp;nbsp;!!&lt;/p&gt;
+&lt;p&gt;I mean you dont need to declare variables , to heck with data types and
+even curly braces , just indent your&amp;nbsp;code.  &lt;/p&gt;
+&lt;p&gt;And the best thing is the language is interpreted which means I can
+check all the one liner statements in a single carriage return. In fact
+you dont even need to add the semi&amp;nbsp;colons.&lt;/p&gt;
+&lt;p&gt;And swapping is like mother of god ! , just a,b = b,a &lt;br /&gt;
+Shit. Super excited about learning this language&amp;nbsp;!  &lt;/p&gt;</summary><category term="computers"></category></entry><entry><title>Finally , I make mario !!</title><link href="http://abstatic.github.io/finally-i-make-mario.html" rel="alternate"></link><updated>2013-07-02T21:13:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2013-07-02:finally-i-make-mario.html</id><summary type="html">&lt;h2&gt;The Source Code&amp;nbsp;Explained&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1" /&gt;.png)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;After slogging for nearly a week , just right now I finally solved mario
+, from pset1. The problem consisted of printing out half-pyramids of a
+specific height, provided by the user. The output of the problem had to
+look something like this:-
+&lt;pre&gt;
+Height: 8&lt;br /&gt;
+        ##
+       ###
+      ####
+     #####
+    ######
+   #######
+  ########
+ #########
+&lt;/pre&gt;
+Now take a look at source code , here:-&lt;br /&gt;
+&lt;em&gt;Warning:- This is a spoiler for other people still trying on&amp;nbsp;mario.&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;cs50.h&amp;gt;  &lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;  &lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="p"&gt;{&lt;/span&gt;  
+    &lt;span class="c1"&gt;//Getting User Input-  &lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  
+
+    &lt;span class="k"&gt;do&lt;/span&gt;  
+    &lt;span class="p"&gt;{&lt;/span&gt;  
+        &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Height: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+        &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;GetInt&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;  
+
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="p"&gt;{&lt;/span&gt;  
+
+        &lt;span class="c1"&gt;//print spaces  &lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+        &lt;span class="p"&gt;{&lt;/span&gt;  
+            &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+        &lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="c1"&gt;//print hashes  &lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+        &lt;span class="p"&gt;}&lt;/span&gt;  
+
+        &lt;span class="c1"&gt;//print new_line  &lt;/span&gt;
+        &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="p"&gt;}&lt;/span&gt;  
+    &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;For loop has finished printing !! &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;First Block , Getting User Input&amp;nbsp;:-&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;div
+style="background-color: black; border-radius: 0px; color: lime; display: inline-block; font-family: Courier; font-size: 15px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; width: 386px;"&gt;&lt;/p&gt;
+&lt;p&gt;int height;&lt;br /&gt;
+&lt;br /&gt;
+   do&lt;br /&gt;
+   {&lt;br /&gt;
+     printf(&amp;#8220;Height: &amp;#8220;);&lt;br /&gt;
+     height = GetInt();&lt;br /&gt;
+   }&lt;br /&gt;
+   while( (height \&amp;lt;= 1) || (height &gt; 23)&lt;br /&gt;&amp;nbsp;);&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The first block of code consists of the &lt;span class="caps"&gt;DO&lt;/span&gt;-&lt;span class="caps"&gt;WHILE&lt;/span&gt; loop , which prompts
+for user input. The loop will not exit until the user enters a number
+between 2 and&amp;nbsp;23.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span&gt;The main block , generating half-pyramid&amp;nbsp;:-&lt;/span&gt;&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;div
+style="background-color: black; border-radius: 0px; color: lime; display: inline-block; font-family: Courier; font-size: 15px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; width: 376px;"&gt;&lt;/p&gt;
+&lt;p&gt;for(int i = 1; i \&amp;lt;= height; i++)&lt;br /&gt;
+   {&lt;br /&gt;
+&lt;br /&gt;
+        //print spaces&lt;br /&gt;
+        for(int s = height-i ;s &gt; 0; s&amp;#8212;)&lt;br /&gt;
+        {&lt;br /&gt;
+            printf(&amp;#8221; &amp;#8220;);&lt;br /&gt;
+       &amp;nbsp;}  &lt;/p&gt;
+&lt;p&gt;//print hashes&lt;br /&gt;
+        for(int j = 0;j \&amp;lt;= i; j++)&lt;br /&gt;
+        {&lt;br /&gt;
+            printf(&amp;#8220;#&amp;#8221;);&lt;br /&gt;
+&lt;br /&gt;
+        }&lt;br /&gt;
+&lt;br /&gt;
+        //print new_line&lt;br /&gt;
+        printf(&amp;#8220;\n&amp;#8221;);&lt;br /&gt;
+&lt;br /&gt;
+&lt;/p&gt;
+&lt;p&gt;}  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The algorithm I used to generate the half pyramid was as follows&amp;nbsp;:-   &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A for loop for automating the generation of each&amp;nbsp;line.&lt;/li&gt;
+&lt;li&gt;A for loop for generating spaces in each&amp;nbsp;line.&lt;/li&gt;
+&lt;li&gt;A for loop for generating hashes in each&amp;nbsp;line.&lt;/li&gt;
+&lt;li&gt;Printing new line after the spaces and sharps have been&amp;nbsp;printed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the first for loops repeats itself for the height specified , which
+means it will generate the pattern for each line. I have also used the
+iterator &amp;#8220;i&amp;#8221; as a reference to line number, that&amp;#8217;s why &amp;#8216;i&amp;#8217; has been
+initialized  as&amp;nbsp;1.  &lt;/p&gt;
+&lt;p&gt;The second for loop is used to print spaces. The logic used here is&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;span style="background-color: black; padding: 5px; color: white"&gt;&lt;code&gt;Number
+ of spaces in each line = height specified - number of line
+ //Decrementing by one in each line&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Now basically, the loop will repeat itself on the same line again and
+again , thereby printing spaces as it&amp;nbsp;completes.  &lt;/p&gt;
+&lt;p&gt;The third for loop is used to print sharps.The logic used here is&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;span style="background-color: black; padding: 5px; color: white"&gt;&lt;code&gt;Number
+of hashes in each line = two at first line , increment by one with each line&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;After printing out hashes we need to have a new line , before our main
+for loop repeats again and to do that we use &amp;#8220;\n&amp;nbsp;&amp;#8221;  &lt;/p&gt;
+&lt;p&gt;And folks that&amp;#8217;s mario for you. Make sure your main&amp;nbsp;returns.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;span class="caps"&gt;PS&lt;/span&gt; :-&lt;/em&gt;* If you are following the hacker edition pset then after the
+for loop printing first set of sharps you will need to add a tab space
+by printing out \t &lt;/strong&gt; character. And then repeat the for loop for
+printing the hashes exactly as it&amp;nbsp;was.&lt;/p&gt;</summary><category term="MyLife"></category></entry><entry><title>CS50: Week 1 , Fall 2012</title><link href="http://abstatic.github.io/cs50-week-1-fall-2012.html" rel="alternate"></link><updated>2013-06-30T15:22:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2013-06-30:cs50-week-1-fall-2012.html</id><summary type="html">&lt;h2&gt;My Experience (Till&amp;nbsp;now)&lt;/h2&gt;
+&lt;div style="font-family: Helvetica;"&gt;
+&lt;span class="caps"&gt;CS50&lt;/span&gt; is Harvard&amp;#8217;s most famous course and the institutes first course to
+be featured in edX. There are literally no pre-requisites other than a
+computer and a working net connection.It&amp;#8217;s specifically targets people
+who are new to the field of computer science.
+
+After completing Week0 , I am battling pset1 now , which is about
+generating half-pyramids, just like in mario.
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1" /&gt;.png)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;But we&amp;#8217;ve got to use hashes and the output will ask for pyramid height
+and it has to look something like this&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;div
+style="color: white; background-color: black; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px; display: inline-block; font-family: Courier; margin: auto; padding: 10px;"&gt;&lt;/p&gt;
+&lt;p&gt;Height: 8&lt;br /&gt;
+       ##&lt;br /&gt;
+      ###&lt;br /&gt;
+     ####&lt;br /&gt;
+    #####&lt;br /&gt;
+   ######&lt;br /&gt;
+  #######&lt;br /&gt;
+ ########&lt;br /&gt;&amp;nbsp;#########&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Even though it seems like a child&amp;#8217;s play , believe me its not (Edit: For beginners), atleast
+not for beginners like me! , the main problem is/are the loops and
+nesting , and after that you also need to find a logic b/w the no. of
+spaces , sharps and new&amp;nbsp;lines.&lt;/p&gt;
+&lt;p&gt;Dunno how am I supposed to solve it ?! ,but anyway I&amp;#8217;ll keep on
+trying&amp;#8230;thinking to pull off an all nighter now&amp;nbsp;:P&lt;/p&gt;
+&lt;div style="font-family: Helvetica;"&gt;
+
+&lt;span class="caps"&gt;BTW&lt;/span&gt; the lectures , shorts and sections are just superb ! They take
+programming to just another level.Trust me if you are interested in &lt;span class="caps"&gt;CS&lt;/span&gt;
+then you definitely need to check out this course , and if you complete
+it and submit all the psets on time , then you are also awarded a
+certificate , signed by David J. Malan , that too for free. ;)
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;span class="caps"&gt;PS&lt;/span&gt;:- There is one more problem in this pset , called &amp;#8220;Greedy&amp;#8221; in which
+we have to code a program which returns out minimum change for an amount
+of money, but more on that later, gotta code now ;P&amp;nbsp;!&lt;/em&gt;&lt;/p&gt;</summary><category term="computers"></category><category term="MyLife"></category></entry><entry><title>The Magic Of Wget.</title><link href="http://abstatic.github.io/the-magic-of-wget.html" rel="alternate"></link><updated>2013-06-23T10:28:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2013-06-23:the-magic-of-wget.html</id><summary type="html">&lt;p&gt;What if you could download all the &amp;#8220;non-downloadable&amp;#8221; content on internet&amp;nbsp;?,&lt;/p&gt;
+&lt;p&gt;Or What if you could save a  full website on your &lt;span class="caps"&gt;PC&lt;/span&gt; ? , Or What if you
+could extract all those images from a webpage/website  ? Cool , isn&amp;#8217;t it&amp;nbsp;?&lt;/p&gt;
+&lt;p&gt;Comrades, Wget is the key to all of your problems !
+Written in C , this command line download manager can easily satisfy all your
+download needs. You can download literally anything using Wget. And the
+silver lining is , its cross-platform , meaning it can work seamlessly
+with any &lt;span class="caps"&gt;OS&lt;/span&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Downloading a single file:&lt;/strong&gt;&lt;br /&gt;
+&lt;code&gt;wget &amp;lt;URL&amp;gt;&lt;/code&gt; - Downloading file by above method stores your &lt;span class="caps"&gt;URL&lt;/span&gt; , which may be a webpage or any
+type of file in your current working&amp;nbsp;directory.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Downloading the file and store with a different name &lt;span class="caps"&gt;OR&lt;/span&gt; location:&lt;/strong&gt; We use -O to
+do that. By default wget will pick the filename from the last word after
+last forward&amp;nbsp;slash.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -O &amp;lt;Desired file name&amp;gt; &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;br /&gt;
+Above will download the &lt;span class="caps"&gt;URL&lt;/span&gt; with your desired filename to . (Current working&amp;nbsp;directory.)  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wget -P &amp;lt;Desired file location&amp;gt; &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;br /&gt;
+Above will download the &lt;span class="caps"&gt;URL&lt;/span&gt; to your desired location.If the desired location
+does not exist , then specified directory will be&amp;nbsp;created.&lt;/li&gt;
+&lt;li&gt;If you want to change the file name and store it in a user
+defined location then you&amp;#8217;ll have to be a little more specific, you
+cannot use -P and -O in a single command , you&amp;#8217;ll need to use something
+like this- &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -O /home/mautbaba/Desktop/ &amp;lt;filename.filetype&amp;gt; &amp;lt;URL&amp;gt;&lt;/code&gt; This will download your filename.filetype to your&amp;nbsp;desktop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Specifying Download Speed:&lt;/strong&gt; While executing wget , by default wget will hijack
+all of your bandwidth which can be undesirable in certain situations and
+networks. We use &amp;#8212;limit-rate to control download&amp;nbsp;speed.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget --limit-rate=200k &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Continue Incomplete Download:&lt;/strong&gt; What if your download gets interrupted ? ,
+Well there&amp;#8217;s fix for that too, you can always continue your incomplete
+downloads by adding -c parameter.&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -c &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Background Downloading:&lt;/strong&gt; For downloading huge files , you can also put wget to
+download in background.&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -b &amp;lt;URL&amp;gt;&lt;/code&gt;
+    -Above will initiate the download and give back &lt;span class="caps"&gt;BASH&lt;/span&gt; to you. You can also see
+    progress of your download using : &lt;code&gt;tail -f wget-log&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download A Full Site:&lt;/strong&gt; Wget can also download a full website for local viewing.
+It can make the site completely offline and even convert all the&amp;nbsp;links.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget --mirror -p --convert-links -P ./&amp;lt;DIRECTORY&amp;gt; &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;div class="highlight"&gt;&lt;pre&gt; --mirror       : Turns on the options suitable for mirroring.  
+  -p            : Download all files that are necessary to properly display a given HTML page.  
+--convert-links : After download convert links in document for local viewing.  
+ -P ./&amp;lt;LOCATION&amp;gt;: Save all files and directories to specified directory.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download multiple files:&lt;/strong&gt; You can download multiple files (Maybe mp3s, images) at one go using wget, all you need is the &lt;span class="caps"&gt;URL&lt;/span&gt;.
+First store all download URLs into a text file , lets say its download.txt&lt;br /&gt;
+Then, give download.txt as an argument using wget&amp;nbsp;-i  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -i download.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Download only certain file types from a webpage/website:&lt;/strong&gt; Wget can also be used to download all videos, images, PDFs from a&amp;nbsp;website.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget -r -A. &amp;lt;filetype&amp;gt; URL&lt;/code&gt;
+You may also use wget to reject certain filetypes while downloading, the
+syntax would be&amp;nbsp;:  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wget --reject=&amp;lt;filetype&amp;gt; URL&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;FTP&lt;/span&gt; Download with wget:&lt;/strong&gt; You can also download files from &lt;span class="caps"&gt;FTP&lt;/span&gt; using&amp;nbsp;wget.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Download files as &amp;#8220;Anonymous User&amp;#8221; :&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget &amp;lt;FTP-URL&amp;gt;&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Download files with user-name and password authentication :-  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget --ftp-user=USERNAME --ftp-password=PASSWORD &amp;lt;FTP-URL&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Increase Total Retry Attempts:&lt;/strong&gt; By default wget retries 20 times before giving up on a download , you can change it&amp;nbsp;by &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wget --tries=75 &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="LAMP"></category><category term="wget"></category><category term="linux"></category><category term="downloading"></category></entry><entry><title>30 Reasons Why Linux Is Better Than Windows</title><link href="http://abstatic.github.io/30-reasons-why-linux-is-better-than-windows.html" rel="alternate"></link><updated>2013-06-15T17:06:00+05:30</updated><author><name>Abhishek Shrivastava (xabhishekflyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2013-06-15:30-reasons-why-linux-is-better-than-windows.html</id><summary type="html">&lt;p&gt;Have you ever wondered why so many devs prefer linux over windows , or
+What exactly makes linux  better than other operating systems&amp;nbsp;?  &lt;/p&gt;
+&lt;p&gt;Take a look  below to know&amp;nbsp;why.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Its free&lt;/strong&gt; ! Contrary to windows and other &lt;span class="caps"&gt;OS&lt;/span&gt; linux is completely free, you can download it off the  net and install it, share it and
+that, my friend, is perfectly legal, no headaches about&amp;nbsp;licensing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;No viruses or spywares.&lt;/strong&gt; Even Bill Gates cannot cure windows of its viruses, but linux on other hand rarely gets infected with viruses or spywares.Tight security is a core functionality in a linux &lt;span class="caps"&gt;PC&lt;/span&gt; and the number of viruses in linux is astronomically lower than&amp;nbsp;windows.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Say goodbye to disk fragmentation.&lt;/strong&gt; Linux&amp;#8217;s filesystem works very efficiently. Unlike &lt;span class="caps"&gt;FAT&lt;/span&gt; or &lt;span class="caps"&gt;NTFS&lt;/span&gt; it stores data in middle of a &lt;span class="caps"&gt;HDD&lt;/span&gt; sector, so you can append to any file as you please. Without worrying about disk&amp;nbsp;fragmentation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;It &lt;span class="caps"&gt;DOES&lt;/span&gt; &lt;span class="caps"&gt;NOT&lt;/span&gt; crash&lt;/strong&gt; without any apparent reasons because the &lt;span class="caps"&gt;GUI&lt;/span&gt;(pronounced gew-ee) and the core operating system(the kernel) are completely independent and do not affect each&amp;nbsp;other.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It &lt;strong&gt;doesn&amp;#8217;t require re-installation.&lt;/strong&gt;unless there is a &lt;span class="caps"&gt;HDD&lt;/span&gt; failure. By creating a separate /home partition user data can be preserved even in case of&amp;nbsp;reinstallation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It &lt;strong&gt;doesn&amp;#8217;t require frequent re-booting&lt;/strong&gt; even if you change settings or install any&amp;nbsp;application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux can read &lt;strong&gt;over 1000&amp;nbsp;filesystems.&lt;/strong&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Its open source , so you can modify it the way you want and maybe release your own&amp;nbsp;distro.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The shell prompt of linux known as &lt;span class="caps"&gt;BASH&lt;/span&gt; is very powerful and entire
+system administration can be done using&amp;nbsp;it.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Unlike windows you can install it on any type of partition of your
+&lt;span class="caps"&gt;HDD&lt;/span&gt; be it primary or&amp;nbsp;logical.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;No one can monitor your activities&lt;/strong&gt;on linux unless you want them
+to , did you know all versions of windows come preloaded with a backdoor
+so that the &lt;span class="caps"&gt;US&lt;/span&gt; &lt;span class="caps"&gt;NSA&lt;/span&gt; can monitor your activities and&amp;nbsp;data.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Linux doesn&amp;#8217;t use registry&lt;/strong&gt;, hence no registry corruption! Most
+of the configuration is stored on plain text&amp;nbsp;files  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can even run linux from a &lt;strong&gt;&lt;span class="caps"&gt;LIVE&lt;/span&gt; &lt;span class="caps"&gt;CD&lt;/span&gt;&lt;/strong&gt; , without ever having the
+need to install it permanently on your hard&amp;nbsp;drive.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Contrary to popular belief linux supports insane amount of
+hardwares , in windows you have to install the drivers for almost&amp;nbsp;everything.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The user support in linux is very wide and the online forums are
+extremely active , once you get started **its like one huge&amp;nbsp;family. &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Moreover being open source it has very less number of bugs , and
+if any &lt;strong&gt;bug does occur it is fixed within &lt;span class="caps"&gt;HOURS&lt;/span&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;No frequent hardware upgrades&lt;/strong&gt; are required in case of linux.It
+can run happily on older hardware and the hardware requirements don&amp;#8217;t
+increase with every new&amp;nbsp;release.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Light On System Resources.&lt;/strong&gt; Linux is super light on your system resources and you can utilize the full power of your&amp;nbsp;machine.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Best Development Platform.&lt;/strong&gt; Most of the compilers are built-in, you don&amp;#8217;t need to install anything&amp;nbsp;extra.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Excellent package management system.&lt;/strong&gt; You can install all softwares in just a few clicks , that too for free and moreover they are very easy to&amp;nbsp;upgrade.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The default graphics are real eye candy something windows can never
+acheive.The desktop effects are simply&amp;nbsp;amazing!  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Multiple Desktops.&lt;/strong&gt;This is obviously one of my fav. parts of linux. Ever linux distro has multiple desktops which makes it very easy
+to multitask.
+Multiple desktops make it easy to have many programs open at once but
+provides system resources only to the ones you are currently&amp;nbsp;using.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux is &lt;strong&gt;highly customisable&lt;/strong&gt;you can use different window
+managers like Gnome , &lt;span class="caps"&gt;KDE&lt;/span&gt; , Unity &lt;br /&gt;
+You can even define your own custom shortcuts!   &lt;br /&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You are in total control of your system.There are no hidden
+applications/processes. You can   always decide which process will start
+when the kernel&amp;nbsp;starts.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;With the help of clients like Empathy and gwibber you can **satisfy
+all of your social networking needs right from your&amp;nbsp;desktop.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All linux softwares are generally written in C therefore they are
+considerably more stable and powerful as compared to other&amp;nbsp;softwares.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Every distro has its own included appstore which provides you
+access to thousands of verified softwares and the silver lining is its all&amp;nbsp;free!  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Browsing is not only more secure but considerably faster on linux. It also saves a lot of&amp;nbsp;bandwidth.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux plays friends with other &lt;span class="caps"&gt;OS&lt;/span&gt;. It recognizes many &lt;span class="caps"&gt;OS&lt;/span&gt; and lets you access/edit their files with great&amp;nbsp;flexibility.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All servers and super computers are linux based. You can have any no. of processors , and literally any amount of hardware , linux will
+recognize it and put it to full use. Whereas windows just cannot scale up to that&amp;nbsp;level  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="LAMP"></category></entry><entry><title>Loriem Ipsum;</title><link href="http://abstatic.github.io/loriem-ipsum.html" rel="alternate"></link><updated>2013-06-15T09:47:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2013-06-15:loriem-ipsum.html</id><summary type="html">&lt;h1&gt;Our First &lt;strong&gt;Test&lt;/strong&gt;&amp;nbsp;Post&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est&amp;nbsp;laborum.&lt;/span&gt;  &lt;/p&gt;
+&lt;p&gt;If you are new to &lt;span class="caps"&gt;HTML&lt;/span&gt; and webdesign then you cant help but notice Loriem Ipsum. Its your basic placeholder text usually used to represent the
+semantic aspects of the&amp;nbsp;webpage.  &lt;/p&gt;
+&lt;p&gt;According to Wikipedia&amp;nbsp;:-&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The lorem ipsum text is typically a section of a Latin text by Cicero with words altered, added and removed that make it nonsensical and not
+proper&amp;nbsp;Latin.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;PS&lt;/span&gt;:&lt;/strong&gt; This
+is a test post for checking out the visual semantics of this&amp;nbsp;page.&lt;/p&gt;</summary><category term="computers"></category></entry></feed>

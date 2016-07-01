@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="http://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="http://abstatic.github.io/feeds/configuration.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="http://abstatic.github.io/theme/css/poole.css"/>
+    <link rel="stylesheet" href="http://abstatic.github.io/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="http://abstatic.github.io/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="http://abstatic.github.io/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="http://abstatic.github.io/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="configuration" />
+    <meta name="tags" contents="i3" />
+    <meta name="tags" contents="i3window manager" />
+    <meta name="tags" contents="i3wm" />
+    <meta name="tags" contents="developer configuration" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="http://abstatic.github.io/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="http://abstatic.github.io/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="http://abstatic.github.io/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="http://abstatic.github.io/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      i3 Window Manager <span class="caps">FTW</span>
+    </h1>
+    <span class="post-date">Fri 01 July 2016</span>
+
+    <h2>Tiling Window What&nbsp;?!</h2>
+<p><strong>Window Manager</strong> - Okay, lets clear the most basic thing first, a window
+manager is the program which generally draws the <span class="caps">GUI</span> of your computer. Most of
+the time the <span class="caps">WM</span> is not just one program, but a suite of programs designed to
+fulfill most of the daily requirements of the&nbsp;users. </p>
+<p>Examples - <span class="caps">GNOME</span>, <span class="caps">KDE</span>, Unity,&nbsp;Mate</p>
+<p><strong>Tiling Window&nbsp;Managers</strong></p>
+<p>WMs like <span class="caps">GNOME</span>, <span class="caps">KDE</span>, Unity, Mate etc are what we call floating window
+managers, these are the types of window managers in which the windows are
+floating are draggable, resizeable, overlapping and all the frilly&nbsp;things.</p>
+<p>Tiling window managers are a special class of window managers, where windows
+fit in the display just like tiles. The screen is organized into mutually
+non-overlapping&nbsp;frame.</p>
+<p>A rough idea of how tiling window managers look like&nbsp;-</p>
+<p><img alt="i3-screen" src="https://i3wm.org/screenshots/i3-9.bigthumb.png" />
+<img alt="i3-screen2" src="http://i3wm.org/screenshots/i3-6.png" /></p>
+<p>In tiling window managers you cannot just drag windows and stuff. Its very
+different from the usual desktop&nbsp;managers.</p>
+<p>To be honest I was never a fan of tiling window managers, but one day out of
+the blue I decided to give tiling window managers a try. Thus began endless
+googling about which tiling window manager should I use ? , and I setteledd
+for&nbsp;i3wm.</p>
+<p>Here are some of the conditions I had in my mind when evaluating various wms&#8217;
+and how i3wm is fulfulling all of these&nbsp;-</p>
+<ol>
+<li>There should be ample and <strong>easy to understand documentation</strong> - i3 has
+   excellent documentation, infact having ample and understandable
+   documentation is one of the design philosophies of this&nbsp;wm.</li>
+<li><strong>Configuration should be simple</strong>, as I did not want to learn another
+   scripting language, just to configure my window manager - Configuration is
+   done using plaintext configuration files using human readable language,&nbsp;keywords.</li>
+<li><strong>Easy installation</strong>, it should not result in any downtime of my&nbsp;machine</li>
+<li>i3wm package is available for almost all of the distros, and its strctly
+     a wm, no extra package is installed, only one kickass window&nbsp;manager</li>
+<li><strong>Good tutorials, and user base</strong> - Tons of information on reddit, forums and
+   youtube tutorials are&nbsp;available.</li>
+<li><strong>Excellent support for multiple monitors</strong> - Most screen efficient&nbsp;display.</li>
+<li>Support for good keybindings, hence minimizing the use for mouse - <strong>Has vim
+   like keybindings</strong> What else can I want more&nbsp;?</li>
+</ol>
+<p>To give you a overview of how I am using i3wm, here is what my screens look
+like - (I use triple&nbsp;displays)</p>
+<p><img alt="My current screens" src="http://i.imgur.com/K1stHJt.png" title="Open image in a new tab to see zoomed in" /> </p>
+<p>The blank space is because two of my screens are set to 1366x768 px and one is
+set to 1920x1080px, but that&#8217;s not the&nbsp;point.</p>
+<p>Here are some official videos about i3wm and the containers and tree data
+strucutres it uses&nbsp;- </p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Wx0eNaGzAZU">i3 Basics</a> - This video covers the bare basics of i3wm and various modes
+Before we get out hands dirty with 
+  it&nbsp;supports</li>
+<li><a href="https://www.youtube.com/watch?v=AWA8Pl57UBY">Containers and tree data structure of
+  i3</a> - Great video which covers how
+  the windows are handled in i3 using tree data structure. Must watch if you
+  want to understand how to manipulate containers and other&nbsp;stuff.</li>
+</ul>
+<p><strong>i3 Conf</strong> - Out of the box, i3 is okay-ish. But with the right configuration
+this <span class="caps">WM</span> becomes very&nbsp;powerful. </p>
+<p>Here is my i3 <a href="https://github.com/abstatic/config/blob/master/i3conf/config">conf file</a> 
+The default location for this file is <code>~/.i3/config</code></p>
+<ul>
+<li>
+<p>The first screen has one vertical container and two horizontally tiled&nbsp;containers</p>
+</li>
+<li>
+<p>The second screen has only one program open,&nbsp;vim.</p>
+</li>
+<li>
+<p>The third screen has tabbed layout,  with multiple tabs&nbsp;open.</p>
+</li>
+</ul>
+<p><strong>dmenu</strong> - dmenu is the built in i3 launcher. Its activated my pressing <code>$mod
++ d</code> , and is used for launching various applications and stuff. You can also
+  use other launchers. I find dmenu to be sufficient and use it most of the
+  time. You might want to check out rofi, its an excellent alternative and is
+  feature&nbsp;filled.</p>
+<p><strong>i3bar</strong> - The bar at the bottom of each screen is i3bar, its a simple
+program which shows the output of either the inbuilt or third party program.
+It shows the system status and other&nbsp;things.</p>
+<p>I use py3status for outputting the status. You can install py3status using pip
+or your distributions package&nbsp;manager. </p>
+<p>The status line is configured using the i3status.conf file. Here is my 
+configuration
+<a href="https://github.com/abstatic/config/blob/master/i3conf/i3status.conf">file</a>.</p>
+<p><strong>Marks</strong> - Marks allow you to mark a window and then you can easily do a goto
+on that mark from any random window that you are&nbsp;on.</p>
+<p><strong>Keybindings</strong> - I have kept the keybingds similar to that of vim. Its very
+handy and easy to&nbsp;remember.</p>
+<h3>Managing Audio, Networks and other&nbsp;stuff</h3>
+<p>Managing audio and networks can be cumbersome from the terminal. For this 
+I use two excellent programs&nbsp;-</p>
+<ol>
+<li>nm-applet - Used for managing the wireless&nbsp;networks.</li>
+<li>pavucontrol - Pulse audio volume control, this software is really great and
+   allows to manage your audio and card from a nice <span class="caps">GUI</span>.</li>
+</ol>
+<p>While I manually execute <code>pavucontrol</code> , I have added <code>nm-applet</code> to the
+startup&nbsp;entry.</p>
+<p><code>exec nm-applet</code></p>
+<p><strong>File manager</strong> - Its unwise to file managers like Files (Gnome) or
+Nautilus(Ubuntu) on i3, as they try to manage your desktop as well. I use
+pcman file manager as my file manager. Its extremely lightweigt and does the&nbsp;job.</p>
+<p><strong>GTk themes</strong> - Install <code>lxappearance</code> , if you want to tinker with <span class="caps">GTK</span>
+themes and&nbsp;stuff.</p>
+<p><strong><span class="caps">VLC</span></strong> - This is one my favourite tasks, you can fill applications like <span class="caps">VLC</span>,
+and other players in the containers. To do this, first go to full screen, and
+then press <code>$MOe + F</code>, the program will now fill the container in which it is&nbsp;in.</p>
+<p><strong>Adjusting sound and brightness</strong> - I use custom keyboard shortcuts for
+changing sound and&nbsp;brightness.  </p>
+<h3>Using multiple&nbsp;monitors</h3>
+<p>i3wm is great for people using multiple monitors. It detects all the connected
+displays right of the box. There is no extra program to manage your monitors,
+so you have to learn to configure xrandr options to make full use of your
+multiple&nbsp;monitors. </p>
+<p>By having to configure xrandr, it becomes a good learning exercise as&nbsp;well.</p>
+<p>Here is one command that I execute with every startup&nbsp;- </p>
+<p><code>exec --no-startup-id xrandr --output HDMI1 --left-of eDP1</code></p>
+<p><strong>Managing&nbsp;wallpapers</strong></p>
+<p>I use nitrogen for for managing wallpapers on my different displays. Its&nbsp;awesome. </p>
+<p><code>exec --no-startup-id nitrogen --restore</code></p>
+<h3>Conclusions</h3>
+<p>Till now my experience with i3wm has been awesome. Its minamilist nature is
+really good. You get all of the screen space to yourself and can utilize it
+any way you&nbsp;want.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "how-i-use-i3wm.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
