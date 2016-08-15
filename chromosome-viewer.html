@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+    <meta name="tags" contents="chromosome viewer" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="/category/gsoc-programming.html">GSoC, Programming</a>
+      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      More on&nbsp;SegAnnDB
+    </h1>
+    <span class="post-date">Fri 12 August 2016</span>
+
+    <h2>Making the chromosome viewer more&nbsp;interactive</h2>
+<p>As per my last blog post, I had arrived at a pretty static overview of
+chromosome that we are viewing, which looked something like: 
+<img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png" /></p>
+<div class="highlight"><pre>* The upper part is the overview of the chrome and is the standard zoom file.
+* The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
+here)
+</pre></div>
+
+
+<p>Well, now after a few more iterations I have made the overview part more
+interactive. Now the user can click on any part of the overview at any zoom
+level to see the highlighted&nbsp;part.</p>
+<p>So, this is what we have right now -&gt;
+<img alt="New Chrom Viewer" src="http://i.imgur.com/VuFcwMJ.png" /></p>
+<p><strong>How this works&nbsp;?</strong></p>
+<p>Making the overview more interactive was a crucial part of <span class="caps">UX</span> in SegAnnDB. To
+get this I used some basic javascript and css. First of all, I am
+precalculating the rectangle width and then using <span class="caps">JS</span> dynamically adding
+elements to <span class="caps">DOM</span>.</p>
+<p>All the cool rectangles you see as we hover over the chromosome overview, are
+nothing but just <code>&lt;a&gt;</code> tags which have some cool <span class="caps">CSS</span> rules applied to
+them. Lets take a look at meaty portions of the code&nbsp;-</p>
+<pre>
+  for (var i = 1; i <= numLinks; i++)
+    {
+      // lets create the links
+      // calculate the href value
+      var hrefVal = "?width="+zoomLevel + "&index=" + i;
+
+      // create a linear scale for making the title
+      var x = d3.scale.linear()
+              .domain([1, widthBase])
+              .range([0, zooms[zoomLevel]]);
+
+      // title values we use inverted range to get the values
+      var basePixel = (i - 1) * 1250;
+      var xstartBP = x.invert(basePixel);
+      var xendBP = x.invert(basePixel + 1250);
+
+      // generate the title string
+      var title = xstartBP + "-" + xendBP;
+
+      // make the string of link
+      var link = "<a class='overviewLink' style="+linkStyle+" href="+hrefVal+" title="+title+"></a>";
+
+      // append the links to overview
+      overviewDiv.append(link);
+
+      // lets see if we are in chrome_ubuntu
+      var url = window.location.href;
+      var res = url.indexOf("chrome_ubuntu")
+
+      // calculate the base pair range of each idex using reverse
+      // this is the bottom list of links
+      // We don't want to append 800 additional elements to the DOM
+      if (res == -1)
+      {
+        divElem.append("<a class='jumpLink' href="+hrefVal+ " title="+title+">"+i+"</a>");
+        // add the breaks after every 35 values to the bottom list of links
+        if (i % 35 == 0)
+          divElem.append("<br>");
+      }
+    }
+</pre>
+
+<p>The above loop, goes over all the number of links that we need to generate and adds each link to the overview div. Now with each link I added these <span class="caps">CSS</span> rules, all the new <span class="caps">CSS</span> rules are defined in the bottom most section of file <code>bioviz.css</code>. Relevant rules are -
+<pre>
+a.overviewLink {
+    height: inherit;
+    display: inline-block;&nbsp;}</p>
+<p>a.overviewLink:hover {
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+    background-color: rgba(242, 6, 255, 0.2);&nbsp;}</p>
+<p>a.overviewLink:active {
+    border-bottom: 1px solid blue;
+    border-top: 1px solid red;
+    background-color: rgba(242, 6, 255, 0.2);
+}
+</pre></p>
+<p>All of the code can be found at my <a href="https://github.com/abstatic/SegAnnDBB">github repository for&nbsp;SegAnnDB</a></p>
+<h2>Linking back to old chromosome&nbsp;viewer</h2>
+<p>Another additional feature that I have been working on, is that we wanted to reenable the old chromosome viewer for SegAnnDB. Now, the code was already there and all I had to do was create some new end points and add links to switch between both the new and old chromosome&nbsp;viewer.</p>
+<p>The new endpoint that I added is - <code>config.add_route('old_chrom', '/profile_old/{name}/{chr}/')</code></p>
+<p>So in a nutshell, the web links for the old chromosome viewer look like -  <code>http://localhost:8080/profile_old/ES0004/1/?width=ipad</code></p>
+<p>In the screenshots below you can clearly see a link to the old chromosome viewer and new chromosome viewer
+<a href="http://i.imgur.com/Wu96ZKd.png">Imgur</a></p>
+<p>Few minor code changes were also required, in Javascript code. In file <code>chromDisplay.js</code> I had to make some modifications so that we can differentiate between when we are viewing through the old chrom viewer and the new one, and handle each case&nbsp;appropriately.</p>
+<h3>OAuth2&nbsp;login</h3>
+<p>I am also working on OAuth2 based login for SegAnnDB, right now we use &#8216;pyramid_persona` python module to handle all of the authentication, it inturn implements session based authentication by extending pyramids base authentication&nbsp;system.</p>
+<p><strong>Documentation and Styling</strong>
+I also worked on improving the documentation of code, I have added comments and docstrings in both <span class="caps">JS</span> and python code, wherever I coulde. More over I also, indented most of python files to <span class="caps">PEP</span>-8 and <span class="caps">JS</span> file as&nbsp;well.</p>
+<p>More on the OAuth2 login in coming blog post! That&#8217;s it for now&nbsp;:) </p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "chromosome-viewer.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>

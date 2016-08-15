@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+    <meta name="tags" contents="login" />
+    <meta name="tags" contents="OAuth2" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="/category/gsoc-programming.html">GSoC, Programming</a>
+      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Session Based vs Token Based&nbsp;Authourization
+    </h1>
+    <span class="post-date">Sat 13 August 2016</span>
+
+    <p>For user authentication on SegAnnDB we depended on <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Persona">Mozilla
+Persona</a> till now,
+but unfortunately persona systems will be shutdown by this&nbsp;November.</p>
+<p>So we decided to move our existing authourziation mechanism to OAuth2 based
+authentication. In this post I will be doing comparison of
+Session vs token based authourziation and how we are implementing it in&nbsp;SegAnnDB.</p>
+<h3>Session Based&nbsp;Authentication</h3>
+<p>In session based authentication the server does all the heavy lifting server
+side. Client authenticates with its credentials and recieves a session_id
+(which can be stored in a cookie) and attaches this to every subsequent
+outgoing&nbsp;request. </p>
+<p>So this could be considered a &#8220;token&#8221; as it is the
+equivalent of a set of credentials. There is however nothing fancy about this
+session_id string. It is just an identifier and the server does everything
+else. It is stateful. It associates the identifier with a user account (e.g.
+in memory or in a&nbsp;database). </p>
+<p>It can restrict or limit this session to certain
+operations or a certain time period and can invalidate it if there are
+security convern and more importantly it can do and change all of this on the
+fly. Furthermore it can log the users every move on the&nbsp;website(s). </p>
+<p>Possible disadvantages are bad scalability and extensive memory&nbsp;usage.</p>
+<h3>Token Based&nbsp;Authentication</h3>
+<p>In Token based Authentication no session is persisted server-side (stateless).
+The initial steps are the same. Credentials are exchanged against a token
+which is then attached to every subsequent request which is commonly stored in
+the local storage of the client (It can also be stored in
+a&nbsp;cookie). </p>
+<p>However for the purpose of decreasing memory usage, easy
+scale-ability and total flexibility (tokens can be exchanged with another
+client) a string with all the necessary information is issued (the token)
+which is checked after each request made by the client to the server. There
+are a number of ways to use/ create&nbsp;tokens.</p>
+<p><strong>In a&nbsp;nutshell-</strong>  </p>
+<ul>
+<li>Most popular authentication system for&nbsp;APIs</li>
+<li>Less load on server compared to session&nbsp;authentication.</li>
+<li>Scaling and load balancer can be applied effectively on the <span class="caps">API</span>.</li>
+<li>No cookie and <span class="caps">CSRF</span>(Cross Site Request Forgery) protection&nbsp;required.</li>
+<li>Allows the same <span class="caps">API</span> to be used in mobile and&nbsp;web.</li>
+</ul>
+<h3><span class="caps">JWT</span> - <span class="caps">JSON</span> Web&nbsp;Token</h3>
+<ul>
+<li>Pronounced as&nbsp;&#8220;jot&#8221;</li>
+<li>The token is a combination of three parts- Header, payload and&nbsp;signature.</li>
+<li>Each part of authentication is encoded with base64 url encoding and
+  separated with a dot&nbsp;(.)</li>
+<li>Server generates the token and gives to&nbsp;client</li>
+<li>With every request the server verifies the token using, time, signature,&nbsp;etc</li>
+<li>JWTs can be signed using &#8216;secret&#8217; (OAuth2 Secret) in the&nbsp;server</li>
+<li>Usually Asymmetric Key Algorithms are&nbsp;used.</li>
+</ul>
+<h2>OAuth2</h2>
+<p>OAuth2 is the most modern way of providing authentication support. Generally,
+OAuth2 allows users of one website to access and authenticate in any other web
+application or mobile&nbsp;application.</p>
+<p>The login providers e.g. - Google, Facebook, Github provide APIs to access
+user data, on basis of the user&nbsp;consent.</p>
+<h3>OAuth2 for SegAnnDB and&nbsp;Pyramid</h3>
+<p>In our case, we currently are using Pyramid authentication along with persona
+module for pyramid which is most probably a session based authentication
+system. The project is <a href="https://github.com/madjar/pyramid_persona">Pyramid&nbsp;Persona</a></p>
+<p>Its potential replacement is - <a href="https://github.com/ludia/pyramid_google_login">Pyramid Google&nbsp;Login</a></p>
+<p>This dependency will be replacement for the pyramid_persona module, the
+current code hosted at the github repo contains a few bugs which I am&nbsp;fixing;</p>
+<p>We will have to fix the pyramid module, upload it to pypi and then dockerize
+the whole&nbsp;thing.</p>
+<p>I got <code>pyramid_google_login</code> module to work with SegAnnDB, although for
+sustained authentication and remembering the state of application I am using&nbsp;session.</p>
+<p>The authentication is pretty basic which can be summed up in the following
+steps&nbsp;-</p>
+<ol>
+<li>User logs in via Google&nbsp;OAuth</li>
+<li>The user information is retrieved from Google&#8217;s <span class="caps">API</span></li>
+<li>Using pyramid, we set a cookie on with the name of&nbsp;user_id </li>
+<li>Everytime a request comes in we decode the cookie, and get the&nbsp;user_id</li>
+<li>For logout, a simple javascript function clears out the cookie by
+   invalidating it based on expire&nbsp;time.</li>
+<li>For retrieving the <code>user_id</code> from the cookie in the server-side I wrote down
+  a simple function which takes the request and retrieves the <code>user_id</code> from
+  the&nbsp;cookie.</li>
+</ol>
+<p>Unlike typical session based authentication scenarios we are not maintaining
+the stateful-ness of application at the server side, because there is no data
+other than the user_id which we want to store. The <code>user_id</code> is stored as
+a cookie&nbsp;itself.</p>
+<p>So, that&#8217;s it about the new login system of&nbsp;SegAnnDB. </p>
+<p>The code changes on SegAnnDB can be found at
+-&nbsp;https://github.com/abstatic/SegAnnDB</p>
+<p>The code will be up by my next blog post, because I still need to figure out
+how can I upload the modified <code>pyramid_google_login</code> to&nbsp;pypi.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "session-vs-token-authourization.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
