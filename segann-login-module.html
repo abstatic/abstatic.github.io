@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/theme/css/poole.css"/>
+    <link rel="stylesheet" href="/theme/css/syntax.css"/>
+    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+    <meta name="tags" contents="login" />
+    <meta name="tags" contents="OAuth2" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="/theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="/" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      SegAnnDB Login&nbsp;System
+    </h1>
+    <span class="post-date">Wed 17 August 2016</span>
+
+    <p>The authentication is pretty basic which can be summed up in the following
+steps&nbsp;-</p>
+<ol>
+<li>User logs in via Google&nbsp;OAuth</li>
+<li>The user information is retrieved from Google&#8217;s <span class="caps">API</span></li>
+<li>Using pyramid, we set a cookie on with the name of&nbsp;user_id </li>
+<li>Everytime a request comes in we decode the cookie, and get the&nbsp;user_id</li>
+<li>For logout, a simple javascript function clears out the cookie by
+   invalidating it based on expire&nbsp;time.</li>
+<li>For retrieving the <code>user_id</code> from the cookie in the server-side I wrote down
+  a simple function which takes the request and retrieves the <code>user_id</code> from
+  the&nbsp;cookie.</li>
+</ol>
+<p>Picking up from my last (blog
+post)[http://abstatic.github.io/session-vs-token-authourization.html] , I was
+experimenting around with <code>pyramid_google_login</code> for implementing a OAuth2
+based login&nbsp;system. </p>
+<p>Turns out, <code>pyramid_google_login</code> had some compatibility issues with the
+version of pyramid we were using in SegAnnDB. So I decided to fork the repo
+and fixed all the compatibility issues. Added to that I also made some
+modifications in the code to set cookie in the returning response in case of
+a successful&nbsp;login. </p>
+<p>For handling the logout, I had to rely on javascript because I was not storing
+any information about the session cookie using pyramid. Here is the <span class="caps">JS</span> code
+that handles the logout functionality&nbsp;-</p>
+<p>File: <a href="https://github.com/abstatic/SegAnnDB/blob/google-login/plotter/static/auth.js">static/auth.js</a></p>
+<div class="highlight"><pre><span class="c1">// check if user is logged in or not</span>
+<span class="c1">// on basis of that show appropriate buttons</span>
+<span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">getCookie</span><span class="p">(</span><span class="s2">&quot;authtkt&quot;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">divElem</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#auth&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="s2">&quot;&lt;button onclick=&#39;bye()&#39;&gt;Log Out&lt;/button&gt;&quot;</span><span class="p">;</span>
+    <span class="nx">divElem</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+  <span class="c1">// okay the user is not logged in </span>
+  <span class="c1">// render the login button</span>
+  <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="s2">&quot;&lt;a href=&#39;/auth/signin_redirect&#39;&gt;&lt;button&gt;Login&lt;/button&gt;&lt;/a&gt;&quot;</span><span class="p">;</span>
+  <span class="nx">divElem</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// function to erase cookies</span>
+<span class="c1">// courtsey StackOverflow :)</span>
+<span class="c1">// - http://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript</span>
+<span class="kd">function</span> <span class="nx">eraseCookieFromAllPaths</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This function will attempt to remove a cookie from all paths.</span>
+    <span class="kd">var</span> <span class="nx">pathBits</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">pathCurrent</span> <span class="o">=</span> <span class="s1">&#39; path=&#39;</span><span class="p">;</span>
+
+    <span class="c1">// do a simple pathless delete first.</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;=; expires=Thu, 01-Jan-1970 00:00:01 GMT;&#39;</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">pathBits</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">pathCurrent</span> <span class="o">+=</span> <span class="p">((</span><span class="nx">pathCurrent</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span> <span class="o">?</span> <span class="s1">&#39;/&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nx">pathBits</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;=; expires=Thu, 01-Jan-1970 00:00:01 GMT;&#39;</span> <span class="o">+</span> <span class="nx">pathCurrent</span> <span class="o">+</span> <span class="s1">&#39;;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// function to logout the user</span>
+<span class="kd">function</span> <span class="nx">bye</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="nx">eraseCookieFromAllPaths</span><span class="p">(</span><span class="s2">&quot;authtkt&quot;</span><span class="p">);</span>
+
+  <span class="c1">//now we need to refresh the page as well.</span>
+  <span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// function to get a cookie from cookie storage</span>
+<span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">)</span> 
+<span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">);</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+      <span class="k">while</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="nx">c</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+      <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>I also had to override a default pyramid function in file
+<a href="https://github.com/abstatic/SegAnnDB/blob/google-login/plotter/views.py">views.py</a></p>
+<div class="highlight"><pre><span class="c1"># I am trying to override the authenticated_userid function here</span>
+<span class="c1"># retrieve the cookie and return to the user</span>
+<span class="k">def</span> <span class="nf">authenticated_userid</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function returns the user_id from the request&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s2">&quot;authtkt&quot;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># in case the cookie is not found it applies, unauthenticated user</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="bp">None</span><span class="p">;</span>
+    <span class="k">print</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">val</span>
+</pre></div>
+
+
+<p>Now as mentioned earlier, I had to find a way to upload my modified version of
+the login module of <code>pyramid_google_login</code> to pypi so that it can be used in&nbsp;SegAnnDB</p>
+<p>For that, I refractored all the code of <code>pyramid_google_login</code> into a new
+module named <code>seganndb_login</code>. It lives in
+<a href="://github.com/abstatic/SegAnnDB-login/commits?author=abstatic">github</a> and
+<a href="https://pypi.python.org/pypi/seganndb_login/">pypi</a> as&nbsp;well.</p>
+<p>I also added a cookie based authentication mechanism into the module, and
+uploaded it to PyPi. We install the new login module using <code>pip install
+seganndb_login</code> and easily import it into pyramid configuration&nbsp;file.</p>
+<p>Using <code>seganndb_login</code> module can be easily used in any other login
+ application too. You only need to install it and add it in your configuration
+ file of pyramid using - <code>config.include('seganndb-login')</code></p>
+<p>The next post will be about creating a container for SegAnnDB both for the old
+version and the new GSoC&nbsp;code.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "segann-login-module.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
