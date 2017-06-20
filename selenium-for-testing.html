@@ -9,12 +9,12 @@
     <title>Coding Mantis</title>
 
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/theme/css/poole.css"/>
-    <link rel="stylesheet" href="/theme/css/syntax.css"/>
-    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
-    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="./theme/css/poole.css"/>
+    <link rel="stylesheet" href="./theme/css/syntax.css"/>
+    <link rel="stylesheet" href="./theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="./theme/css/font-awesome.css"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <link rel="stylesheet" href="./theme/css/styles.css"/>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -45,23 +45,23 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
     <div class="profile">
-      <img src="/theme/img/profile.jpg"/>
+      <img src="./theme/img/profile.jpg"/>
     </div>
   </div>
 
   <nav class="sidebar-nav">
   <a class="sidebar-nav-item" href="/">All</a>
 
-      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
-      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
-      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
-      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
-      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
-      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+      <a class="sidebar-nav-item" href="./category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="./category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="./category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="./category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="./category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="./category/random.html">Random</a>
 
   <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
   <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
-  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  <a class="sidebar-nav-item" href="./pages/about">About</a>
   </nav>
 
   <div class="sidebar-item">
@@ -96,7 +96,7 @@ styles, `#sidebar-checkbox` for behavior. -->
       <div class="masthead">
         <div class="container">
           <h2 class="masthead-title">
-            <a href="/" title="Home">Coding Mantis</a>
+            <a href="./" title="Home">Coding Mantis</a>
           </h3>
         </div>
       </div>
@@ -141,20 +141,20 @@ execution begins. It expects that the test profile is inside <code>SegAnnDB/test
 <li>
 <p>Login the&nbsp;user</p>
 <p>By far this was the trickiest part. The normal login flow in SegAnnDB is as follows&nbsp;- </p>
-<p>a) Click on the signin button<br />
-  b) A new pop up opens up for mozilla persona<br />
-  c) Enter the mail id<br />
-  d) The pop is redirected to appropriate oauth based server of your email provider for asking permissions.<br />
-  e) Enter your password andd authorize<br />
-  f) Redirects back to mozilla persona<br />
+<p>a) Click on the signin button<br>
+  b) A new pop up opens up for mozilla persona<br>
+  c) Enter the mail id<br>
+  d) The pop is redirected to appropriate oauth based server of your email provider for asking permissions.<br>
+  e) Enter your password andd authorize<br>
+  f) Redirects back to mozilla persona<br>
   g) Pop up closes and the user is successfully logged&nbsp;in  </p>
 <p>Automating this many steps and handling so many steps was complicated. I was sure that other people must have tried to automate mozilla persona based logins.
   I came across <strong><a href="https://mockmyid.com">mockmyid</a></strong> which is very useful for testing mozilla persona based applications for mock&nbsp;users.</p>
 <p><strong><a href="https://mockmyid.com">mockmyid</a></strong> provides mock user ids which can be used for logging in via mozilla persona. When using mockmyid the login flow is as follows&nbsp;-</p>
-<p>a) Click on signin button<br />
-  b) Persona popup opens<br />
-  c) Enter mockmyid based email<br />
-  d) Click on login<br />
+<p>a) Click on signin button<br>
+  b) Persona popup opens<br>
+  c) Enter mockmyid based email<br>
+  d) Click on login<br>
   e) Pop closes and the user is logged&nbsp;in.  </p>
 <p>Assertion for a successfull login works by checking for the presence of Sign Out&nbsp;field.</p>
 <p>Login is something which is used by every other test case, so I decided to make a method which can automatically log the user&nbsp;in.</p>
@@ -164,10 +164,10 @@ execution begins. It expects that the test profile is inside <code>SegAnnDB/test
 <li>
 <p>Upload a&nbsp;profile  </p>
 <p>Uploading a profile is also straightforward. The steps followed by webdriver are&nbsp;-</p>
-<p>a) Login the user <br />
-  b) Go to profile upload page<br />
-  c) Put in the path of test file<br />
-  d) Click on submit button<br />
+<p>a) Login the user <br>
+  b) Go to profile upload page<br>
+  c) Put in the path of test file<br>
+  d) Click on submit button<br>
   e) Assert for existence of element with&nbsp;id=success  </p>
 <p><script src="https://gist.github.com/abstatic/ac3cab3c9164c42a0984755bd2d0ad09.js"></script></p>
 </li>
@@ -181,8 +181,8 @@ execution begins. It expects that the test profile is inside <code>SegAnnDB/test
 <li>
 <p>Delete a&nbsp;profile.</p>
 <p>Deleting of a profile is simple as well. The steps followed are&nbsp;-</p>
-<p>a) Login the user<br />
-  b) Send a delete request to the server<br />
+<p>a) Login the user<br>
+  b) Send a delete request to the server<br>
   c) Assert for word &#8220;deleted&#8221; on the source code of the&nbsp;response.  </p>
 <p>Now, as we will go on adding more features into SegAnn I plan to add tests for each of&nbsp;them.  </p>
 </li>

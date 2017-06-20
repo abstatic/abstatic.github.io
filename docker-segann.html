@@ -9,12 +9,12 @@
     <title>Coding Mantis</title>
 
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/theme/css/poole.css"/>
-    <link rel="stylesheet" href="/theme/css/syntax.css"/>
-    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
-    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="./theme/css/poole.css"/>
+    <link rel="stylesheet" href="./theme/css/syntax.css"/>
+    <link rel="stylesheet" href="./theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="./theme/css/font-awesome.css"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <link rel="stylesheet" href="./theme/css/styles.css"/>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -43,23 +43,23 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
     <div class="profile">
-      <img src="/theme/img/profile.jpg"/>
+      <img src="./theme/img/profile.jpg"/>
     </div>
   </div>
 
   <nav class="sidebar-nav">
   <a class="sidebar-nav-item" href="/">All</a>
 
-      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
-      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
-      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
-      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
-      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
-      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+      <a class="sidebar-nav-item" href="./category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="./category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="./category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="./category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="./category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="./category/random.html">Random</a>
 
   <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
   <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
-  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  <a class="sidebar-nav-item" href="./pages/about">About</a>
   </nav>
 
   <div class="sidebar-item">
@@ -94,7 +94,7 @@ styles, `#sidebar-checkbox` for behavior. -->
       <div class="masthead">
         <div class="container">
           <h2 class="masthead-title">
-            <a href="/" title="Home">Coding Mantis</a>
+            <a href="./" title="Home">Coding Mantis</a>
           </h3>
         </div>
       </div>
@@ -115,7 +115,7 @@ selenium tests as&nbsp;well.</p>
 <p>In particualar the login test. Making selenium test flow for OAuth based login
 system is quite easy, as elements are easy to locate. Here is the code for
 handling the login part&nbsp;-</p>
-<div class="highlight"><pre> <span class="c1"># get the email field</span>
+<div class="highlight"><pre><span></span> <span class="c1"># get the email field</span>
         <span class="n">email_field</span> <span class="o">=</span> <span class="n">wait</span><span class="o">.</span><span class="n">until</span><span class="p">(</span>
             <span class="n">EC</span><span class="o">.</span><span class="n">element_to_be_clickable</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">)))</span>
 
@@ -166,7 +166,7 @@ be&nbsp;installed.</p>
 <li>Start the server, using <code>bash recover-restart</code></li>
 </ol>
 <p>In a nutshell the steps are&nbsp;-</p>
-<div class="highlight"><pre>apt-get install git python subversion vim wget curl
+<div class="highlight"><pre><span></span>apt-get install git python subversion vim wget curl
 useradd ubuntu
 mkdir /home/ubuntu/
 apt-get install python-dev python-setuptools python-numpy python-bsddb3 build-essential python-imaging  db-util

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -9,12 +9,12 @@
     <title>Coding Mantis</title>
 
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/theme/css/poole.css"/>
-    <link rel="stylesheet" href="/theme/css/syntax.css"/>
-    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
-    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="./theme/css/poole.css"/>
+    <link rel="stylesheet" href="./theme/css/syntax.css"/>
+    <link rel="stylesheet" href="./theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="./theme/css/font-awesome.css"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <link rel="stylesheet" href="./theme/css/styles.css"/>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,6 +25,18 @@
   ga('send', 'pageview');
 
 </script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="docker" />
+    <meta name="tags" contents="docker django" />
+    <meta name="tags" contents="django" />
+    <meta name="tags" contents="containers" />
+    <meta name="tags" contents="docker containers" />
+    <meta name="tags" contents="open source" />
+    <meta name="tags" contents="foss" />
+
   </head>
 
   <body>
@@ -35,24 +47,23 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
     <div class="profile">
-      <img src="/theme/img/profile.jpg"/>
+      <img src="./theme/img/profile.jpg"/>
     </div>
   </div>
 
   <nav class="sidebar-nav">
   <a class="sidebar-nav-item" href="/">All</a>
 
-      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
-      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
-      <a class="sidebar-nav-item" href="/category/gsoc-programming.html">GSoC, Programming</a>
-      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
-      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
-      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
-      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+      <a class="sidebar-nav-item" href="./category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="./category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="./category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="./category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="./category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="./category/random.html">Random</a>
 
   <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
   <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
-  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  <a class="sidebar-nav-item" href="./pages/about">About</a>
   </nav>
 
   <div class="sidebar-item">
@@ -87,30 +98,34 @@ styles, `#sidebar-checkbox` for behavior. -->
       <div class="masthead">
         <div class="container">
           <h2 class="masthead-title">
-            <a href="/" title="Home">Coding Mantis</a>
+            <a href="./" title="Home">Coding Mantis</a>
           </h3>
         </div>
       </div>
 
       <div class="container content">
-<div class="content-title">
-<h2>GSoC, Programming category</h2>
-</div>
 <div class="posts">
-  <div class="post">
-    <h2 class="post-title">
-      <a href="/session-vs-token-authourization.html" rel="bookmark" title="Permalink to Session Based vs Token Based Authourization">Session Based vs Token Based&nbsp;Authourization</a>
-    </h2>
-    <span class="post-date">Sat 13 August 2016</span>
+<div class="post">
+    <h1 class="post-title">
+      Dockerize django app using Gunicorn, Nginx and&nbsp;Supervisor
+    </h1>
+    <span class="post-date">Fri 17 March 2017</span>
 
-    <p>Session vs Token based&nbsp;authourization</p>
+    
   </div>
 </div>
-<!--// updated -->
-<div class="pagination">
-        <span class="pagination-item newer">newer</span>
-        <span class="pagination-item older">older</span>
-</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "docker-wth-django.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
       </div>
 
       <label for="sidebar-checkbox" class="sidebar-toggle"></label>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -25,14 +25,6 @@
   ga('send', 'pageview');
 
 </script>
-
-
-
-    <meta name="tags" contents="Linux" />
-    <meta name="tags" contents="proc" />
-    <meta name="tags" contents="filesystem" />
-    <meta name="tags" contents="pseudo filesystem" />
-
   </head>
 
   <body>
@@ -100,69 +92,28 @@ styles, `#sidebar-checkbox` for behavior. -->
       </div>
 
       <div class="container content">
+<div class="content-title">
+</div>
 <div class="posts">
-<div class="post">
-    <h1 class="post-title">
-      Linux Proc Pseudo&nbsp;Filesystem
-    </h1>
-    <span class="post-date">Fri 24 June 2016</span>
+  <div class="post">
+    <h2 class="post-title">
+      <a href="./loriem-ipsum.html" rel="bookmark" title="Permalink to Loriem Ipsum;">Loriem&nbsp;Ipsum;</a>
+    </h2>
+    <span class="post-date">Sat 15 June 2013</span>
 
-    <h2>The proc&nbsp;directory</h2>
-<p>Proc stands for process in linux. As we know, that &#8220;Everything is a file&#8221; in
-linux. Keeping true to this analogy, all the processes are organized and
-processed inside the proc&nbsp;directory.</p>
-<p><code>/proc/</code> is the process information and pseudo filesystem. All the running
-processes have their directories inside the proc folder. The general syntax of
-directories is <code>/proc/[pid]</code> , You can easily find the <code>pid</code> of a running
-process by a simple <code>ps -A | grep &lt;process_name&gt;</code></p>
-<h2>File&nbsp;descriptors</h2>
-<p>Each running process can have multiple file descriptors. All of the active
-file descriptors can be found at <code>/proc/[pid]/fd</code> folder. </p>
-<p>This subdirectory contains one entry for each file which the process has open,
-named by its file descriptor, and which is a sym link to the actual&nbsp;file.</p>
-<p>If you do a <code>ls -l</code> in the directory you will receive something similar&nbsp;- </p>
-<p><img alt="Screenshot" src="http://i.imgur.com/pyYMx7D.png"></p>
-<p>In linux, all the file descriptors are numbered.  0, 1, 2 are the reserved
-file descriptors for <span class="caps">STDIN</span>, <span class="caps">STDOUT</span>, <span class="caps">STDERR</span>&nbsp;recpectively.</p>
-<p>In the above screenshot, we can observe that file descriptor 14 points to the
-current music file that is being played. \&lt;the proces is the vlc media player></p>
-<p>There is one more interesting directory related to file descriptors of the
-process it is&nbsp;-</p>
-<p><strong><code>/proc/[pid]/fdinfo/</code></strong> - This subdirectory contains one entry for each of
-the file descriptors of the process. The files contains the position of the
-file descriptor and the flags with which the file has been&nbsp;opened</p>
-<h2>Other interesting findings&nbsp;-</h2>
-<p><strong><code>/proc/[pid]/exe</code></strong> - This symlinks to the executable file of the&nbsp;process.</p>
-<p><strong><code>/proc/[pid]/environ</code></strong> - This file contains all the environment variables
-that are available to the process. Best way to see it is using the strings
-program. <code>strings environ</code></p>
-<p><strong><code>/proc/[pid]/cwd</code></strong> - It points to the current working directory of the
-process. Symlink to the current working&nbsp;directory.</p>
-<p><strong><code>/proc/[pid]/io</code></strong> - Contains all the I/O stats for the process. Like how
-many bytes the process has read, written, number of syscalls&nbsp;etc.</p>
-<p><strong><code>/proc/[pid]/oom_score</code></strong> - Linux kernel has a thing called &#8220;Out Of Memory&#8221;
-killer. <span class="caps">OOM</span> killer kills a process in case the system is running out of
-memory. Higher the <span class="caps">OOM</span> score of a process, higher is the likelihood that it
-will be killed by the&nbsp;kernel. </p>
-<p>The <span class="caps">OOM</span> score of a process is calculated on basis of what percentage of memory
-the process is using. The <span class="caps">OOM</span> score can vary between -16 to +15. Score of -17
-means that the process cannot be killed by <span class="caps">OOM</span>&nbsp;killer.</p>
-<p>That is all, although far from complete. <code>/proc/</code> contains tons of information
-about the system, which I did not found as&nbsp;relevant.</p>
+    <h1>Our First <strong>Test</strong>&nbsp;Post</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+velit esse …</p>
   </div>
 </div>
-    <div class="comments">
-      <h1>Comments</h1>
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-        var disqus_identifier = "linux-proc-fs.html";
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://codingmantis.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-    </div>
+<!--// updated -->
+<div class="pagination">
+        <a class="pagination-item newer" href="./index3.html">newer</a>
+        <span class="pagination-item older">older</span>
+</div>
       </div>
 
       <label for="sidebar-checkbox" class="sidebar-toggle"></label>

@@ -9,12 +9,12 @@
     <title>Coding Mantis</title>
 
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/theme/css/poole.css"/>
-    <link rel="stylesheet" href="/theme/css/syntax.css"/>
-    <link rel="stylesheet" href="/theme/css/lanyon.css"/>
-    <link rel="stylesheet" href="/theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="./theme/css/poole.css"/>
+    <link rel="stylesheet" href="./theme/css/syntax.css"/>
+    <link rel="stylesheet" href="./theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="./theme/css/font-awesome.css"/>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-    <link rel="stylesheet" href="/theme/css/styles.css"/>
+    <link rel="stylesheet" href="./theme/css/styles.css"/>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -43,23 +43,23 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
     <div class="profile">
-      <img src="/theme/img/profile.jpg"/>
+      <img src="./theme/img/profile.jpg"/>
     </div>
   </div>
 
   <nav class="sidebar-nav">
   <a class="sidebar-nav-item" href="/">All</a>
 
-      <a class="sidebar-nav-item" href="/category/configuration.html">Configuration</a>
-      <a class="sidebar-nav-item" href="/category/gsoc.html">GSoC</a>
-      <a class="sidebar-nav-item" href="/category/life.html">Life</a>
-      <a class="sidebar-nav-item" href="/category/linux.html">Linux</a>
-      <a class="sidebar-nav-item" href="/category/programming.html">Programming</a>
-      <a class="sidebar-nav-item" href="/category/random.html">Random</a>
+      <a class="sidebar-nav-item" href="./category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="./category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="./category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="./category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="./category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="./category/random.html">Random</a>
 
   <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
   <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
-  <a class="sidebar-nav-item" href="/pages/about">About</a>
+  <a class="sidebar-nav-item" href="./pages/about">About</a>
   </nav>
 
   <div class="sidebar-item">
@@ -94,7 +94,7 @@ styles, `#sidebar-checkbox` for behavior. -->
       <div class="masthead">
         <div class="container">
           <h2 class="masthead-title">
-            <a href="/" title="Home">Coding Mantis</a>
+            <a href="./" title="Home">Coding Mantis</a>
           </h3>
         </div>
       </div>
@@ -108,8 +108,8 @@ styles, `#sidebar-checkbox` for behavior. -->
     <span class="post-date">Tue 21 June 2016</span>
 
     <h2>Creating a new chromosome viewer for SegAnnDB : Design <span class="amp">&amp;</span> Implementation Details&nbsp;-</h2>
-<p><img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png" /></p>
-<div class="highlight"><pre>* The upper part is the overview of the chrome and is the standard zoom file.
+<p><img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png"></p>
+<div class="highlight"><pre><span></span>* The upper part is the overview of the chrome and is the standard zoom file.
 * The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
 here)
 </pre></div>
@@ -117,7 +117,7 @@ here)
 
 <h3>1.Changes in storing&nbsp;images-</h3>
 <p>I have modified the file keeping scheme of segann. Now each generated goes into the chromosome folder as&nbsp;well.   </p>
-<div class="highlight"><pre>  secret
+<div class="highlight"><pre><span></span>  secret
   +
   +---profile (e.g. ES0004)
   + |
@@ -196,7 +196,7 @@ here)
       """
       file_location = SECRET_DIR + "/" + profile_name + "/" + chr_num + "/" + file_name
       save_path = SECRET_DIR + "/" + profile_name + "/" +&nbsp;chr_num</p>
-<div class="highlight"><pre>  # now open the file
+<div class="highlight"><pre><span></span>  # now open the file
   im = Image.open(file_location)
 
   i = DEFAULT_WIDTH
@@ -231,11 +231,11 @@ In our <span class="caps">JS</span> code <code>chromDisplay.js</code> we are mak
 scaling</a>. We are using
 linear scales to map the base pairs to the&nbsp;pixels</p>
 <p>To explain in a more general way, linear scale is&nbsp;- </p>
-<p><img alt="Linear Scaling" src="https://s3.amazonaws.com/dashingd3js/images/d3.js_scales_scale_domain_down_to_range_300x300.png" /></p>
+<p><img alt="Linear Scaling" src="https://s3.amazonaws.com/dashingd3js/images/d3.js_scales_scale_domain_down_to_range_300x300.png"></p>
 <p>In SegAnnDB we have the domain as the number of base pairs and the range is
 the width of the image, so that is fixed at 1250&nbsp;pixels.</p>
 <h2>Using offsets to display various&nbsp;sections**</h2>
-<p><img alt="handmade" src="http://i.imgur.com/0SD5gwz.jpg" /></p>
+<p><img alt="handmade" src="http://i.imgur.com/0SD5gwz.jpg"></p>
 <p><strong>Motivation -</strong> Using the offset based approach, it is zoom level agnostic,
 meaning with this approach we can create and view images of any zoom level&nbsp;efficiently.</p>
 <p>Currently how the annotation works in SegAnn is&nbsp;-</p>
@@ -263,7 +263,7 @@ base&nbsp;pairs.</p>
 inversion of coordinates, I am adding an offset value which will correspond to
 the right pixel on the original image. That way we can annotate different
 profiles with considerably high zoom&nbsp;levels.</p>
-<p>For example, while we are sending out the request to save an annotation <br />
+<p>For example, while we are sending out the request to save an annotation <br>
 The function saveAnnotation would get modified as -
 <pre>
     var saveAnnotation = function(){
@@ -306,7 +306,7 @@ def hello(request):
     out["width"] = w
     out["others"] = [z for z in CHROM_ZOOMS if z != w]
     out["chr"] =&nbsp;md["chr"]</p>
-<div class="highlight"><pre># in case of standard width we want to send the correct suffixes
+<div class="highlight"><pre><span></span># in case of standard width we want to send the correct suffixes
 if w == &quot;standard&quot;:
     out[&quot;index&quot;] = 0
     out[&quot;index_next&quot;] = &quot;&quot;

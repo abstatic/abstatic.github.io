@@ -29,9 +29,12 @@
 
 
     <meta name="tags" contents="Linux" />
-    <meta name="tags" contents="proc" />
-    <meta name="tags" contents="filesystem" />
-    <meta name="tags" contents="pseudo filesystem" />
+    <meta name="tags" contents="configuration" />
+    <meta name="tags" contents="dragonwar" />
+    <meta name="tags" contents="i3" />
+    <meta name="tags" contents="i3window manager" />
+    <meta name="tags" contents="i3wm" />
+    <meta name="tags" contents="developer configuration" />
 
   </head>
 
@@ -103,59 +106,38 @@ styles, `#sidebar-checkbox` for behavior. -->
 <div class="posts">
 <div class="post">
     <h1 class="post-title">
-      Linux Proc Pseudo&nbsp;Filesystem
+      A year with&nbsp;i3wm
     </h1>
-    <span class="post-date">Fri 24 June 2016</span>
+    <span class="post-date">Tue 20 June 2017</span>
 
-    <h2>The proc&nbsp;directory</h2>
-<p>Proc stands for process in linux. As we know, that &#8220;Everything is a file&#8221; in
-linux. Keeping true to this analogy, all the processes are organized and
-processed inside the proc&nbsp;directory.</p>
-<p><code>/proc/</code> is the process information and pseudo filesystem. All the running
-processes have their directories inside the proc folder. The general syntax of
-directories is <code>/proc/[pid]</code> , You can easily find the <code>pid</code> of a running
-process by a simple <code>ps -A | grep &lt;process_name&gt;</code></p>
-<h2>File&nbsp;descriptors</h2>
-<p>Each running process can have multiple file descriptors. All of the active
-file descriptors can be found at <code>/proc/[pid]/fd</code> folder. </p>
-<p>This subdirectory contains one entry for each file which the process has open,
-named by its file descriptor, and which is a sym link to the actual&nbsp;file.</p>
-<p>If you do a <code>ls -l</code> in the directory you will receive something similar&nbsp;- </p>
-<p><img alt="Screenshot" src="http://i.imgur.com/pyYMx7D.png"></p>
-<p>In linux, all the file descriptors are numbered.  0, 1, 2 are the reserved
-file descriptors for <span class="caps">STDIN</span>, <span class="caps">STDOUT</span>, <span class="caps">STDERR</span>&nbsp;recpectively.</p>
-<p>In the above screenshot, we can observe that file descriptor 14 points to the
-current music file that is being played. \&lt;the proces is the vlc media player></p>
-<p>There is one more interesting directory related to file descriptors of the
-process it is&nbsp;-</p>
-<p><strong><code>/proc/[pid]/fdinfo/</code></strong> - This subdirectory contains one entry for each of
-the file descriptors of the process. The files contains the position of the
-file descriptor and the flags with which the file has been&nbsp;opened</p>
-<h2>Other interesting findings&nbsp;-</h2>
-<p><strong><code>/proc/[pid]/exe</code></strong> - This symlinks to the executable file of the&nbsp;process.</p>
-<p><strong><code>/proc/[pid]/environ</code></strong> - This file contains all the environment variables
-that are available to the process. Best way to see it is using the strings
-program. <code>strings environ</code></p>
-<p><strong><code>/proc/[pid]/cwd</code></strong> - It points to the current working directory of the
-process. Symlink to the current working&nbsp;directory.</p>
-<p><strong><code>/proc/[pid]/io</code></strong> - Contains all the I/O stats for the process. Like how
-many bytes the process has read, written, number of syscalls&nbsp;etc.</p>
-<p><strong><code>/proc/[pid]/oom_score</code></strong> - Linux kernel has a thing called &#8220;Out Of Memory&#8221;
-killer. <span class="caps">OOM</span> killer kills a process in case the system is running out of
-memory. Higher the <span class="caps">OOM</span> score of a process, higher is the likelihood that it
-will be killed by the&nbsp;kernel. </p>
-<p>The <span class="caps">OOM</span> score of a process is calculated on basis of what percentage of memory
-the process is using. The <span class="caps">OOM</span> score can vary between -16 to +15. Score of -17
-means that the process cannot be killed by <span class="caps">OOM</span>&nbsp;killer.</p>
-<p>That is all, although far from complete. <code>/proc/</code> contains tons of information
-about the system, which I did not found as&nbsp;relevant.</p>
+    <p>This post picks up from my <a href="https://abstatic.github.io/how-i-use-i3wm.html">earlier post </a> about i3wm which was almost a year&nbsp;back.</p>
+<p>I have been using i3wm for over a year now, and I can say that this is &#8220;the&#8221; desktop environment for me. In this post I will try to high light all the reasons&nbsp;why.</p>
+<h2>Its fast. Insanely&nbsp;fast.</h2>
+<p>i3wm doesn&#8217;t use any sort of 3d effects, so all of the commands execute instantly. You can reload the entire window manager in less than a&nbsp;second.</p>
+<h2>Vim-like&nbsp;keybindings</h2>
+<p>You can configure anything you want about i3wm, the keybindings match vim. Infact, with prolonged use the vim based key bindings have been imprinted in my muscle memory. Infact you can use the vim based keybindings in chrome as well, <a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en">vimium</a> </p>
+<p>The window focus follows your mouse cursor which after getting used to feels heavenly, no more clicking on windows to make them active, just hover over your mouse and start typing or&nbsp;scrolling!</p>
+<h2>Not a resource hog or a&nbsp;bloatware</h2>
+<p>Since the <span class="caps">UI</span> is so basic, the memory usage is almost none. Moreover i3 comes with no extra software, its a window manager and not a desktop environment. So there is no bloatware at all, you decide what you want to install on your software. i3 is strictly a wm so things like sound manager, network manager, terminal emulator, office, photo viewers,&nbsp;etc.</p>
+<h2>Say good bye to using mouse.&nbsp;Forever</h2>
+<p>With i3 you don&#8217;t need to deal with resizing windows, moving windows around or anything like that, instead, the idea is to use keyboard for creating any kind of desktop layout you want. Your hands won&#8217;t even move away from the homerow, and you will be able to do every thing that you can&nbsp;imagine.</p>
+<h2>Awesome multiple display&nbsp;support.</h2>
+<p>I have been using multiple display for a long time now, and after having experimented with Gnome, <span class="caps">KDE</span>, Unity, and Mate, I found i3 to be the&nbsp;best. </p>
+<p>All the other desktop environments treated the other monitors as an extension of current workspace, as if it was extra&nbsp;space.</p>
+<p>Take gnome for example, the issue was the new monitor was just an extension of current workspace. So, if you click on activities on anyone of the monitors, both screens go into the overview&nbsp;mode.</p>
+<p>Whereas i3 takes a completely different approach to multiple monitors. Each monitor is not an extension of your current workspace, instead it acts a container for completely different workspaces in it. Whatever you do in one workspace won&#8217;t affect anyother&nbsp;workspace.</p>
+<p>Switching between workspaces is instantneous. <code>$mod + workspace_number</code> and that&#8217;s it. So most of the time you can have different workspaces dedicated to things like code, documentation, browsing, multimedia,&nbsp;etc.</p>
+<p>Moreover, the integration between multiple monitors and the workspaces is seamless. With one key combination you can move your windows to other display, resize them, re arrange them, change layouts, you name&nbsp;it. </p>
+<p>For managing various screen schemas I rely on XRandr, which is part of XOrg. If you are using wayland <a href="https://fedoraproject.org/wiki/Wayland_features#XRandR_control_of_Wayland_outputs">this</a> might&nbsp;help</p>
+<p>Although the learning curve is steep for this window manager, its definitely worth the&nbsp;effort. </p>
+<p>In the next post I will be talking about how to setup i3 as your only desktop manager and what different software you might&nbsp;require.</p>
   </div>
 </div>
     <div class="comments">
       <h1>Comments</h1>
       <div id="disqus_thread"></div>
       <script type="text/javascript">
-        var disqus_identifier = "linux-proc-fs.html";
+        var disqus_identifier = "year-with-i3-wm.html";
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://codingmantis.disqus.com/embed.js';
