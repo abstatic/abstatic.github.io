@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/gsoc.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Gsoc" />
+    <meta name="tags" contents="computational genomics" />
+    <meta name="tags" contents="google summer of code" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Project Report: SegAnnDB Feature&nbsp;Development
+    </h1>
+    <span class="post-date">Tue 23 August 2016</span>
+
+    <h2>Introduction</h2>
+<p>I have been working on <strong>SegAnnDB Genomic Segmentation WebApp</strong> as part of my
+GSoC project. SegAnnDB is python based webapp which is used for annotating
+chromosomes and <span class="caps">DNA</span> for identifying copy&nbsp;number. </p>
+<p>My GSoC project was focussed on improving the current application and adding
+new features to it. This blog post summarizes my work on the&nbsp;project.</p>
+<h2>Proposal</h2>
+<p>The proposal application can be found <a href="https://drive.google.com/file/d/0BxbS0oJuMJTHalZoVHl0UHBJNVk/view?usp=sharing">here</a></p>
+<h2>Code&nbsp;Commits</h2>
+<p>For collaborating, I had forked the original code of SegAnnDB from
+<a href="https://github.com/tdhock/SegAnnDB">here</a></p>
+<p>During the course of my project I worked in these&nbsp;repositories-</p>
+<ol>
+<li>
+<p>SegAnnDB- <a href="https://github.com/abstatic/SegAnnDB">This</a> was the main repo. All the feature development
+   was done on this&nbsp;repository.</p>
+</li>
+<li>
+<p>SegAnnDB-login - <a href="https://github.com/abstatic/SegAnnDB-login">This</a> repository holds the code for login module which
+   lives on [PyPi] as&nbsp;well</p>
+</li>
+<li>
+<p>SegAnnDB-docker - <a href="https://github.com/abstatic/seganndb-docker">This</a> repository contains the dockerfiles and scripts
+   related to docker images of&nbsp;SegAnnDB</p>
+</li>
+<li>
+<p>SegAnnDB-tests - <a href="https://github.com/abstatic/SegAnnDB-tests">This</a> repository contains the test files for testing&nbsp;SegAnnDB</p>
+</li>
+<li>
+<p>Docker repository- <a href="https://hub.docker.com/u/abstatic/">This</a> contains both docker images&nbsp;developed.</p>
+</li>
+</ol>
+<p>All of my commits to main repository - <a href="https://github.com/abstatic/SegAnnDB/commits/master">https://github.com/abstatic/SegAnnDB/commits/master</a></p>
+<p>My fork of the code also contains two additional branches,
+<code>chrom-explorer-view</code> and <code>google-login</code> they are interim branches that I used
+to develop features. All of their code has been merged to the master&nbsp;branch.</p>
+<h2>Work&nbsp;Done</h2>
+<p>I will cover all the work done during my GSoC with help of my blog posts, as
+I have written about every work&nbsp;item.</p>
+<h3><a href="http://abstatic.github.io/getting-selected-gsoc.html">1. Introduction to&nbsp;SegAnnDB</a></h3>
+<p>This was during community bonding period. This post covers introduction to
+SegAnnDB and the plans for the&nbsp;summer.</p>
+<h3><a href="http://abstatic.github.io/selenium-for-testing.html">2. Selenium for testing&nbsp;SegAnnDB</a></h3>
+<p>During this task I developed a selenium based testing suite for SegAnnDB.
+Towards the end of project I again revisited the test suite and made changes
+for it to work with OAuth2 based login&nbsp;system.</p>
+<h3><a href="http://abstatic.github.io/new-chromosome-viewer.html">3. New Chromosome Viewer for&nbsp;SegAnnDB</a></h3>
+<p>This was one of the major tasks of the project and it took considerable amount
+of&nbsp;time. </p>
+<p>This detailed post covers about how I conceptualized and designed the new
+chromosome viewer for SegAnnDB. It contains the design decisions and how they
+were going to be&nbsp;implemented.</p>
+<p>It also covers all the changes done to the file keeping scheme of&nbsp;SegAnnDB.</p>
+<p>I added code to split the images to smaller images so that they can be used in
+the new chromosome&nbsp;viewer.</p>
+<h3><a href="http://abstatic.github.io/chromosome-viewer.html">4. Further Improving the chromosome&nbsp;viewer</a></h3>
+<p>This post is about adding further improvements to the chromosome viewer of
+SegAnnDB. It contains the steps taken to make it more&nbsp;interactive.</p>
+<p>I also worked on adding the feature to switch back to the old chromosome
+viewer of SegAnnDB from the new one and the other way round as well. I made
+sure that both parts of the application were working as expected and there
+were no bugs in&nbsp;them.</p>
+<p>While working on the above tasks, I also prettified the python code (to <span class="caps">PEP8</span>)
+and <span class="caps">JS</span>&nbsp;code. </p>
+<h3><a href="http://abstatic.github.io/preparing-for-gsoc.html">5. Session vs Token Based&nbsp;Authourization</a></h3>
+<p>During the course of GSoC we found out that our current login system based on
+Mozilla Persona will be shutdown by this November. This forced us to
+immediately find a new alternative for authentication in the applcation.
+Having worked with OAuth2 before, I chose to go that&nbsp;way.</p>
+<p>This post covers basics of authentication system. I also learn a lot about how
+authentication works in modern day web&nbsp;applications.</p>
+<p>During this work item I started experimenting with various plugins for OAuth2
+login in a pyramid web application, some of them were - Authomatic, Velruse,
+pyramid google&nbsp;login</p>
+<h3><a href="http://abstatic.github.io/segann-login-module.html">6. SegAnnDB Login&nbsp;System</a></h3>
+<p>This post covers all the details related to the new login system. As I could
+not find any satisfying plugin for the OAuth2 login, I forked the repository
+for <code>pyramid_google_login</code> , made it compatible with SegAnnDB and uploaded it
+to&nbsp;PyPi.</p>
+<h3><a href="http://abstatic.github.io/docker-segann.html">7. Docker for&nbsp;SegAnnDB</a></h3>
+<p>This was the last part of the project. We always thought that installing
+SegAnnDB was kind of tricky for all the new users. We wanted to simplify that
+process. In this task I created docker images for SegAnnDB. I created two 
+docker images for SegAnnDB. One image uses code from Toby&#8217;s repository and the 
+other one contains code from my&nbsp;repository.</p>
+<p>I also created wrapper scripts for docker images as well as dockerfiles. They
+can be found at -&nbsp;https://github.com/abstatic/seganndb-docker</p>
+<p>The docker repository of the images is at -&nbsp;https://hub.docker.com/u/abstatic/</p>
+<h2>Video</h2>
+<p>This video covers brief glimpses of the work done during my GSoC
+<a href="https://www.youtube.com/watch?v=cXRxkDfHjtA">https://www.youtube.com/watch?v=cXRxkDfHjtA</a></p>
+<h2>Work left to be&nbsp;done</h2>
+<p>Although a lot of new features were developed during this GSoC, there are
+still many missing features. Some of them are&nbsp;-</p>
+<ol>
+<li>Travis <span class="caps">CI</span> - We would like to have travis <span class="caps">CI</span> builds for SegAnnDB and code
+   coverage tools as&nbsp;well.</li>
+<li>Permission&nbsp;System</li>
+<li>More tests - Although the testing suite is in place, we need more&nbsp;tests.</li>
+<li>Sharing&nbsp;Annotations</li>
+</ol>
+<h2>Conclusion</h2>
+<p>During the course of GSoC project, a lot new features were introduced to
+SegAnnDB. With completion of my project, new users of SegAnnDB will find it
+much easier to install and use. All the new features introduced will lead to
+more development of&nbsp;SegAnnDB.</p>
+<p>Moreover, it will improve collaboration between various researchers using&nbsp;SegAnnDB.</p>
+<p>Although a lot remains to be done, I will remain in touch with my mentor and
+keep on improving this&nbsp;application.</p>
+<h2>Acknowledgements</h2>
+<p>I would like to express my sincere gratitude to my mentor Toby Hocking for the
+continuous support through the summer and for his patience, motivation and
+enthusisasm. I could not have imagined coming this far without his&nbsp;help.</p>
+<p>With end of this program I have also learnt a lot about how open source works,
+and how to work with  large codebases. This was a great opportunity for&nbsp;me. </p>
+<h2>Contact</h2>
+<p>In case of any queries, send an email to&nbsp;xabhishekflyhigh(at)gmail.com</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2016/08/23/gsoc-final/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>

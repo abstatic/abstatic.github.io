@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/configuration.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="configuration" />
+    <meta name="tags" contents="dragonwar" />
+    <meta name="tags" contents="i3" />
+    <meta name="tags" contents="i3window manager" />
+    <meta name="tags" contents="i3wm" />
+    <meta name="tags" contents="developer configuration" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      A year with&nbsp;i3wm
+    </h1>
+    <span class="post-date">Tue 20 June 2017</span>
+
+    <p>This post picks up from my <a href="https://abstatic.github.io/how-i-use-i3wm.html">earlier post </a> about i3wm which was almost a year&nbsp;back.</p>
+<p>I have been using i3wm for over a year now, and I can say that this is &#8220;the&#8221; desktop environment for me. In this post I will try to high light all the reasons&nbsp;why.</p>
+<h2>Its fast. Insanely&nbsp;fast.</h2>
+<p>i3wm doesn&#8217;t use any sort of 3d effects, so all of the commands execute instantly. You can reload the entire window manager in less than a&nbsp;second.</p>
+<h2>Vim-like&nbsp;keybindings</h2>
+<p>You can configure anything you want about i3wm, the keybindings match vim. Infact, with prolonged use the vim based key bindings have been imprinted in my muscle memory. Infact you can use the vim based keybindings in chrome as well, <a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en">vimium</a> </p>
+<p>The window focus follows your mouse cursor which after getting used to feels heavenly, no more clicking on windows to make them active, just hover over your mouse and start typing or&nbsp;scrolling!</p>
+<h2>Not a resource hog or a&nbsp;bloatware</h2>
+<p>Since the <span class="caps">UI</span> is so basic, the memory usage is almost none. Moreover i3 comes with no extra software, its a window manager and not a desktop environment. So there is no bloatware at all, you decide what you want to install on your software. i3 is strictly a wm so things like sound manager, network manager, terminal emulator, office, photo viewers,&nbsp;etc.</p>
+<h2>Say good bye to using mouse.&nbsp;Forever</h2>
+<p>With i3 you don&#8217;t need to deal with resizing windows, moving windows around or anything like that, instead, the idea is to use keyboard for creating any kind of desktop layout you want. Your hands won&#8217;t even move away from the homerow, and you will be able to do every thing that you can&nbsp;imagine.</p>
+<h2>Awesome multiple display&nbsp;support.</h2>
+<p>I have been using multiple display for a long time now, and after having experimented with Gnome, <span class="caps">KDE</span>, Unity, and Mate, I found i3 to be the&nbsp;best. </p>
+<p>All the other desktop environments treated the other monitors as an extension of current workspace, as if it was extra&nbsp;space.</p>
+<p>Take gnome for example, the issue was the new monitor was just an extension of current workspace. So, if you click on activities on anyone of the monitors, both screens go into the overview&nbsp;mode.</p>
+<p>Whereas i3 takes a completely different approach to multiple monitors. Each monitor is not an extension of your current workspace, instead it acts a container for completely different workspaces in it. Whatever you do in one workspace won&#8217;t affect anyother&nbsp;workspace.</p>
+<p>Switching between workspaces is instantneous. <code>$mod + workspace_number</code> and that&#8217;s it. So most of the time you can have different workspaces dedicated to things like code, documentation, browsing, multimedia,&nbsp;etc.</p>
+<p>Moreover, the integration between multiple monitors and the workspaces is seamless. With one key combination you can move your windows to other display, resize them, re arrange them, change layouts, you name&nbsp;it. </p>
+<p>For managing various screen schemas I rely on XRandr, which is part of XOrg. If you are using wayland <a href="https://fedoraproject.org/wiki/Wayland_features#XRandR_control_of_Wayland_outputs">this</a> might&nbsp;help</p>
+<p>Although the learning curve is steep for this window manager, its definitely worth the&nbsp;effort. </p>
+<p>In the next post I will be talking about how to setup i3 as your only desktop manager and what different software you might&nbsp;require.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2017/06/20/year-with-i3-wm/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>

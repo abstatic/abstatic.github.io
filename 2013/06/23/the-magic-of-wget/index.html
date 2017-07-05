@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/linux.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="LAMP" />
+    <meta name="tags" contents="wget" />
+    <meta name="tags" contents="linux" />
+    <meta name="tags" contents="downloading" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      The Magic Of&nbsp;Wget.
+    </h1>
+    <span class="post-date">Sun 23 June 2013</span>
+
+    <p>What if you could download all the &#8220;non-downloadable&#8221; content on internet&nbsp;?,</p>
+<p>Or What if you could save a  full website on your <span class="caps">PC</span> ? , Or What if you
+could extract all those images from a webpage/website  ? Cool , isn&#8217;t it&nbsp;?</p>
+<p>Comrades, Wget is the key to all of your problems !
+Written in C , this command line download manager can easily satisfy all your
+download needs. You can download literally anything using Wget. And the
+silver lining is , its cross-platform , meaning it can work seamlessly
+with any <span class="caps">OS</span>.</p>
+<ol>
+<li>
+<p><strong>Downloading a single file:</strong><br>
+<code>wget &lt;URL&gt;</code> - Downloading file by above method stores your <span class="caps">URL</span> , which may be a webpage or any
+type of file in your current working&nbsp;directory.  </p>
+</li>
+<li>
+<p><strong>Downloading the file and store with a different name <span class="caps">OR</span> location:</strong> We use -O to
+do that. By default wget will pick the filename from the last word after
+last forward&nbsp;slash.  </p>
+<ul>
+<li><code>wget -O &lt;Desired file name&gt; &lt;URL&gt;</code><br>
+Above will download the <span class="caps">URL</span> with your desired filename to . (Current working&nbsp;directory.)  </li>
+<li><code>wget -P &lt;Desired file location&gt; &lt;URL&gt;</code><br>
+Above will download the <span class="caps">URL</span> to your desired location.If the desired location
+does not exist , then specified directory will be&nbsp;created.</li>
+<li>If you want to change the file name and store it in a user
+defined location then you&#8217;ll have to be a little more specific, you
+cannot use -P and -O in a single command , you&#8217;ll need to use something
+like this- <ul>
+<li><code>wget -O /home/mautbaba/Desktop/ &lt;filename.filetype&gt; &lt;URL&gt;</code> This will download your filename.filetype to your&nbsp;desktop</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Specifying Download Speed:</strong> While executing wget , by default wget will hijack
+all of your bandwidth which can be undesirable in certain situations and
+networks. We use &#8212;limit-rate to control download&nbsp;speed.  </p>
+<ul>
+<li><code>wget --limit-rate=200k &lt;URL&gt;</code></li>
+</ul>
+</li>
+<li><strong>Continue Incomplete Download:</strong> What if your download gets interrupted ? ,
+Well there&#8217;s fix for that too, you can always continue your incomplete
+downloads by adding -c parameter.<ul>
+<li><code>wget -c &lt;URL&gt;</code></li>
+</ul>
+</li>
+<li><strong>Background Downloading:</strong> For downloading huge files , you can also put wget to
+download in background.<ul>
+<li><code>wget -b &lt;URL&gt;</code>
+    -Above will initiate the download and give back <span class="caps">BASH</span> to you. You can also see
+    progress of your download using : <code>tail -f wget-log</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Download A Full Site:</strong> Wget can also download a full website for local viewing.
+It can make the site completely offline and even convert all the&nbsp;links.</p>
+<ul>
+<li><code>wget --mirror -p --convert-links -P ./&lt;DIRECTORY&gt; &lt;URL&gt;</code><div class="highlight"><pre><span></span> --mirror       : Turns on the options suitable for mirroring.  
+  -p            : Download all files that are necessary to properly display a given HTML page.  
+--convert-links : After download convert links in document for local viewing.  
+ -P ./&lt;LOCATION&gt;: Save all files and directories to specified directory.
+</pre></div>
+
+
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Download multiple files:</strong> You can download multiple files (Maybe mp3s, images) at one go using wget, all you need is the <span class="caps">URL</span>.
+First store all download URLs into a text file , lets say its download.txt<br>
+Then, give download.txt as an argument using wget&nbsp;-i  </p>
+<ul>
+<li><code>wget -i download.txt</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Download only certain file types from a webpage/website:</strong> Wget can also be used to download all videos, images, PDFs from a&nbsp;website.  </p>
+<ul>
+<li><code>wget -r -A. &lt;filetype&gt; URL</code>
+You may also use wget to reject certain filetypes while downloading, the
+syntax would be&nbsp;:  </li>
+<li><code>wget --reject=&lt;filetype&gt; URL</code></li>
+</ul>
+</li>
+<li>
+<p><strong><span class="caps">FTP</span> Download with wget:</strong> You can also download files from <span class="caps">FTP</span> using&nbsp;wget.</p>
+<ul>
+<li>Download files as &#8220;Anonymous User&#8221; :<ul>
+<li><code>wget &lt;FTP-URL&gt;</code>  </li>
+</ul>
+</li>
+<li>Download files with user-name and password authentication :-  <ul>
+<li><code>wget --ftp-user=USERNAME --ftp-password=PASSWORD &lt;FTP-URL&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Increase Total Retry Attempts:</strong> By default wget retries 20 times before giving up on a download , you can change it&nbsp;by </p>
+<ul>
+<li><code>wget --tries=75 &lt;URL&gt;</code></li>
+</ul>
+</li>
+</ol>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2013/06/23/the-magic-of-wget/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>

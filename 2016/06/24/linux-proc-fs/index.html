@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/linux.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="proc" />
+    <meta name="tags" contents="filesystem" />
+    <meta name="tags" contents="pseudo filesystem" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Linux Proc Pseudo&nbsp;Filesystem
+    </h1>
+    <span class="post-date">Fri 24 June 2016</span>
+
+    <h2>The proc&nbsp;directory</h2>
+<p>Proc stands for process in linux. As we know, that &#8220;Everything is a file&#8221; in
+linux. Keeping true to this analogy, all the processes are organized and
+processed inside the proc&nbsp;directory.</p>
+<p><code>/proc/</code> is the process information and pseudo filesystem. All the running
+processes have their directories inside the proc folder. The general syntax of
+directories is <code>/proc/[pid]</code> , You can easily find the <code>pid</code> of a running
+process by a simple <code>ps -A | grep &lt;process_name&gt;</code></p>
+<h2>File&nbsp;descriptors</h2>
+<p>Each running process can have multiple file descriptors. All of the active
+file descriptors can be found at <code>/proc/[pid]/fd</code> folder. </p>
+<p>This subdirectory contains one entry for each file which the process has open,
+named by its file descriptor, and which is a sym link to the actual&nbsp;file.</p>
+<p>If you do a <code>ls -l</code> in the directory you will receive something similar&nbsp;- </p>
+<p><img alt="Screenshot" src="http://i.imgur.com/pyYMx7D.png"></p>
+<p>In linux, all the file descriptors are numbered.  0, 1, 2 are the reserved
+file descriptors for <span class="caps">STDIN</span>, <span class="caps">STDOUT</span>, <span class="caps">STDERR</span>&nbsp;recpectively.</p>
+<p>In the above screenshot, we can observe that file descriptor 14 points to the
+current music file that is being played. \&lt;the proces is the vlc media player></p>
+<p>There is one more interesting directory related to file descriptors of the
+process it is&nbsp;-</p>
+<p><strong><code>/proc/[pid]/fdinfo/</code></strong> - This subdirectory contains one entry for each of
+the file descriptors of the process. The files contains the position of the
+file descriptor and the flags with which the file has been&nbsp;opened</p>
+<h2>Other interesting findings&nbsp;-</h2>
+<p><strong><code>/proc/[pid]/exe</code></strong> - This symlinks to the executable file of the&nbsp;process.</p>
+<p><strong><code>/proc/[pid]/environ</code></strong> - This file contains all the environment variables
+that are available to the process. Best way to see it is using the strings
+program. <code>strings environ</code></p>
+<p><strong><code>/proc/[pid]/cwd</code></strong> - It points to the current working directory of the
+process. Symlink to the current working&nbsp;directory.</p>
+<p><strong><code>/proc/[pid]/io</code></strong> - Contains all the I/O stats for the process. Like how
+many bytes the process has read, written, number of syscalls&nbsp;etc.</p>
+<p><strong><code>/proc/[pid]/oom_score</code></strong> - Linux kernel has a thing called &#8220;Out Of Memory&#8221;
+killer. <span class="caps">OOM</span> killer kills a process in case the system is running out of
+memory. Higher the <span class="caps">OOM</span> score of a process, higher is the likelihood that it
+will be killed by the&nbsp;kernel. </p>
+<p>The <span class="caps">OOM</span> score of a process is calculated on basis of what percentage of memory
+the process is using. The <span class="caps">OOM</span> score can vary between -16 to +15. Score of -17
+means that the process cannot be killed by <span class="caps">OOM</span>&nbsp;killer.</p>
+<p>That is all, although far from complete. <code>/proc/</code> contains tons of information
+about the system, which I did not found as&nbsp;relevant.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2016/06/24/linux-proc-fs/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>

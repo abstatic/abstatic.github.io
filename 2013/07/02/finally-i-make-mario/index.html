@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/programming.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="MyLife" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Finally , I make mario&nbsp;!!
+    </h1>
+    <span class="post-date">Tue 02 July 2013</span>
+
+    <h2>The Source Code&nbsp;Explained</h2>
+<p><a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"><img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1">.png)</a></p>
+<p>After slogging for nearly a week , just right now I finally solved mario
+, from pset1. The problem consisted of printing out half-pyramids of a
+specific height, provided by the user. The output of the problem had to
+look something like this:-
+<pre>
+Height: 8<br>
+        ##
+       ###
+      ####
+     #####
+    ######
+   #######
+  ########
+ #########
+</pre>
+Now take a look at source code , here:-<br>
+<em>Warning:- This is a spoiler for other people still trying on&nbsp;mario.</em></p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;cs50.h&gt;  </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;  </span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>  
+<span class="p">{</span>  
+    <span class="c1">//Getting User Input-  </span>
+
+    <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>  
+
+    <span class="k">do</span>  
+    <span class="p">{</span>  
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Height: &quot;</span><span class="p">);</span>  
+        <span class="n">height</span> <span class="o">=</span> <span class="n">GetInt</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span> <span class="p">(</span><span class="n">height</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">23</span><span class="p">)</span> <span class="p">);</span>  
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">height</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>  
+    <span class="p">{</span>  
+
+        <span class="c1">//print spaces  </span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="n">height</span><span class="o">-</span><span class="n">i</span> <span class="p">;</span><span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span><span class="o">--</span><span class="p">)</span>  
+        <span class="p">{</span>  
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>  
+        <span class="p">}</span>
+
+        <span class="c1">//print hashes  </span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>  
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">);</span>  
+        <span class="p">}</span>  
+
+        <span class="c1">//print new_line  </span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>  
+    <span class="p">}</span>  
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;For loop has finished printing !! </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>  
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>First Block , Getting User Input&nbsp;:-</strong>  </p>
+<p><div
+style="background-color: black; border-radius: 0px; color: lime; display: inline-block; font-family: Courier; font-size: 15px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; width: 386px;"></p>
+<p>int height;<br>
+<br>
+   do<br>
+   {<br>
+     printf(&#8220;Height: &#8220;);<br>
+     height = GetInt();<br>
+   }<br>
+   while( (height \&lt;= 1) || (height > 23)<br>&nbsp;);</p>
+</div>
+
+<p>The first block of code consists of the <span class="caps">DO</span>-<span class="caps">WHILE</span> loop , which prompts
+for user input. The loop will not exit until the user enters a number
+between 2 and&nbsp;23.</p>
+<p><strong><span>The main block , generating half-pyramid&nbsp;:-</span></strong>  </p>
+<p><div
+style="background-color: black; border-radius: 0px; color: lime; display: inline-block; font-family: Courier; font-size: 15px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; width: 376px;"></p>
+<p>for(int i = 1; i \&lt;= height; i++)<br>
+   {<br>
+<br>
+        //print spaces<br>
+        for(int s = height-i ;s > 0; s&#8212;)<br>
+        {<br>
+            printf(&#8221; &#8220;);<br>&nbsp;}  </p>
+<p>//print hashes<br>
+        for(int j = 0;j \&lt;= i; j++)<br>
+        {<br>
+            printf(&#8220;#&#8221;);<br>
+<br>
+        }<br>
+<br>
+        //print new_line<br>
+        printf(&#8220;\n&#8221;);<br>
+<br>
+</p>
+<p>}  </p>
+</div>
+
+<p>The algorithm I used to generate the half pyramid was as follows&nbsp;:-   </p>
+<ol>
+<li>A for loop for automating the generation of each&nbsp;line.</li>
+<li>A for loop for generating spaces in each&nbsp;line.</li>
+<li>A for loop for generating hashes in each&nbsp;line.</li>
+<li>Printing new line after the spaces and sharps have been&nbsp;printed.</li>
+</ol>
+<p>Now the first for loops repeats itself for the height specified , which
+means it will generate the pattern for each line. I have also used the
+iterator &#8220;i&#8221; as a reference to line number, that&#8217;s why &#8216;i&#8217; has been
+initialized  as&nbsp;1.  </p>
+<p>The second for loop is used to print spaces. The logic used here is&nbsp;-</p>
+<p><span style="background-color: black; padding: 5px; color: white"><code>Number
+ of spaces in each line = height specified - number of line
+ //Decrementing by one in each line</code></span></p>
+<p>Now basically, the loop will repeat itself on the same line again and
+again , thereby printing spaces as it&nbsp;completes.  </p>
+<p>The third for loop is used to print sharps.The logic used here is&nbsp;-</p>
+<p><span style="background-color: black; padding: 5px; color: white"><code>Number
+of hashes in each line = two at first line , increment by one with each line</code></span></p>
+<p>After printing out hashes we need to have a new line , before our main
+for loop repeats again and to do that we use &#8220;\n&nbsp;&#8221;  </p>
+<p>And folks that&#8217;s mario for you. Make sure your main&nbsp;returns.  </p>
+<p><strong><em><span class="caps">PS</span> :-</em>* If you are following the hacker edition pset then after the
+for loop printing first set of sharps you will need to add a tab space
+by printing out \t </strong> character. And then repeat the for loop for
+printing the hashes exactly as it&nbsp;was.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2013/07/02/finally-i-make-mario/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
