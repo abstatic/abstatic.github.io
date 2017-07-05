@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis - GSoC</title><link href="http://abstatic.github.io/" rel="alternate"></link><link href="http://abstatic.github.io/feeds/gsoc.atom.xml" rel="self"></link><id>http://abstatic.github.io/</id><updated>2016-08-23T00:00:00+05:30</updated><entry><title>Project Report: SegAnnDB Feature Development</title><link href="http://abstatic.github.io/gsoc-final.html" rel="alternate"></link><published>2016-08-23T00:00:00+05:30</published><updated>2016-08-23T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-08-23:/gsoc-final.html</id><summary type="html">&lt;p&gt;Concluding post about my work done during&amp;nbsp;GSoC&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I have been working on &lt;strong&gt;SegAnnDB Genomic Segmentation WebApp&lt;/strong&gt; as part of my
+GSoC project. SegAnnDB is python based webapp which is used for annotating
+chromosomes and &lt;span class="caps"&gt;DNA&lt;/span&gt; for identifying copy&amp;nbsp;number. &lt;/p&gt;
+&lt;p&gt;My GSoC project was focussed on improving the current application and adding
+new features to it. This blog post summarizes my work on the&amp;nbsp;project.&lt;/p&gt;
+&lt;h2&gt;Proposal&lt;/h2&gt;
+&lt;p&gt;The proposal application can be found &lt;a href="https://drive.google.com/file/d/0BxbS0oJuMJTHalZoVHl0UHBJNVk/view?usp=sharing"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Code&amp;nbsp;Commits&lt;/h2&gt;
+&lt;p&gt;For collaborating, I had forked the original code of SegAnnDB from
+&lt;a href="https://github.com/tdhock/SegAnnDB"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;During the course of my project I worked in these&amp;nbsp;repositories-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SegAnnDB- &lt;a href="https://github.com/abstatic/SegAnnDB"&gt;This&lt;/a&gt; was the main repo. All the feature development
+   was done on this&amp;nbsp;repository.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SegAnnDB-login - &lt;a href="https://github.com/abstatic/SegAnnDB-login"&gt;This&lt;/a&gt; repository holds the code for login module which
+   lives on [PyPi] as&amp;nbsp;well&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SegAnnDB-docker - &lt;a href="https://github.com/abstatic/seganndb-docker"&gt;This&lt;/a&gt; repository contains the dockerfiles and scripts
+   related to docker images of&amp;nbsp;SegAnnDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SegAnnDB-tests - &lt;a href="https://github.com/abstatic/SegAnnDB-tests"&gt;This&lt;/a&gt; repository contains the test files for testing&amp;nbsp;SegAnnDB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Docker repository- &lt;a href="https://hub.docker.com/u/abstatic/"&gt;This&lt;/a&gt; contains both docker images&amp;nbsp;developed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of my commits to main repository - &lt;a href="https://github.com/abstatic/SegAnnDB/commits/master"&gt;https://github.com/abstatic/SegAnnDB/commits/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My fork of the code also contains two additional branches,
+&lt;code&gt;chrom-explorer-view&lt;/code&gt; and &lt;code&gt;google-login&lt;/code&gt; they are interim branches that I used
+to develop features. All of their code has been merged to the master&amp;nbsp;branch.&lt;/p&gt;
+&lt;h2&gt;Work&amp;nbsp;Done&lt;/h2&gt;
+&lt;p&gt;I will cover all the work done during my GSoC with help of my blog posts, as
+I have written about every work&amp;nbsp;item.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/getting-selected-gsoc.html"&gt;1. Introduction to&amp;nbsp;SegAnnDB&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This was during community bonding period. This post covers introduction to
+SegAnnDB and the plans for the&amp;nbsp;summer.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/selenium-for-testing.html"&gt;2. Selenium for testing&amp;nbsp;SegAnnDB&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;During this task I developed a selenium based testing suite for SegAnnDB.
+Towards the end of project I again revisited the test suite and made changes
+for it to work with OAuth2 based login&amp;nbsp;system.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/new-chromosome-viewer.html"&gt;3. New Chromosome Viewer for&amp;nbsp;SegAnnDB&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This was one of the major tasks of the project and it took considerable amount
+of&amp;nbsp;time. &lt;/p&gt;
+&lt;p&gt;This detailed post covers about how I conceptualized and designed the new
+chromosome viewer for SegAnnDB. It contains the design decisions and how they
+were going to be&amp;nbsp;implemented.&lt;/p&gt;
+&lt;p&gt;It also covers all the changes done to the file keeping scheme of&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;p&gt;I added code to split the images to smaller images so that they can be used in
+the new chromosome&amp;nbsp;viewer.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/chromosome-viewer.html"&gt;4. Further Improving the chromosome&amp;nbsp;viewer&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This post is about adding further improvements to the chromosome viewer of
+SegAnnDB. It contains the steps taken to make it more&amp;nbsp;interactive.&lt;/p&gt;
+&lt;p&gt;I also worked on adding the feature to switch back to the old chromosome
+viewer of SegAnnDB from the new one and the other way round as well. I made
+sure that both parts of the application were working as expected and there
+were no bugs in&amp;nbsp;them.&lt;/p&gt;
+&lt;p&gt;While working on the above tasks, I also prettified the python code (to &lt;span class="caps"&gt;PEP8&lt;/span&gt;)
+and &lt;span class="caps"&gt;JS&lt;/span&gt;&amp;nbsp;code. &lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/preparing-for-gsoc.html"&gt;5. Session vs Token Based&amp;nbsp;Authourization&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;During the course of GSoC we found out that our current login system based on
+Mozilla Persona will be shutdown by this November. This forced us to
+immediately find a new alternative for authentication in the applcation.
+Having worked with OAuth2 before, I chose to go that&amp;nbsp;way.&lt;/p&gt;
+&lt;p&gt;This post covers basics of authentication system. I also learn a lot about how
+authentication works in modern day web&amp;nbsp;applications.&lt;/p&gt;
+&lt;p&gt;During this work item I started experimenting with various plugins for OAuth2
+login in a pyramid web application, some of them were - Authomatic, Velruse,
+pyramid google&amp;nbsp;login&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/segann-login-module.html"&gt;6. SegAnnDB Login&amp;nbsp;System&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This post covers all the details related to the new login system. As I could
+not find any satisfying plugin for the OAuth2 login, I forked the repository
+for &lt;code&gt;pyramid_google_login&lt;/code&gt; , made it compatible with SegAnnDB and uploaded it
+to&amp;nbsp;PyPi.&lt;/p&gt;
+&lt;h3&gt;&lt;a href="http://abstatic.github.io/docker-segann.html"&gt;7. Docker for&amp;nbsp;SegAnnDB&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This was the last part of the project. We always thought that installing
+SegAnnDB was kind of tricky for all the new users. We wanted to simplify that
+process. In this task I created docker images for SegAnnDB. I created two 
+docker images for SegAnnDB. One image uses code from Toby&amp;#8217;s repository and the 
+other one contains code from my&amp;nbsp;repository.&lt;/p&gt;
+&lt;p&gt;I also created wrapper scripts for docker images as well as dockerfiles. They
+can be found at -&amp;nbsp;https://github.com/abstatic/seganndb-docker&lt;/p&gt;
+&lt;p&gt;The docker repository of the images is at -&amp;nbsp;https://hub.docker.com/u/abstatic/&lt;/p&gt;
+&lt;h2&gt;Video&lt;/h2&gt;
+&lt;p&gt;This video covers brief glimpses of the work done during my GSoC
+&lt;a href="https://www.youtube.com/watch?v=cXRxkDfHjtA"&gt;https://www.youtube.com/watch?v=cXRxkDfHjtA&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Work left to be&amp;nbsp;done&lt;/h2&gt;
+&lt;p&gt;Although a lot of new features were developed during this GSoC, there are
+still many missing features. Some of them are&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Travis &lt;span class="caps"&gt;CI&lt;/span&gt; - We would like to have travis &lt;span class="caps"&gt;CI&lt;/span&gt; builds for SegAnnDB and code
+   coverage tools as&amp;nbsp;well.&lt;/li&gt;
+&lt;li&gt;Permission&amp;nbsp;System&lt;/li&gt;
+&lt;li&gt;More tests - Although the testing suite is in place, we need more&amp;nbsp;tests.&lt;/li&gt;
+&lt;li&gt;Sharing&amp;nbsp;Annotations&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;During the course of GSoC project, a lot new features were introduced to
+SegAnnDB. With completion of my project, new users of SegAnnDB will find it
+much easier to install and use. All the new features introduced will lead to
+more development of&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;p&gt;Moreover, it will improve collaboration between various researchers using&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;p&gt;Although a lot remains to be done, I will remain in touch with my mentor and
+keep on improving this&amp;nbsp;application.&lt;/p&gt;
+&lt;h2&gt;Acknowledgements&lt;/h2&gt;
+&lt;p&gt;I would like to express my sincere gratitude to my mentor Toby Hocking for the
+continuous support through the summer and for his patience, motivation and
+enthusisasm. I could not have imagined coming this far without his&amp;nbsp;help.&lt;/p&gt;
+&lt;p&gt;With end of this program I have also learnt a lot about how open source works,
+and how to work with  large codebases. This was a great opportunity for&amp;nbsp;me. &lt;/p&gt;
+&lt;h2&gt;Contact&lt;/h2&gt;
+&lt;p&gt;In case of any queries, send an email to&amp;nbsp;xabhishekflyhigh(at)gmail.com&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category></entry><entry><title>Docker for SegAnnDB</title><link href="http://abstatic.github.io/docker-segann.html" rel="alternate"></link><published>2016-08-22T00:00:00+05:30</published><updated>2016-08-22T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-08-22:/docker-segann.html</id><summary type="html">&lt;p&gt;How I created docker images for&amp;nbsp;SegAnnDB&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Revisiting&amp;nbsp;Selenium&lt;/h2&gt;
+&lt;p&gt;Before we dive into how we created docker images for various versions of
+SegAnnD. I would like to cover recent changes to the tests. As we know we are
+now using a new OAuth based login system for SegAnnDB, so we needed to fix our
+selenium tests as&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;In particualar the login test. Making selenium test flow for OAuth based login
+system is quite easy, as elements are easy to locate. Here is the code for
+handling the login part&amp;nbsp;-&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class="c1"&gt;# get the email field&lt;/span&gt;
+        &lt;span class="n"&gt;email_field&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element_to_be_clickable&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Email&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# enter the email of test user&lt;/span&gt;
+        &lt;span class="n"&gt;email_field&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;...&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# click next&lt;/span&gt;
+        &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;next&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# enter password&lt;/span&gt;
+        &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;presence_of_element_located&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Passwd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# click next and wait for redirect&lt;/span&gt;
+        &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;presence_of_element_located&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;signIn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Also, a new problem arose while running the test, the iframe on the home page
+was taking forever to load while running test, so I had to disable&amp;nbsp;that.&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s it, all the tests start working again!&amp;nbsp;:) &lt;/p&gt;
+&lt;h1&gt;Docker for&amp;nbsp;SegAnnDB&lt;/h1&gt;
+&lt;p&gt;Installing SegAnnDB on a local machine or server is a bit tricky, and can be
+challenging to new users. Inspired by &lt;a href="http://bioboxes.org/"&gt;BioBoxes&lt;/a&gt; and our
+own need we decided to create docker images for&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;h1&gt;Base&amp;nbsp;Image&lt;/h1&gt;
+&lt;p&gt;All docker containers are derived from a base image. In our case we used the
+&lt;code&gt;Ubuntu 14.04&lt;/code&gt; base image, as it works best with&amp;nbsp;SegAnnDB. &lt;/p&gt;
+&lt;h2&gt;Creating docker&amp;nbsp;image&lt;/h2&gt;
+&lt;p&gt;Now to create a docker image, I first started out with installing all the
+required packages using &lt;code&gt;apt-get&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Next up we install &amp;#8220;pyramid&amp;#8221; and either &amp;#8220;pyramid_persona&amp;#8221; or &amp;#8220;seganndb_login&amp;#8221;
+depending on the version of SegAnnDB we wanted to&amp;nbsp;deploy.&lt;/p&gt;
+&lt;p&gt;After installing these dependencies we clone the code from github and
+subversion repositories and install them, in particular &lt;code&gt;segannot&lt;/code&gt; requires to
+be&amp;nbsp;installed.&lt;/p&gt;
+&lt;p&gt;After cloning the github repo we need to execute the&amp;nbsp;following-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;mkdir chromlength db secret&lt;/code&gt; : These directories hold data&amp;nbsp;generated&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wget ./chromlength/hg19.txt.gz http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/chromInfo.txt.gz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python setup.py install&lt;/code&gt; : Install all the dependencies of&amp;nbsp;SegAnnDB&lt;/li&gt;
+&lt;li&gt;Close the container and commit all the chagnes, using &lt;code&gt;docker commit
+   &amp;lt;container_id&amp;gt; &amp;lt;container/repo:tag&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start the container again using &lt;code&gt;docker run -it -p 8080:8080 &amp;lt;container_id&amp;gt;&lt;/code&gt;
+   Above will bind local port 8080 to containers port&amp;nbsp;8080&lt;/li&gt;
+&lt;li&gt;Next inside container, cd&amp;nbsp;SegAnnDB&lt;/li&gt;
+&lt;li&gt;Remove the content from the directory
+   &lt;code&gt;/usr/local/python2.7//usr/local/lib/python2.7/dist-packages/plotter-2015.11.19-py2.7.egg/plotter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start the server, using &lt;code&gt;bash recover-restart&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In a nutshell the steps are&amp;nbsp;-&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install git python subversion vim wget curl
+useradd ubuntu
+mkdir /home/ubuntu/
+apt-get install python-dev python-setuptools python-numpy python-bsddb3 build-essential python-imaging  db-util
+easy_install &amp;quot;pyramid==1.4.5&amp;quot;
+easy_install pip
+pip install seganndb_login OR easy_install &amp;quot;pyramid-persona==1.5&amp;quot;
+cd /home/ubuntu/
+svn checkout svn://r-forge.r-project.org/svnroot/segannot/python segannot
+cd segannot
+python setup.py build
+python setup.py install
+cd ..
+git clone https://github.com/abstatic/SegAnnDB
+python setup.py 
+rm -rf /usr/local/lib/python2.7/dist-packages/plotter-2015.11.19-py2.7.egg/plotter/*
+bash recover-restart.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The docker files can be found at my github repository for
+&lt;a href="https://github.com/abstatic/seganndb-docker"&gt;seganndb-docker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;By using the above approach we don&amp;#8217;t need to install either apache or &lt;span class="caps"&gt;WSGI&lt;/span&gt; on
+the container. If we want to run it at port 80 we can also do that while
+calling docker&amp;nbsp;run&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Docker containers for SegAnnDB are both at about &lt;span class="caps"&gt;600MB&lt;/span&gt;&amp;nbsp;each. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Getting the&amp;nbsp;container&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker pull abstatic/seganndb&lt;/code&gt; or &lt;code&gt;docker pull abstatic/seganndb_gsoc&lt;/code&gt;
+depending on the version you&amp;nbsp;want.&lt;/p&gt;
+&lt;p&gt;Visit: &lt;a href="https://hub.docker.com/u/abstatic/"&gt;https://hub.docker.com/u/abstatic/&lt;/a&gt; for more&amp;nbsp;information&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Running&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Each of the containers contain a (wrapper&amp;nbsp;script)[https://github.com/abstatic/seganndb-docker/blob/master/segann.sh]&lt;/p&gt;
+&lt;p&gt;You can use this wrapper script to directly run the container using the docker
+command -
+&lt;code&gt;docker run -i -t -d -p 8080:8080 abstatic/seganndb segann.sh start&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Above will start seganndb container, map your port 8080 to container&amp;#8217;s port
+8080. You can change the port number to whatever you want, syntax is
+&lt;span class="caps"&gt;HOST&lt;/span&gt;:&lt;span class="caps"&gt;CONTAINER&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You can use either &lt;code&gt;start&lt;/code&gt; or &lt;code&gt;reinitialize&lt;/code&gt; as a parameter to
+&lt;a href="https://github.com/abstatic/seganndb-docker/blob/master/segann.sh"&gt;segann.sh&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;span class="caps"&gt;NOTE&lt;/span&gt;- Please keep in mind that you always need to commit the container
+everytime you make changes, otherwise your data will be&amp;nbsp;lost&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="docker"></category></entry><entry><title>SegAnnDB Login System</title><link href="http://abstatic.github.io/segann-login-module.html" rel="alternate"></link><published>2016-08-17T00:00:00+05:30</published><updated>2016-08-17T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-08-17:/segann-login-module.html</id><summary type="html">&lt;p&gt;This post covers everything related to the login system of&amp;nbsp;SegAnnDB&lt;/p&gt;</summary><content type="html">&lt;p&gt;The authentication is pretty basic which can be summed up in the following
+steps&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User logs in via Google&amp;nbsp;OAuth&lt;/li&gt;
+&lt;li&gt;The user information is retrieved from Google&amp;#8217;s &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Using pyramid, we set a cookie on with the name of&amp;nbsp;user_id &lt;/li&gt;
+&lt;li&gt;Everytime a request comes in we decode the cookie, and get the&amp;nbsp;user_id&lt;/li&gt;
+&lt;li&gt;For logout, a simple javascript function clears out the cookie by
+   invalidating it based on expire&amp;nbsp;time.&lt;/li&gt;
+&lt;li&gt;For retrieving the &lt;code&gt;user_id&lt;/code&gt; from the cookie in the server-side I wrote down
+  a simple function which takes the request and retrieves the &lt;code&gt;user_id&lt;/code&gt; from
+  the&amp;nbsp;cookie.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Picking up from my last (blog
+post)[http://abstatic.github.io/session-vs-token-authourization.html] , I was
+experimenting around with &lt;code&gt;pyramid_google_login&lt;/code&gt; for implementing a OAuth2
+based login&amp;nbsp;system. &lt;/p&gt;
+&lt;p&gt;Turns out, &lt;code&gt;pyramid_google_login&lt;/code&gt; had some compatibility issues with the
+version of pyramid we were using in SegAnnDB. So I decided to fork the repo
+and fixed all the compatibility issues. Added to that I also made some
+modifications in the code to set cookie in the returning response in case of
+a successful&amp;nbsp;login. &lt;/p&gt;
+&lt;p&gt;For handling the logout, I had to rely on javascript because I was not storing
+any information about the session cookie using pyramid. Here is the &lt;span class="caps"&gt;JS&lt;/span&gt; code
+that handles the logout functionality&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;File: &lt;a href="https://github.com/abstatic/SegAnnDB/blob/google-login/plotter/static/auth.js"&gt;static/auth.js&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// check if user is logged in or not&lt;/span&gt;
+&lt;span class="c1"&gt;// on basis of that show appropriate buttons&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;getCookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;authtkt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;divElem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;#auth&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;user&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;button onclick=&amp;#39;bye()&amp;#39;&amp;gt;Log Out&amp;lt;/button&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nx"&gt;divElem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;button&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;else&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;// okay the user is not logged in &lt;/span&gt;
+  &lt;span class="c1"&gt;// render the login button&lt;/span&gt;
+  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;lt;a href=&amp;#39;/auth/signin_redirect&amp;#39;&amp;gt;&amp;lt;button&amp;gt;Login&amp;lt;/button&amp;gt;&amp;lt;/a&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nx"&gt;divElem&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;button&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// function to erase cookies&lt;/span&gt;
+&lt;span class="c1"&gt;// courtsey StackOverflow :)&lt;/span&gt;
+&lt;span class="c1"&gt;// - http://stackoverflow.com/questions/179355/clearing-all-cookies-with-javascript&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;eraseCookieFromAllPaths&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// This function will attempt to remove a cookie from all paths.&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;pathBits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;pathname&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;pathCurrent&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; path=&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="c1"&gt;// do a simple pathless delete first.&lt;/span&gt;
+    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;cookie&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;=; expires=Thu, 01-Jan-1970 00:00:01 GMT;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;pathBits&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nx"&gt;pathCurrent&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;pathCurrent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;pathBits&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+        &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;cookie&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;=; expires=Thu, 01-Jan-1970 00:00:01 GMT;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;pathCurrent&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// function to logout the user&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;bye&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;eraseCookieFromAllPaths&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;authtkt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+  &lt;span class="c1"&gt;//now we need to refresh the page as well.&lt;/span&gt;
+  &lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;reload&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// function to get a cookie from cookie storage&lt;/span&gt;
+&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;getCookie&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;cname&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;cname&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;ca&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;cookie&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;ca&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;ca&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+      &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;charAt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="nx"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substring&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+      &lt;span class="p"&gt;{&lt;/span&gt;
+          &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;substring&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;c&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I also had to override a default pyramid function in file
+&lt;a href="https://github.com/abstatic/SegAnnDB/blob/google-login/plotter/views.py"&gt;views.py&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# I am trying to override the authenticated_userid function here&lt;/span&gt;
+&lt;span class="c1"&gt;# retrieve the cookie and return to the user&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;authenticated_userid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;This function returns the user_id from the request&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cookies&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;authtkt&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c1"&gt;# in case the cookie is not found it applies, unauthenticated user&lt;/span&gt;
+        &lt;span class="n"&gt;val&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;val&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now as mentioned earlier, I had to find a way to upload my modified version of
+the login module of &lt;code&gt;pyramid_google_login&lt;/code&gt; to pypi so that it can be used in&amp;nbsp;SegAnnDB&lt;/p&gt;
+&lt;p&gt;For that, I refractored all the code of &lt;code&gt;pyramid_google_login&lt;/code&gt; into a new
+module named &lt;code&gt;seganndb_login&lt;/code&gt;. It lives in
+&lt;a href="://github.com/abstatic/SegAnnDB-login/commits?author=abstatic"&gt;github&lt;/a&gt; and
+&lt;a href="https://pypi.python.org/pypi/seganndb_login/"&gt;pypi&lt;/a&gt; as&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;I also added a cookie based authentication mechanism into the module, and
+uploaded it to PyPi. We install the new login module using &lt;code&gt;pip install
+seganndb_login&lt;/code&gt; and easily import it into pyramid configuration&amp;nbsp;file.&lt;/p&gt;
+&lt;p&gt;Using &lt;code&gt;seganndb_login&lt;/code&gt; module can be easily used in any other login
+ application too. You only need to install it and add it in your configuration
+ file of pyramid using - &lt;code&gt;config.include('seganndb-login')&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The next post will be about creating a container for SegAnnDB both for the old
+version and the new GSoC&amp;nbsp;code.&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="login"></category><category term="OAuth2"></category></entry><entry><title>Session Based vs Token Based Authourization</title><link href="http://abstatic.github.io/session-vs-token-authourization.html" rel="alternate"></link><published>2016-08-13T00:00:00+05:30</published><updated>2016-08-13T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-08-13:/session-vs-token-authourization.html</id><summary type="html">&lt;p&gt;Session vs Token based&amp;nbsp;authourization&lt;/p&gt;</summary><content type="html">&lt;p&gt;For user authentication on SegAnnDB we depended on &lt;a href="https://developer.mozilla.org/en-US/docs/Mozilla/Persona"&gt;Mozilla
+Persona&lt;/a&gt; till now,
+but unfortunately persona systems will be shutdown by this&amp;nbsp;November.&lt;/p&gt;
+&lt;p&gt;So we decided to move our existing authourziation mechanism to OAuth2 based
+authentication. In this post I will be doing comparison of
+Session vs token based authourziation and how we are implementing it in&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;h3&gt;Session Based&amp;nbsp;Authentication&lt;/h3&gt;
+&lt;p&gt;In session based authentication the server does all the heavy lifting server
+side. Client authenticates with its credentials and recieves a session_id
+(which can be stored in a cookie) and attaches this to every subsequent
+outgoing&amp;nbsp;request. &lt;/p&gt;
+&lt;p&gt;So this could be considered a &amp;#8220;token&amp;#8221; as it is the
+equivalent of a set of credentials. There is however nothing fancy about this
+session_id string. It is just an identifier and the server does everything
+else. It is stateful. It associates the identifier with a user account (e.g.
+in memory or in a&amp;nbsp;database). &lt;/p&gt;
+&lt;p&gt;It can restrict or limit this session to certain
+operations or a certain time period and can invalidate it if there are
+security convern and more importantly it can do and change all of this on the
+fly. Furthermore it can log the users every move on the&amp;nbsp;website(s). &lt;/p&gt;
+&lt;p&gt;Possible disadvantages are bad scalability and extensive memory&amp;nbsp;usage.&lt;/p&gt;
+&lt;h3&gt;Token Based&amp;nbsp;Authentication&lt;/h3&gt;
+&lt;p&gt;In Token based Authentication no session is persisted server-side (stateless).
+The initial steps are the same. Credentials are exchanged against a token
+which is then attached to every subsequent request which is commonly stored in
+the local storage of the client (It can also be stored in
+a&amp;nbsp;cookie). &lt;/p&gt;
+&lt;p&gt;However for the purpose of decreasing memory usage, easy
+scale-ability and total flexibility (tokens can be exchanged with another
+client) a string with all the necessary information is issued (the token)
+which is checked after each request made by the client to the server. There
+are a number of ways to use/ create&amp;nbsp;tokens.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;In a&amp;nbsp;nutshell-&lt;/strong&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Most popular authentication system for&amp;nbsp;APIs&lt;/li&gt;
+&lt;li&gt;Less load on server compared to session&amp;nbsp;authentication.&lt;/li&gt;
+&lt;li&gt;Scaling and load balancer can be applied effectively on the &lt;span class="caps"&gt;API&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;No cookie and &lt;span class="caps"&gt;CSRF&lt;/span&gt;(Cross Site Request Forgery) protection&amp;nbsp;required.&lt;/li&gt;
+&lt;li&gt;Allows the same &lt;span class="caps"&gt;API&lt;/span&gt; to be used in mobile and&amp;nbsp;web.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;span class="caps"&gt;JWT&lt;/span&gt; - &lt;span class="caps"&gt;JSON&lt;/span&gt; Web&amp;nbsp;Token&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Pronounced as&amp;nbsp;&amp;#8220;jot&amp;#8221;&lt;/li&gt;
+&lt;li&gt;The token is a combination of three parts- Header, payload and&amp;nbsp;signature.&lt;/li&gt;
+&lt;li&gt;Each part of authentication is encoded with base64 url encoding and
+  separated with a dot&amp;nbsp;(.)&lt;/li&gt;
+&lt;li&gt;Server generates the token and gives to&amp;nbsp;client&lt;/li&gt;
+&lt;li&gt;With every request the server verifies the token using, time, signature,&amp;nbsp;etc&lt;/li&gt;
+&lt;li&gt;JWTs can be signed using &amp;#8216;secret&amp;#8217; (OAuth2 Secret) in the&amp;nbsp;server&lt;/li&gt;
+&lt;li&gt;Usually Asymmetric Key Algorithms are&amp;nbsp;used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;OAuth2&lt;/h2&gt;
+&lt;p&gt;OAuth2 is the most modern way of providing authentication support. Generally,
+OAuth2 allows users of one website to access and authenticate in any other web
+application or mobile&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;The login providers e.g. - Google, Facebook, Github provide APIs to access
+user data, on basis of the user&amp;nbsp;consent.&lt;/p&gt;
+&lt;h3&gt;OAuth2 for SegAnnDB and&amp;nbsp;Pyramid&lt;/h3&gt;
+&lt;p&gt;In our case, we currently are using Pyramid authentication along with persona
+module for pyramid which is most probably a session based authentication
+system. The project is &lt;a href="https://github.com/madjar/pyramid_persona"&gt;Pyramid&amp;nbsp;Persona&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Its potential replacement is - &lt;a href="https://github.com/ludia/pyramid_google_login"&gt;Pyramid Google&amp;nbsp;Login&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This dependency will be replacement for the pyramid_persona module, the
+current code hosted at the github repo contains a few bugs which I am&amp;nbsp;fixing;&lt;/p&gt;
+&lt;p&gt;We will have to fix the pyramid module, upload it to pypi and then dockerize
+the whole&amp;nbsp;thing.&lt;/p&gt;
+&lt;p&gt;I got &lt;code&gt;pyramid_google_login&lt;/code&gt; module to work with SegAnnDB, although for
+sustained authentication and remembering the state of application I am using&amp;nbsp;session.&lt;/p&gt;
+&lt;p&gt;The authentication is pretty basic which can be summed up in the following
+steps&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User logs in via Google&amp;nbsp;OAuth&lt;/li&gt;
+&lt;li&gt;The user information is retrieved from Google&amp;#8217;s &lt;span class="caps"&gt;API&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Using pyramid, we set a cookie on with the name of&amp;nbsp;user_id &lt;/li&gt;
+&lt;li&gt;Everytime a request comes in we decode the cookie, and get the&amp;nbsp;user_id&lt;/li&gt;
+&lt;li&gt;For logout, a simple javascript function clears out the cookie by
+   invalidating it based on expire&amp;nbsp;time.&lt;/li&gt;
+&lt;li&gt;For retrieving the &lt;code&gt;user_id&lt;/code&gt; from the cookie in the server-side I wrote down
+  a simple function which takes the request and retrieves the &lt;code&gt;user_id&lt;/code&gt; from
+  the&amp;nbsp;cookie.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Unlike typical session based authentication scenarios we are not maintaining
+the stateful-ness of application at the server side, because there is no data
+other than the user_id which we want to store. The &lt;code&gt;user_id&lt;/code&gt; is stored as
+a cookie&amp;nbsp;itself.&lt;/p&gt;
+&lt;p&gt;So, that&amp;#8217;s it about the new login system of&amp;nbsp;SegAnnDB. &lt;/p&gt;
+&lt;p&gt;The code changes on SegAnnDB can be found at
+-&amp;nbsp;https://github.com/abstatic/SegAnnDB&lt;/p&gt;
+&lt;p&gt;The code will be up by my next blog post, because I still need to figure out
+how can I upload the modified &lt;code&gt;pyramid_google_login&lt;/code&gt; to&amp;nbsp;pypi.&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="login"></category><category term="OAuth2"></category></entry><entry><title>More on SegAnnDB</title><link href="http://abstatic.github.io/chromosome-viewer.html" rel="alternate"></link><published>2016-08-12T00:00:00+05:30</published><updated>2016-08-12T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-08-12:/chromosome-viewer.html</id><summary type="html">&lt;p&gt;Blog post on what new features I have added in&amp;nbsp;SegAnnDB&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Making the chromosome viewer more&amp;nbsp;interactive&lt;/h2&gt;
+&lt;p&gt;As per my last blog post, I had arrived at a pretty static overview of
+chromosome that we are viewing, which looked something like: 
+&lt;img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* The upper part is the overview of the chrome and is the standard zoom file.
+* The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
+here)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Well, now after a few more iterations I have made the overview part more
+interactive. Now the user can click on any part of the overview at any zoom
+level to see the highlighted&amp;nbsp;part.&lt;/p&gt;
+&lt;p&gt;So, this is what we have right now -&amp;gt;
+&lt;img alt="New Chrom Viewer" src="http://i.imgur.com/VuFcwMJ.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How this works&amp;nbsp;?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Making the overview more interactive was a crucial part of &lt;span class="caps"&gt;UX&lt;/span&gt; in SegAnnDB. To
+get this I used some basic javascript and css. First of all, I am
+precalculating the rectangle width and then using &lt;span class="caps"&gt;JS&lt;/span&gt; dynamically adding
+elements to &lt;span class="caps"&gt;DOM&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;All the cool rectangles you see as we hover over the chromosome overview, are
+nothing but just &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; tags which have some cool &lt;span class="caps"&gt;CSS&lt;/span&gt; rules applied to
+them. Lets take a look at meaty portions of the code&amp;nbsp;-&lt;/p&gt;
+&lt;pre&gt;
+  for (var i = 1; i &lt;= numLinks; i++)
+    {
+      // lets create the links
+      // calculate the href value
+      var hrefVal = "?width="+zoomLevel + "&amp;index=" + i;
+
+      // create a linear scale for making the title
+      var x = d3.scale.linear()
+              .domain([1, widthBase])
+              .range([0, zooms[zoomLevel]]);
+
+      // title values we use inverted range to get the values
+      var basePixel = (i - 1) * 1250;
+      var xstartBP = x.invert(basePixel);
+      var xendBP = x.invert(basePixel + 1250);
+
+      // generate the title string
+      var title = xstartBP + "-" + xendBP;
+
+      // make the string of link
+      var link = "&lt;a class='overviewLink' style="+linkStyle+" href="+hrefVal+" title="+title+"&gt;&lt;/a&gt;";
+
+      // append the links to overview
+      overviewDiv.append(link);
+
+      // lets see if we are in chrome_ubuntu
+      var url = window.location.href;
+      var res = url.indexOf("chrome_ubuntu")
+
+      // calculate the base pair range of each idex using reverse
+      // this is the bottom list of links
+      // We don't want to append 800 additional elements to the DOM
+      if (res == -1)
+      {
+        divElem.append("&lt;a class='jumpLink' href="+hrefVal+ " title="+title+"&gt;"+i+"&lt;/a&gt;");
+        // add the breaks after every 35 values to the bottom list of links
+        if (i % 35 == 0)
+          divElem.append("&lt;br&gt;");
+      }
+    }
+&lt;/pre&gt;
+
+&lt;p&gt;The above loop, goes over all the number of links that we need to generate and adds each link to the overview div. Now with each link I added these &lt;span class="caps"&gt;CSS&lt;/span&gt; rules, all the new &lt;span class="caps"&gt;CSS&lt;/span&gt; rules are defined in the bottom most section of file &lt;code&gt;bioviz.css&lt;/code&gt;. Relevant rules are -
+&lt;pre&gt;
+a.overviewLink {
+    height: inherit;
+    display: inline-block;&amp;nbsp;}&lt;/p&gt;
+&lt;p&gt;a.overviewLink:hover {
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+    background-color: rgba(242, 6, 255, 0.2);&amp;nbsp;}&lt;/p&gt;
+&lt;p&gt;a.overviewLink:active {
+    border-bottom: 1px solid blue;
+    border-top: 1px solid red;
+    background-color: rgba(242, 6, 255, 0.2);
+}
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;All of the code can be found at my &lt;a href="https://github.com/abstatic/SegAnnDBB"&gt;github repository for&amp;nbsp;SegAnnDB&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Linking back to old chromosome&amp;nbsp;viewer&lt;/h2&gt;
+&lt;p&gt;Another additional feature that I have been working on, is that we wanted to reenable the old chromosome viewer for SegAnnDB. Now, the code was already there and all I had to do was create some new end points and add links to switch between both the new and old chromosome&amp;nbsp;viewer.&lt;/p&gt;
+&lt;p&gt;The new endpoint that I added is - &lt;code&gt;config.add_route('old_chrom', '/profile_old/{name}/{chr}/')&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So in a nutshell, the web links for the old chromosome viewer look like -  &lt;code&gt;http://localhost:8080/profile_old/ES0004/1/?width=ipad&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In the screenshots below you can clearly see a link to the old chromosome viewer and new chromosome viewer
+&lt;a href="http://i.imgur.com/Wu96ZKd.png"&gt;Imgur&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Few minor code changes were also required, in Javascript code. In file &lt;code&gt;chromDisplay.js&lt;/code&gt; I had to make some modifications so that we can differentiate between when we are viewing through the old chrom viewer and the new one, and handle each case&amp;nbsp;appropriately.&lt;/p&gt;
+&lt;h3&gt;OAuth2&amp;nbsp;login&lt;/h3&gt;
+&lt;p&gt;I am also working on OAuth2 based login for SegAnnDB, right now we use &amp;#8216;pyramid_persona` python module to handle all of the authentication, it inturn implements session based authentication by extending pyramids base authentication&amp;nbsp;system.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Documentation and Styling&lt;/strong&gt;
+I also worked on improving the documentation of code, I have added comments and docstrings in both &lt;span class="caps"&gt;JS&lt;/span&gt; and python code, wherever I coulde. More over I also, indented most of python files to &lt;span class="caps"&gt;PEP&lt;/span&gt;-8 and &lt;span class="caps"&gt;JS&lt;/span&gt; file as&amp;nbsp;well.&lt;/p&gt;
+&lt;p&gt;More on the OAuth2 login in coming blog post! That&amp;#8217;s it for now&amp;nbsp;:) &lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="chromosome viewer"></category></entry><entry><title>New Chromosome viewer for SegAnn</title><link href="http://abstatic.github.io/new-chromosome-viewer.html" rel="alternate"></link><published>2016-06-21T00:00:00+05:30</published><updated>2016-06-21T00:00:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-06-21:/new-chromosome-viewer.html</id><summary type="html">&lt;p&gt;Blog post covering how I am implementing the new chrmosome&amp;nbsp;viewer&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Creating a new chromosome viewer for SegAnnDB : Design &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Implementation Details&amp;nbsp;-&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Screenshot" src="http://i.imgur.com/NDWmt6u.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* The upper part is the overview of the chrome and is the standard zoom file.
+* The lower part is the zoomed in chromosome, and its zoom levels can be modified. Current zoom levels are – ipad, chrome\_ubuntu, chrome\_windows (no changes 
+here)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;1.Changes in storing&amp;nbsp;images-&lt;/h3&gt;
+&lt;p&gt;I have modified the file keeping scheme of segann. Now each generated goes into the chromosome folder as&amp;nbsp;well.   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  secret
+  +
+  +---profile (e.g. ES0004)
+  + |
+  + |--------1
+  + |   *-&amp;gt; ES0004_chr1_standard.png
+  + |   *-&amp;gt; ES0004_chr1_profiles.png
+  + |   *-&amp;gt; ES0004_chr1_chrome_ubuntu_1.png
+  + |
+  + |--------2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So all the images now go into their corresponding chromosome number folder. (its X for the last&amp;nbsp;chr)&lt;/p&gt;
+&lt;p&gt;Changes made in other parts of the application to accomodate the new file keeping&amp;nbsp;scheme&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File - &lt;code&gt;__init.py__&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The route &lt;code&gt;secret&lt;/code&gt; has been modified, on line number&amp;nbsp;30&lt;/p&gt;
+&lt;p&gt;Original  - 
+  &lt;code&gt;config.add_route("secret","/secret/{name:%s}{suffix}"%name_regex)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Modified-
+  &lt;code&gt;config.add_route("secret","/secret/{profile_name}/{chr_num}/{name:%s}{suffix}"%name_regex)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;File- &lt;code&gt;views.py&lt;/code&gt; , &lt;code&gt;route="secret"&lt;/code&gt;&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;The new code for this route is as follows – (old code is commented&amp;nbsp;out)  &lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  @view_config(route_name="secret")
+  def secret_new(request):
+      # fn = db.secret_file("%(name)s%(suffix)s" % request.matchdict)
+      # return FileResponse(fn, request=request)
+      profileName = request.matchdict["profile_name"]
+      chr_num = request.matchdict["chr_num"]
+      file_name = "%(name)s%(suffix)s" % request.matchdict
+      fn = db.secret_file(file_name, chr_num)
+      print fn
+      return FileResponse(fn, request=request)
+  &lt;/pre&gt;&lt;/p&gt;
+&lt;h3&gt;2.Splitting of&amp;nbsp;Images-&lt;/h3&gt;
+&lt;p&gt;As discussed before, I have added the code to split all the large size images. I am using “&lt;span class="caps"&gt;PILLOW&lt;/span&gt;” module for doing this. We are alreading using this in
+  &lt;code&gt;scatterplot.py&lt;/code&gt; file. &lt;/p&gt;
+&lt;p&gt;Splitting criteria – I have changed the default width to 1250px from 1500px. Because 1250 evenly divides all the other zoom levels (ipad, windows,&amp;nbsp;ubuntu)&lt;/p&gt;
+&lt;p&gt;Code&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;The code for splitting images is in the file &lt;code&gt;db.py&lt;/code&gt;. I have done modifications in two places. I have created a separete function to split the images, the 
+  method is called &lt;code&gt;split_image(...)&lt;/code&gt; and this method is called from the &lt;code&gt;process(...)&lt;/code&gt; method. Process method is called to create the scatterplots, calculate 
+  the segmentation and breakpoints data and store it into &lt;span class="caps"&gt;BDB&lt;/span&gt;. &lt;/p&gt;
+&lt;p&gt;Modifications in &lt;code&gt;process(..)&lt;/code&gt; method&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  ...
+  ...
+      meta["plots"][name] = {
+          "logratio_min": lr_min,
+          "logratio_max": lr_max,
+          "height_px": HEIGHT_PX,
+          "width_px": width,
+          "width_bases": bases[ch],
+          "file": scatterplot_file(pinfo["name"], ch, name,
+                                   lr_min, lr_max,
+                                   width, bases),
+          }
+      print "file created: ", meta["plots"][name]["file"]
+      print "---------------"
+      if meta["plots"][name]["width_px"] &amp;gt; DEFAULT_WIDTH :
+          split_image(meta["plots"][name]["file"], ch, pinfo["name"], name, width)
+  # print "meta- ",meta
+  # print "\n\n\n\n----------\n\n\n\n\n"
+  ...
+  ...
+  &lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;spilt_image(...)&lt;/code&gt; method works as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;
+  def split_image(file_name, chr_num, profile_name, suffix, width):
+      """
+      Parameters-
+      file_name - the file name
+      chr_num - the chromosome number
+      profile_name - the profile id
+      suffix - the zoom level
+      width - the width_px of the image
+      """
+      file_location = SECRET_DIR + "/" + profile_name + "/" + chr_num + "/" + file_name
+      save_path = SECRET_DIR + "/" + profile_name + "/" +&amp;nbsp;chr_num&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  # now open the file
+  im = Image.open(file_location)
+
+  i = DEFAULT_WIDTH
+  j = 1
+
+  while i &amp;lt;= width:
+      print i
+      box = (i - 1250, 0, i, 200)
+      img = im.crop(box)
+      fn = &amp;quot;%s_chr%s_%s_%d.png&amp;quot; % (profile_name, chr_num, suffix, j)
+      final_path = save_path + &amp;quot;/&amp;quot; + fn
+      img.save(final_path)
+      j += 1
+      i += 1250
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/pre&gt;
+
+&lt;p&gt;The above method splits a image into smaller images. Each splitted image has the size of 1250 pixels.The images are named similarly to their parents only the 
+  index is added to the end to indicate their&amp;nbsp;sequence. &lt;/p&gt;
+&lt;h3&gt;3.New chromosome viewer&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;I am implementing the new chromosome viewer for segann with help of&amp;nbsp;offsetting.&lt;/p&gt;
+&lt;p&gt;As you can see in the picture, we are dividing a very large png image into
+several small images of 1250px. All of these images are unique and are
+sequenced using the index, which is attached at the end of file&amp;nbsp;name.&lt;/p&gt;
+&lt;p&gt;Now we can render the same image of 1250 pixels everytime, but the user will
+have the choice, that which part of the chromosome he wants to&amp;nbsp;annotate.&lt;/p&gt;
+&lt;p&gt;Each image that is rendered can be&amp;nbsp;annotated.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;D3JS&lt;/span&gt; Linear Scaling&lt;/strong&gt;
+In our &lt;span class="caps"&gt;JS&lt;/span&gt; code &lt;code&gt;chromDisplay.js&lt;/code&gt; we are making use of the &lt;a href="https://github.com/d3/d3/wiki/Quantitative-Scales"&gt;linear
+scaling&lt;/a&gt;. We are using
+linear scales to map the base pairs to the&amp;nbsp;pixels&lt;/p&gt;
+&lt;p&gt;To explain in a more general way, linear scale is&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Linear Scaling" src="https://s3.amazonaws.com/dashingd3js/images/d3.js_scales_scale_domain_down_to_range_300x300.png"&gt;&lt;/p&gt;
+&lt;p&gt;In SegAnnDB we have the domain as the number of base pairs and the range is
+the width of the image, so that is fixed at 1250&amp;nbsp;pixels.&lt;/p&gt;
+&lt;h2&gt;Using offsets to display various&amp;nbsp;sections**&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="handmade" src="http://i.imgur.com/0SD5gwz.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Motivation -&lt;/strong&gt; Using the offset based approach, it is zoom level agnostic,
+meaning with this approach we can create and view images of any zoom level&amp;nbsp;efficiently.&lt;/p&gt;
+&lt;p&gt;Currently how the annotation works in SegAnn is&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;User drags the mouse on profile to do different type of annotation such as
+   breakpoint, and copy number. Its done in the shape of a&amp;nbsp;rectangle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The event is detected by &lt;code&gt;chromDisplay.js&lt;/code&gt; , and the x-coordinates of the
+   rectangular region are converted to base pair (min, max) with help of
+   invert function of linear scaling which allows a mapping from range to&amp;nbsp;domain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After getting the min and mix basepairs, a simple http request is sent out
+   to the server, which stores the annotation in&amp;nbsp;database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, if we want to split out the large images into different images, and still
+be able to&amp;nbsp;annotate. &lt;/p&gt;
+&lt;p&gt;After doing a lot of brainstorming, I thought of just addding an offset value 
+to the x-coordinates, and then invert the values to get the correct width of 
+base&amp;nbsp;pairs.&lt;/p&gt;
+&lt;p&gt;So, how this will work is, that in every occurence of the x-coordinates, or
+inversion of coordinates, I am adding an offset value which will correspond to
+the right pixel on the original image. That way we can annotate different
+profiles with considerably high zoom&amp;nbsp;levels.&lt;/p&gt;
+&lt;p&gt;For example, while we are sending out the request to save an annotation &lt;br&gt;
+The function saveAnnotation would get modified as -
+&lt;pre&gt;
+    var saveAnnotation = function(){
+      var buttons = svg.selectAll("."+button_class);
+      buttons.remove();
+      var rect = svg.select("#"+trackType+"NEW");
+      var w = parseInt(rect.attr("width"));
+      // add the offset value here
+      var min_px = parseInt(rect.attr("x")) + offset_px;
+      var min = parseInt(x.invert(min_px));
+      var max = parseInt(x.invert(min_px+w));
+      var waiting = svg.append("text")
+      ...
+      ...
+      var url = "/add_region/"+profile_id+"/"+chromosome+"/"+
+    trackType+"/"+ann+"/"+min+"/"+max+"/";
+      d3.json(url,function(response){
+    if(response){
+      ...
+      ...
+      ...
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;So just by adding the correct offset value we inverse map the correct
+x coordinates of the svg to the correct base pairs in the&amp;nbsp;domain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New&amp;nbsp;Route&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For developing the new viewer, I have created a new route in &lt;code&gt;views.py&lt;/code&gt;
+I have commented out the default route of &lt;code&gt;chrom&lt;/code&gt; and created a new route for
+&lt;code&gt;chrom&lt;/code&gt; along with a new template &lt;code&gt;new.pt&lt;/code&gt; to support&amp;nbsp;this&lt;/p&gt;
+&lt;p&gt;Route - 
+&lt;pre&gt;
+@view_config(route_name='chrom', renderer='templates/new.pt')
+@add_userid
+@check_userprofiles
+def hello(request):
+    w = request.GET.get("width", "standard")
+    i = request.GET.get("index", "1")
+    md = request.matchdict
+    out = prof_info(md["name"], md["chr"].split(','), w)
+    out["name"] = md["name"]
+    out["width"] = w
+    out["others"] = [z for z in CHROM_ZOOMS if z != w]
+    out["chr"] =&amp;nbsp;md["chr"]&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# in case of standard width we want to send the correct suffixes
+if w == &amp;quot;standard&amp;quot;:
+    out[&amp;quot;index&amp;quot;] = 0
+    out[&amp;quot;index_next&amp;quot;] = &amp;quot;&amp;quot;
+    out[&amp;quot;index_prev&amp;quot;] = &amp;quot;&amp;quot;
+    out[&amp;quot;index_suffix&amp;quot;] = &amp;quot;&amp;quot;
+else:
+    out[&amp;quot;index&amp;quot;] = i
+    out[&amp;quot;index_suffix&amp;quot;] = &amp;quot;_&amp;quot; + i
+
+    if int(i) == 1:
+        out[&amp;quot;index_next&amp;quot;] = str(int(i)+1)
+        out[&amp;quot;index_prev&amp;quot;] = &amp;quot;1&amp;quot;
+    else:
+        out[&amp;quot;index_next&amp;quot;] = str(int(i)+1)
+        out[&amp;quot;index_prev&amp;quot;] = str(int(i)-1)
+return out
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/pre&gt;
+
+&lt;h4&gt;Code Explanation&amp;nbsp;-&lt;/h4&gt;
+&lt;p&gt;Lets talk about, the new parameters, that we are sending to the&amp;nbsp;template-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We are also taking a new &lt;span class="caps"&gt;GET&lt;/span&gt; request parameter, which is the index of image,
+  if unsupplied it is set to&amp;nbsp;1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We are now sending out the index, index_next, index_prev parameters to the
+  template, these contain the index values corresponding to current, next and
+  previous indices of the image section that we are viewing right&amp;nbsp;now&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We are also sending out index_suffix, it is used to create the filename
+  later on in the template and js&amp;nbsp;code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Changes in the javascript&amp;nbsp;code&lt;/h2&gt;
+&lt;p&gt;We are also doing some changes in &lt;span class="caps"&gt;JS&lt;/span&gt; code in the template&amp;nbsp;-&lt;/p&gt;
+&lt;pre&gt;
+var data = ${plot};
+data[0][0]["width_px"] = 1250;
+data[0][0]["zoom"] = "${width}";
+data[0][0]["offset_px"] = (${index} - 1) * 1250;
+data[0][0]["index"] = ${index}
+data[0][0]["index_suffix"] = "${index_suffix}";
+var profile = new profilePlot(data);
+&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#8217;s all for now. The next post will cover how the final thing was
+implemented along with any changes suggested by&amp;nbsp;Toby.&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="chromosome viewer"></category></entry><entry><title>Selenium For Testing SegAnnDB</title><link href="http://abstatic.github.io/selenium-for-testing.html" rel="alternate"></link><published>2016-06-12T09:20:00+05:30</published><updated>2016-06-12T09:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-06-12:/selenium-for-testing.html</id><summary type="html">&lt;p&gt;My first task in GSoC was to add unit testing to existing&amp;nbsp;code.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Selenium&lt;/h3&gt;
+&lt;p&gt;Selenium is a browser based testing framework which is very widely used for doing testing for various web centric apps. Selenium has bindings available for almost all the languages. Selenium is used exclusively for automating browser behaviour. In more simpler words, selenium can be described as an &lt;span class="caps"&gt;API&lt;/span&gt; for the browser. Selenium is also used in web&amp;nbsp;scraping. &lt;/p&gt;
+&lt;p&gt;For python, selenium can be installed by one single command - &lt;code&gt;pip install selenium&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Browser based&amp;nbsp;testing&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Browser based testing is automating browsers for running regression and functional tests, which further test the functionality of the web application. The aim is to reduce the number of regressions which might be introduced in further development of the&amp;nbsp;application.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Python unit&amp;nbsp;testing&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Python unittest is a module which is used for writing tests in python. It provides various methods for running and setting up of&amp;nbsp;tests.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each test case method should be prefixed with the name&amp;nbsp;&amp;#8220;test_&amp;#8221;&lt;/li&gt;
+&lt;li&gt;For defining the test sequence of methods, the format is - &amp;#8220;test010_&amp;#8221; , &amp;#8220;test020_&amp;#8221;&amp;nbsp;etc.&lt;/li&gt;
+&lt;li&gt;There should be a &lt;code&gt;setUp&lt;/code&gt; method in the file. This method is called before running up of each test&amp;nbsp;case.&lt;/li&gt;
+&lt;li&gt;Method &lt;code&gt;tearDown&lt;/code&gt; is called every time a test case method finishes&amp;nbsp;executing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Directory&amp;nbsp;Structure&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;All the data related to the tests goes under &lt;code&gt;SegAnnDB/tests/&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Test&amp;nbsp;Profile&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For doing the testing I am using a profile named &lt;span class="caps"&gt;ES0004&lt;/span&gt;. The script
+automatically checks for the existence of the test profile. In case, it does
+not exist it downloads it from my github repo and then the test suite
+execution begins. It expects that the test profile is inside &lt;code&gt;SegAnnDB/tests/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://raw.githubusercontent.com/abstatic/SegAnnDB-tests/master/test_profile.bedGraph.gz"&gt;Test&amp;nbsp;Profile&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;The Test Cases&amp;nbsp;-&lt;/h2&gt;
+&lt;p&gt;After some initial discussions, me and Toby (my mentor) decided that it would be good if I wrote test cases for checking the current functionality of application. The test cases are&amp;nbsp;-&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Test whether the application is starting properly or&amp;nbsp;not&lt;/p&gt;
+&lt;p&gt;Implementing this test case was trivial. We are just checking for the right value in the page title after succssfully loading the page.
+  &lt;script src="https://gist.github.com/abstatic/08429f989ce571fbc1e954aae3f3f1a8.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Login the&amp;nbsp;user&lt;/p&gt;
+&lt;p&gt;By far this was the trickiest part. The normal login flow in SegAnnDB is as follows&amp;nbsp;- &lt;/p&gt;
+&lt;p&gt;a) Click on the signin button&lt;br&gt;
+  b) A new pop up opens up for mozilla persona&lt;br&gt;
+  c) Enter the mail id&lt;br&gt;
+  d) The pop is redirected to appropriate oauth based server of your email provider for asking permissions.&lt;br&gt;
+  e) Enter your password andd authorize&lt;br&gt;
+  f) Redirects back to mozilla persona&lt;br&gt;
+  g) Pop up closes and the user is successfully logged&amp;nbsp;in  &lt;/p&gt;
+&lt;p&gt;Automating this many steps and handling so many steps was complicated. I was sure that other people must have tried to automate mozilla persona based logins.
+  I came across &lt;strong&gt;&lt;a href="https://mockmyid.com"&gt;mockmyid&lt;/a&gt;&lt;/strong&gt; which is very useful for testing mozilla persona based applications for mock&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="https://mockmyid.com"&gt;mockmyid&lt;/a&gt;&lt;/strong&gt; provides mock user ids which can be used for logging in via mozilla persona. When using mockmyid the login flow is as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Click on signin button&lt;br&gt;
+  b) Persona popup opens&lt;br&gt;
+  c) Enter mockmyid based email&lt;br&gt;
+  d) Click on login&lt;br&gt;
+  e) Pop closes and the user is logged&amp;nbsp;in.  &lt;/p&gt;
+&lt;p&gt;Assertion for a successfull login works by checking for the presence of Sign Out&amp;nbsp;field.&lt;/p&gt;
+&lt;p&gt;Login is something which is used by every other test case, so I decided to make a method which can automatically log the user&amp;nbsp;in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The login function&lt;/strong&gt;
+  &lt;script src="https://gist.github.com/abstatic/f59103256e6f04c8cef37508efbd82d0.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Upload a&amp;nbsp;profile  &lt;/p&gt;
+&lt;p&gt;Uploading a profile is also straightforward. The steps followed by webdriver are&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Login the user &lt;br&gt;
+  b) Go to profile upload page&lt;br&gt;
+  c) Put in the path of test file&lt;br&gt;
+  d) Click on submit button&lt;br&gt;
+  e) Assert for existence of element with&amp;nbsp;id=success  &lt;/p&gt;
+&lt;p&gt;&lt;script src="https://gist.github.com/abstatic/ac3cab3c9164c42a0984755bd2d0ad09.js"&gt;&lt;/script&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Annotate a&amp;nbsp;chromosome&lt;/p&gt;
+&lt;p&gt;This test case works very differently when compared to other test cases. It uses selenium only for logging in the user. The annotation part is done by using
+  urllib2 module and sending out the get requests to the web server. The assertion works by checking for the 200 status code on the response of the request&amp;nbsp;sent.&lt;/p&gt;
+&lt;p&gt;But there is one more thing with this test. It needs to sleep for a while. This is because, it will get called directly after the profile is uploaded. 
+  Now, SegAnn needs some time to process a profile before it can be annotated. So the test for annotating chromosome waits for about a minute before doing&amp;nbsp;anything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete a&amp;nbsp;profile.&lt;/p&gt;
+&lt;p&gt;Deleting of a profile is simple as well. The steps followed are&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;a) Login the user&lt;br&gt;
+  b) Send a delete request to the server&lt;br&gt;
+  c) Assert for word &amp;#8220;deleted&amp;#8221; on the source code of the&amp;nbsp;response.  &lt;/p&gt;
+&lt;p&gt;Now, as we will go on adding more features into SegAnn I plan to add tests for each of&amp;nbsp;them.  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All the code related to above tests can be found at
+&lt;a href="https://github.com/abstatic/SegAnnDB/blob/master/tests/tests.py"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Waits in&amp;nbsp;Selenium&lt;/h3&gt;
+&lt;p&gt;Generally selenium is kindof procedural and does not handle latency very well. But with webapps, its sure that there will be some delays and waits while the page&amp;nbsp;loads. &lt;/p&gt;
+&lt;p&gt;To handle these kinds of scenarios we need to put in waits in selenium while checking for existence of various elements. So, basicallly what I&amp;#8217;m doing is I poll the browser continuously for a max time limit, and check whether a certain element exists or&amp;nbsp;not&lt;/p&gt;
+&lt;p&gt;There are two major types of waits available in&amp;nbsp;selenium- &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Implicit Waits - An implicit wait is to tell web driver to poll the &lt;span class="caps"&gt;DOM&lt;/span&gt;
+    for a certain amount of time when trying to find and element or elements
+    if they are not immediately&amp;nbsp;available. &lt;/p&gt;
+&lt;p&gt;Example code - 
+&lt;pre&gt;
+from selenium import web driver
+driver = webdriver.Firefox()
+driver.implicitly_wait(30)
+driver.get("https://www.google.co.in/")
+driver.find_element_by_id(“lst-ib”)
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;In above example the implicit wait value is given as 30sec i.e., if web
+driver is able to find the element with in the given span 30sec, it
+returns true else, it will raise an&amp;nbsp;exception.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Explicit Waits- An explicit wait is code we define to wait for a certain
+    condition to occur before proceeding further in the code. &lt;code&gt;time.sleep()&lt;/code&gt;
+    is one such&amp;nbsp;example. &lt;/p&gt;
+&lt;p&gt;I have extensively used explicit waits in the test suite to poll for
+a certain element and proceed only if it was found. Most commonly it is
+used in conjuntion with &lt;span class="caps"&gt;EC&lt;/span&gt; (Expected&amp;nbsp;Condition)&lt;/p&gt;
+&lt;p&gt;Example code-
+&lt;pre&gt;
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+driver = webdriver.Firefox()
+driver.get("https://www.google.co.in/")
+try:
+   WebDriverWait(driver, 10).until( EC.presence_of_element_located((By.ID,"element")))
+except:
+   pass
+&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Above code waits until 10 seconds before throwing a &lt;code&gt;TimeoutException&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;I have defined the default waiting time before throwing a timeout error as
+60&amp;nbsp;seconds. &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Time Required&lt;/strong&gt; - It mostly depends on internet and processor speed. Generally the test
+suite takes about 3-5 minutes in executing all the&amp;nbsp;tests.s &lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category><category term="selenium"></category><category term="unit testing"></category><category term="python"></category></entry><entry><title>Getting Selected In GSoC</title><link href="http://abstatic.github.io/getting-selected-gsoc.html" rel="alternate"></link><published>2016-05-03T09:20:00+05:30</published><updated>2016-05-03T09:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-05-03:/getting-selected-gsoc.html</id><summary type="html">&lt;p&gt;How I got selected in&amp;nbsp;GSoC&lt;/p&gt;</summary><content type="html">&lt;h3&gt;D-Day&lt;/h3&gt;
+&lt;p&gt;For me this was 23rd April 00:30 &lt;span class="caps"&gt;AM&lt;/span&gt;. After a month I had been &amp;#8216;not very patiently&amp;#8217; waiting for my GSoC result. I had high expectations. I wanted to get selected so bad. I was really nervous whole day, and to cope with it I was playing Dota2 with my friends. Then one of my friends called me up and asked me to check the results. Trembling I visited the GSoC dashboard&amp;#8230;&lt;br&gt;
+and &lt;span class="caps"&gt;VOILA&lt;/span&gt; I was selected ! I had made it. Finally, and that too on my first attempt. It is the happiest moment of my life till now. 
+I am the first student ever from my college to get selected in Google Summer of Code. I only have one person to thank for my selection in GSoC, who motivated me through&amp;nbsp;everything.&lt;/p&gt;
+&lt;h3&gt;Back to the&amp;nbsp;project&lt;/h3&gt;
+&lt;p&gt;As mentioned in the previous post, I will be working on a computational genomics project under Canadian Centre of Computational&amp;nbsp;Genomics.&lt;/p&gt;
+&lt;p&gt;My project is titled &lt;a href="https://summerofcode.withgoogle.com/projects/#6611818353000448"&gt;&amp;#8220;Improving SegAnnDB&amp;nbsp;Webapp&amp;#8221;&lt;/a&gt; &lt;/p&gt;
+&lt;h3&gt;What is SegAnnDB&amp;nbsp;?&lt;/h3&gt;
+&lt;p&gt;SegAnnDB is Segmentation Annotation Database. It is a webapp which is used for identifying gain, loss, amplification in a &lt;span class="caps"&gt;DNA&lt;/span&gt; segment. It is used in copy number analysis. &lt;a href="http://bioviz.rocq.inria.fr/"&gt;Here&lt;/a&gt; is a working instance of&amp;nbsp;SegAnnDB.&lt;/p&gt;
+&lt;h3&gt;Copy number&amp;nbsp;variations&lt;/h3&gt;
+&lt;p&gt;As per wikipedia&amp;nbsp;- &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Copy-number variations (CNVs) are a form of structural variation that manifest as deletions or duplications in the genome. For example, the chromosome that normally has sections in order as A-B-C-D might instead have sections A-B-C-C-D (a duplication of &amp;#8220;C&amp;#8221;) or A-B-D (a deletion of &amp;#8220;C&amp;#8221;). Cells with CNVs have abnormal or, for certain genes, normal variations in their copy&amp;nbsp;number.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img alt="CNV Image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Gene-duplication.png/170px-Gene-duplication.png" title="CNV Image"&gt;&lt;/p&gt;
+&lt;p&gt;Study of copy number variation is closely related to tumors. Although copy number variations are common in humans, but many studies have found that copy number variations in genes are related to diseases like tumors, cancers, alzheimers. Progress made in field of &lt;span class="caps"&gt;CNV&lt;/span&gt; will help greatly in demystifying the causes and cures behind these&amp;nbsp;diseases.&lt;/p&gt;
+&lt;p&gt;SegAnnDB focuses on helping researchers analyse th copy number alterations in a&amp;nbsp;chromosome.&lt;/p&gt;
+&lt;h3&gt;Project Aim&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;There is already a working version of SegAnnDB in which we can do basic but very accurate genomic segmentation. It visualizes by plotting the log ratio against chromosome length. It is one of the most accurate systems for&amp;nbsp;annotations.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Add appropriate unit tests and a regression testing suite &lt;/strong&gt; using selenium testing&amp;nbsp;framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Render plots based on chromosome region &lt;/strong&gt; the user wants to&amp;nbsp;see/annotate.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Permission System&lt;/strong&gt;, whereby a user can grant permissions like &lt;code&gt;read&lt;/code&gt;, &lt;code&gt;write&lt;/code&gt; to other&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. Social Annotations&lt;/strong&gt; - One user will be able to share his/her annotations with other&amp;nbsp;users.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. Faster Deletion of Profiles&lt;/strong&gt; - Aims to optimize the deletion algorithm from O(&lt;span class="caps"&gt;ND&lt;/span&gt;) to&amp;nbsp;O(1)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. Safe Deletion of Log Files&lt;/strong&gt; - Have a cron job which will periodically delete all the unused log&amp;nbsp;files.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. Docker container&lt;/strong&gt; - Package SegAnnDB as a docker&amp;nbsp;container.&lt;/p&gt;
+&lt;h3&gt;Time&amp;nbsp;line-&lt;/h3&gt;
+&lt;p&gt;The project timeline is as follows&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Project Milestones and&amp;nbsp;Deliverables&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Community Bonding Period (April 22-May 22)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Become more familiar with the codebase and how it works.
+        Realize how and what the test cases should be about. Also, find out that what would be the most efficient way of coding the other parts as well.
+        Towards the last week, start coding the unit tests using Selenium test
+        framework.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;May 23 - May 30 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Using Selenium Web Driver Framework, start writing code for the regression testing suite. I will decide what tests need to be written in my community bonding period.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;May 31 - June 13 (2 Weeks)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Work on replacing large pngs, with functionality to view subregions of chromosome.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 14 - June 20 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Permission System - Implement a permission system so that users can grant read/write permissions on profiles.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Midterm Evaluations&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Submit midterm evaluation by June 22. Then continue coding.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 22 - June 28 (1 week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Wrap up the remaining work on permission system&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;June 29 - July 12 (2 Weeks)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Work on Social Annotations. &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;July 13 - July 26 (2 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Faster deletion of profiles. Optimize O(&lt;span class="caps"&gt;ND&lt;/span&gt;) to O(1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;July 27 - August 2(1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Cron Job for safe deletion of log files of BerkeleyDB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;August 3 - August 9 (1 Week)&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Create Docker Image. Package SegAnnDB as a standalone docker container and upload it to dockerhub.
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;strong&gt;Remaining days&lt;/strong&gt;&lt;/td&gt;
+    &lt;td&gt;Reserved as a buffer period in case something takes longer than expected or unforeseen difficulties arise. If everything runs as per the timeline then this period will be used for more code cleanup, better testing and more documentation.
+    &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+
+&lt;h3&gt;Technologies and Frameworks Involved&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Languages&lt;/strong&gt; - Python, Javascript and Berkeley &lt;span class="caps"&gt;DB&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 1. Pyramid framework - &lt;/strong&gt; As SegAnnDB is a webapp. So it is built using pyramid web application&amp;nbsp;framework.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Selenium Unit testing - &lt;/strong&gt; For creating unit testing framework, I will use python bindings of&amp;nbsp;selenium.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. D3 &lt;span class="caps"&gt;JS&lt;/span&gt; - &lt;/strong&gt; It is a &lt;span class="caps"&gt;JS&lt;/span&gt; library for visualizing data on the client side. It handles showing annotations and also, uploading them to&amp;nbsp;ssrver.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. PruneDP and Segannot - &lt;/strong&gt; SegAnnDB uses machine learning for getting accurate breakpoints beforehand, then the user can verify and add his&amp;nbsp;own.&lt;/p&gt;
+&lt;p&gt;I hope I have well explained the project. If you still have doubts please feel free to comment here or email me at&amp;nbsp;x.abhishek.flyhigh@gmail.com&lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category></entry><entry><title>Starting Out In GSoC</title><link href="http://abstatic.github.io/preparing-for-gsoc.html" rel="alternate"></link><published>2016-05-02T10:20:00+05:30</published><updated>2016-05-02T10:20:00+05:30</updated><author><name>Abhishek Shrivastava &lt;x.abhishek.flyhigh@gmail.com&gt;</name></author><id>tag:abstatic.github.io,2016-05-02:/preparing-for-gsoc.html</id><summary type="html">&lt;p&gt;How I prepared for&amp;nbsp;GSoC&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hello&amp;nbsp;all,&lt;/p&gt;
+&lt;p&gt;This is the first post in a series of posts, in which I will cover my Google Summer Of Code(GSoC)&amp;nbsp;experience. &lt;/p&gt;
+&lt;p&gt;I remember that I had heard about GSoC back when I was in my first year of college education, but I never actually tried to participate in the event thinking that its just only for the elite programmers. But finally on my third year of college education, I finally thought &amp;#8220;I should atleast try&amp;#8221; and with that I started my preparations for GSoC&amp;#8216;16. I started preparing for the event from early&amp;nbsp;January. &lt;/p&gt;
+&lt;p&gt;I started out with visiting all the previously selected organizations, and collected information specifically on&amp;nbsp;-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What kind of proposals get selected, and which ones&amp;nbsp;don&amp;#8217;t&lt;/li&gt;
+&lt;li&gt;What are different steps involved in participating in&amp;nbsp;GSoC&lt;/li&gt;
+&lt;li&gt;What are the various pre requisites for various organizations and&amp;nbsp;projects&lt;/li&gt;
+&lt;li&gt;Read all possible links related to summer of code, and about the&amp;nbsp;program&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After my initial analysis of various organizations, I started picking out various organizations with which I would like to work with over the summer. I already had set my mind that I will only work on projects involving python as I had recently learned that langauge and was excited to further strenthen my skills in it. Already knowing what tech stack I wanted to work with really helped me out in selecting the&amp;nbsp;organization.&lt;/p&gt;
+&lt;p&gt;Some of the organizations that I had selected were&amp;nbsp;-  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span class="caps"&gt;C3G&lt;/span&gt;&lt;/strong&gt; : Canadian Centre for Computational Genomics, org working on computational&amp;nbsp;genomics  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BioJS&lt;/strong&gt; : Another awesome org working on computational biology and&amp;nbsp;visualization  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ScraPy&lt;/strong&gt; :  Related to web&amp;nbsp;scraping  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;span class="caps"&gt;CC&lt;/span&gt; Extractor&lt;/strong&gt; :  I was interested in their infrastructure related project&amp;nbsp;idea.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;myhdl&lt;/strong&gt; : Org with projects on Hardware Descripting Languages in&amp;nbsp;python  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ascend&lt;/strong&gt; : Org focussing on computational&amp;nbsp;chemistry  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After short listing orgs, I started sending out emails to the prospective mentors &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; mailing lists of the projects that I was interested in. I got a lot of psotive feedback from many mentors. And then, I started focussing on the projects that really interested me. Out of all of them &lt;strong&gt;SegAnnDB project idea, from &lt;span class="caps"&gt;C3G&lt;/span&gt;&lt;/strong&gt; stood out to&amp;nbsp;me.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;The Org&lt;/strong&gt;&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;&lt;span class="caps"&gt;C3G&lt;/span&gt; is a org completely focussed on computational biology. Mind you, it was a field that I literally knew nothing about. But, I really wanted to understand this, and do this project. It was a nice challenge as well. So after 5 years I started learning about biology and genomics&amp;nbsp;again.  &lt;/p&gt;
+&lt;p&gt;I studied computational genomics day and night for a few days, so that I can better understand all the intricacies involved with the project. This was a very crucial step and it really helped in understanding my project inside&amp;nbsp;out.  &lt;/p&gt;
+&lt;p&gt;Needless to say, a lot of credit goes to my project mentor Toby Hocking as well. He is a wonderful guy and he pointed me to all the correct resources to read&amp;nbsp;through.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;The Proposal&lt;/strong&gt;&amp;nbsp;-&lt;/h3&gt;
+&lt;p&gt;After some good and positive discussions about the project with my mentor, I started working on my project proposal. As for &lt;span class="caps"&gt;C3G&lt;/span&gt; we already had a proposal template. And after some modifications in my draft, I finally submitted it to google and then the month long wait started. It was the longest wait ever, I remember I used to check GSoC dashboard alomst on an hourly basis&amp;nbsp;everyday.&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s it for now. In my next post I will cover more details about my project and what I plan to acheive in this coming&amp;nbsp;summer. &lt;/p&gt;</content><category term="Gsoc"></category><category term="computational genomics"></category><category term="google summer of code"></category></entry></feed>
