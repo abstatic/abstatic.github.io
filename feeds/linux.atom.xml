@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis - Linux</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2016-06-27T16:42:00+05:30</updated><entry><title>DGPLUG Summer Training</title><link href="https://abstatic.github.io/dgplug-summer-training.html" rel="alternate"></link><published>2016-06-27T16:42:00+05:30</published><updated>2016-06-27T16:42:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2016-06-27:/dgplug-summer-training.html</id><summary type="html">&lt;p&gt;My experiences till now with &lt;span class="caps"&gt;DGPLUG&lt;/span&gt; summer&amp;nbsp;training&lt;/p&gt;</summary><content type="html">&lt;h3&gt;What is a &lt;span class="caps"&gt;LUG&lt;/span&gt; and &lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&amp;nbsp;?&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis - Linux</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-07-05T21:17:00+05:30</updated><entry><title>Configuring touchpads on linux</title><link href="https://abstatic.github.io/touchpads-linux.html" rel="alternate"></link><published>2017-07-05T21:17:00+05:30</published><updated>2017-07-05T21:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/touchpads-linux.html</id><summary type="html">&lt;p&gt;How to manually configure touchpads on&amp;nbsp;linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;So, after recently installing arch linux on my machine I had to reconfigure how my touchpad works. By defualt on most linux distros (i3, mate, awesome) things like multi touch, tap to touch are&amp;nbsp;disabled.&lt;/p&gt;
+&lt;p&gt;I referred the &lt;a href="https://wiki.archlinux.org/index.php/Touchpad_Synaptics"&gt;Arch Wiki&lt;/a&gt; for figuring out how to configure various touchpad&amp;nbsp;configurations.&lt;/p&gt;
+&lt;p&gt;First, I used &lt;code&gt;xinput list&lt;/code&gt; command to find out what is the name of my touchpad. After this I installed the package &lt;code&gt;xf86-input-synaptics&lt;/code&gt;. This package is available by default on Arch Repo. I must warn you that this package is no longer actively maintained, modern desktop environments like &lt;span class="caps"&gt;KDE&lt;/span&gt;, Gnome rely on &lt;code&gt;libinput&lt;/code&gt; , still &lt;code&gt;xf86-input-synaptics&lt;/code&gt; is pretty stable and works in most of the&amp;nbsp;cases.&lt;/p&gt;
+&lt;h3&gt;The configuration&amp;nbsp;file&lt;/h3&gt;
+&lt;p&gt;Generally the configuration file is located in &lt;code&gt;/etc/X11/xorg.conf.d/70-synaptics.conf&lt;/code&gt; , if it doesn&amp;#8217;t exist then create it. You will need super user priveleges for editing/creating the&amp;nbsp;file.&lt;/p&gt;
+&lt;p&gt;Syntax is &lt;code&gt;Option "&amp;lt;option name&amp;gt;" "&amp;lt;option value&amp;gt;"&lt;/code&gt;
+&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;1&amp;#8221; is for Mouse button 1, that&amp;#8217;s left click
+&amp;#8220;2&amp;#8221; is for Mouse button 2, that&amp;#8217;s middle click
+&amp;#8220;3&amp;#8221; is for Mouse button 3, that&amp;#8217;s right&amp;nbsp;click&lt;/p&gt;
+&lt;h4&gt;My&amp;nbsp;configuration&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Section &amp;quot;InputClass&amp;quot;
+    Identifier &amp;quot;touchpad&amp;quot;
+    Driver &amp;quot;synaptics&amp;quot;
+    MatchIsTouchpad &amp;quot;on&amp;quot;
+        Option &amp;quot;TapButton1&amp;quot; &amp;quot;1&amp;quot;
+        Option &amp;quot;TapButton2&amp;quot; &amp;quot;3&amp;quot;
+        Option &amp;quot;TapButton3&amp;quot; &amp;quot;2&amp;quot;
+        Option &amp;quot;RBCornerButton&amp;quot; &amp;quot;3&amp;quot;
+        Option &amp;quot;VertEdgeScroll&amp;quot; &amp;quot;on&amp;quot;
+        Option &amp;quot;VertTwoFingerScroll&amp;quot; &amp;quot;on&amp;quot;
+        Option &amp;quot;HorizEdgeScroll&amp;quot; &amp;quot;on&amp;quot;
+        Option &amp;quot;HorizTwoFingerScroll&amp;quot; &amp;quot;on&amp;quot;
+        Option &amp;quot;CircularScrolling&amp;quot; &amp;quot;on&amp;quot;
+        Option &amp;quot;CircScrollTrigger&amp;quot; &amp;quot;2&amp;quot;
+        Option &amp;quot;EmulateTwoFingerMinZ&amp;quot; &amp;quot;40&amp;quot;
+        Option &amp;quot;EmulateTwoFingerMinW&amp;quot; &amp;quot;8&amp;quot;
+        Option &amp;quot;CoastingSpeed&amp;quot; &amp;quot;0&amp;quot;
+        Option &amp;quot;FingerLow&amp;quot; &amp;quot;30&amp;quot;
+        Option &amp;quot;FingerHigh&amp;quot; &amp;quot;50&amp;quot;
+        Option &amp;quot;MaxTapTime&amp;quot; &amp;quot;125&amp;quot;
+EndSection
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lets go over some interesting&amp;nbsp;entries-&lt;/p&gt;
+&lt;h5&gt;TapButton1&lt;/h5&gt;
+&lt;p&gt;(integer) configures which mouse-button is reported on a non-corner, one finger&amp;nbsp;tap.&lt;/p&gt;
+&lt;h5&gt;TapButton2&lt;/h5&gt;
+&lt;p&gt;(integer) configures which mouse-button is reported on a non-corner, two finger&amp;nbsp;tap&lt;/p&gt;
+&lt;h5&gt;TapButton3&lt;/h5&gt;
+&lt;p&gt;(integer) configures which mouse-button is reported on a non-corner, three finger&amp;nbsp;tap&lt;/p&gt;
+&lt;h5&gt;RBCornerButton&lt;/h5&gt;
+&lt;p&gt;(integer) configures which mouse-button is reported on a right bottom corner, one finger tap (use Option &amp;#8220;RBCornerButton&amp;#8221; &amp;#8220;3&amp;#8221; to achieve Ubuntu style tap behaviour for right mouse button in lower right&amp;nbsp;corner)&lt;/p&gt;
+&lt;h5&gt;VertEdgeScroll&lt;/h5&gt;
+&lt;p&gt;(boolean) enables vertical scrolling while dragging across the right edge of the touch&amp;nbsp;pad.&lt;/p&gt;
+&lt;h5&gt;HorizEdgeScroll&lt;/h5&gt;
+&lt;p&gt;(boolean) enables horizontal scrolling while dragging across the bottom edge of the touch&amp;nbsp;pad.&lt;/p&gt;
+&lt;h5&gt;VertTwoFingerScroll&lt;/h5&gt;
+&lt;p&gt;(boolean) enables vertical scrolling using two&amp;nbsp;fingers.&lt;/p&gt;
+&lt;h5&gt;HorizTwoFingerScroll&lt;/h5&gt;
+&lt;p&gt;(boolean) enables horizontal scrolling using two&amp;nbsp;fingers.&lt;/p&gt;
+&lt;p&gt;After editing the configuration file the next you will have to restart for your settings to take effect.
+You can also check if a certain setting works using &lt;code&gt;synclient&lt;/code&gt; which will get installed with the &lt;code&gt;xf86-input-synaptics&lt;/code&gt; package. More details &lt;a href="https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Synclient"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Comment below if you face any&amp;nbsp;issues.&lt;/p&gt;</content><category term="Linux"></category><category term="open source"></category><category term="touchpad"></category><category term="synaptics"></category></entry><entry><title>DGPLUG Summer Training</title><link href="https://abstatic.github.io/dgplug-summer-training.html" rel="alternate"></link><published>2016-06-27T16:42:00+05:30</published><updated>2016-06-27T16:42:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2016-06-27:/dgplug-summer-training.html</id><summary type="html">&lt;p&gt;My experiences till now with &lt;span class="caps"&gt;DGPLUG&lt;/span&gt; summer&amp;nbsp;training&lt;/p&gt;</summary><content type="html">&lt;h3&gt;What is a &lt;span class="caps"&gt;LUG&lt;/span&gt; and &lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&amp;nbsp;?&lt;/h3&gt;
 &lt;p&gt;&lt;span class="caps"&gt;LUG&lt;/span&gt; is a often used term in computer communities. It stands for &amp;#8220;Linux Users
 Group&amp;#8221; , &lt;a href="https://dgplug.org/"&gt;&lt;span class="caps"&gt;DGPLUG&lt;/span&gt;&lt;/a&gt; stands for &amp;#8220;Linux Users&amp;#8217; Group of&amp;nbsp;Durgapur&amp;#8221; &lt;/p&gt;
 &lt;p&gt;Check out their website for more information about the community. Every year
