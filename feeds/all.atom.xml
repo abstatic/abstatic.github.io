@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-07-05T21:17:00+05:30</updated><entry><title>Configuring touchpads on linux</title><link href="https://abstatic.github.io/2017/07/05/touchpads-linux/" rel="alternate"></link><published>2017-07-05T21:17:00+05:30</published><updated>2017-07-05T21:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/2017/07/05/touchpads-linux/</id><summary type="html">&lt;p&gt;How to manually configure touchpads on&amp;nbsp;linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;So, after recently installing arch linux on my machine I had to reconfigure how my touchpad works. By defualt on most linux distros (i3, mate, awesome) things like multi touch, tap to touch are&amp;nbsp;disabled.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-07-05T22:17:00+05:30</updated><entry><title>Setting up autolock on i3</title><link href="https://abstatic.github.io/2017/07/05/xautolock-linux/" rel="alternate"></link><published>2017-07-05T22:17:00+05:30</published><updated>2017-07-05T22:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/2017/07/05/xautolock-linux/</id><summary type="html">&lt;p&gt;How to setup auto screen lock on i3 and Arch&amp;nbsp;Linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;i3wm comes with a very nice screenlock called &lt;code&gt;i3lock&lt;/code&gt; but as you might expect every thing is trimmed down and looks quite ugly by default. Also, it doesn&amp;#8217;t have the feature of auto screen locking which I always felt is&amp;nbsp;vital.&lt;/p&gt;
+&lt;p&gt;One funny morning I decided to look on the internet how people have modified the lock&amp;nbsp;screens.&lt;/p&gt;
+&lt;p&gt;Here is the screenshot of my locked display&amp;nbsp;-&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Screenlocked" src="http://i.imgur.com/PLTX59E.png"&gt;&lt;/p&gt;
+&lt;p&gt;Looks cool, right ? Basically its the screenshot of whatever I am working on and after that I pixelate the screenshot by about&amp;nbsp;10%&lt;/p&gt;
+&lt;p&gt;For doing this I have a handy bash script which does the job pretty well. Below script takes the screenshot, stores it in &lt;code&gt;/tmp&lt;/code&gt; and then creates another image which is pixellated by 10% for privacy reasons. This script also turns the display off after some time of&amp;nbsp;inactivity.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#~/bin/sh -e
+
+#fuzzylock.sh
+
+# take a screenshot
+scrot /tmp/screen_locked.png
+
+# pixelate it 10x
+mogrify -scale 10% -scale 1000% /tmp/screen_locked.png
+
+# lock screen displaying this image
+i3lock -i /tmp/screen_locked.png
+
+# Turn off the screen after a delay
+sleep 60; pgrep i3lock &amp;amp;&amp;amp; xset dpms force off
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;span class="caps"&gt;EDIT&lt;/span&gt; - One obvious bug is that it doesn&amp;#8217;t delete the original screenshot taken which is stored in &lt;code&gt;/tmp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Package &lt;code&gt;scrot&lt;/code&gt; generally comes installed by default on most distros and is available in almost all of the repos. &lt;code&gt;mogrify&lt;/code&gt; program is part of ImageMagick which you will need to&amp;nbsp;install.&lt;/p&gt;
+&lt;p&gt;Now we want this script to get executed manually and automatically as well after some time, for this I installed &lt;code&gt;xautolock&lt;/code&gt; , configuring &lt;code&gt;xautolock&lt;/code&gt; is pretty&amp;nbsp;straightforward. &lt;/p&gt;
+&lt;p&gt;I added the following couple of lines in my i3 config file&amp;nbsp;-&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# for automatic screenlocking
+bindsym $mod+q exec &amp;quot;~/dev/fuzzylock.sh&amp;quot;
+exec xautolock -time 15 -locker &amp;quot;~/dev/fuzzylock.sh&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The time parameter takes the time in minutes before executing the script. While the first line defines a custom shortcut for executing the&amp;nbsp;script.&lt;/p&gt;
+&lt;p&gt;That&amp;#8217;s it for now. Next post will be about configuring proxies and 802.1x authentication on Arch Linux and a neat hack for making it work with google chrome. Happy&amp;nbsp;Learning!&lt;/p&gt;</content><category term="Linux"></category><category term="open source"></category><category term="i3wm"></category><category term="xautolock"></category></entry><entry><title>Configuring touchpads on linux</title><link href="https://abstatic.github.io/2017/07/05/touchpads-linux/" rel="alternate"></link><published>2017-07-05T21:17:00+05:30</published><updated>2017-07-05T21:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/2017/07/05/touchpads-linux/</id><summary type="html">&lt;p&gt;How to manually configure touchpads on&amp;nbsp;linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;So, after recently installing arch linux on my machine I had to reconfigure how my touchpad works. By defualt on most linux distros (i3, mate, awesome) things like multi touch, tap to touch are&amp;nbsp;disabled.&lt;/p&gt;
 &lt;p&gt;I referred the &lt;a href="https://wiki.archlinux.org/index.php/Touchpad_Synaptics"&gt;Arch Wiki&lt;/a&gt; for figuring out how to configure various touchpad&amp;nbsp;configurations.&lt;/p&gt;
 &lt;p&gt;First, I used &lt;code&gt;xinput list&lt;/code&gt; command to find out what is the name of my touchpad. After this I installed the package &lt;code&gt;xf86-input-synaptics&lt;/code&gt;. This package is available by default on Arch Repo. I must warn you that this package is no longer actively maintained, modern desktop environments like &lt;span class="caps"&gt;KDE&lt;/span&gt;, Gnome rely on &lt;code&gt;libinput&lt;/code&gt; , still &lt;code&gt;xf86-input-synaptics&lt;/code&gt; is pretty stable and works in most of the&amp;nbsp;cases.&lt;/p&gt;
 &lt;h3&gt;The configuration&amp;nbsp;file&lt;/h3&gt;
