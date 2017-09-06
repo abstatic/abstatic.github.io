@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-07-05T22:17:00+05:30</updated><entry><title>Setting up autolock on i3</title><link href="https://abstatic.github.io/2017/07/05/xautolock-linux/" rel="alternate"></link><published>2017-07-05T22:17:00+05:30</published><updated>2017-07-05T22:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/2017/07/05/xautolock-linux/</id><summary type="html">&lt;p&gt;How to setup auto screen lock on i3 and Arch&amp;nbsp;Linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;i3wm comes with a very nice screenlock called &lt;code&gt;i3lock&lt;/code&gt; but as you might expect every thing is trimmed down and looks quite ugly by default. Also, it doesn&amp;#8217;t have the feature of auto screen locking which I always felt is&amp;nbsp;vital.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-09-07T03:15:00+05:30</updated><entry><title>Setting up proxies in Linux</title><link href="https://abstatic.github.io/2017/09/07/setting%20proxies/" rel="alternate"></link><published>2017-09-07T03:15:00+05:30</published><updated>2017-09-07T03:15:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2017-09-07:/2017/09/07/setting proxies/</id><summary type="html">&lt;p&gt;This post covers all the points about setting up a manual proxy on a linux distribution that doesn&amp;#8217;t do it&amp;nbsp;automatically.&lt;/p&gt;</summary><content type="html">&lt;p&gt;At times setting up proxy on your linux distribution can be a bit tricky if
+you are using distros like Arch, Gentoo which don&amp;#8217;t do it for&amp;nbsp;you.&lt;/p&gt;
+&lt;p&gt;This post covers all the different settings that I had to follow to configure proxy
+settings on my Arch system with i3 as its window&amp;nbsp;manager.&lt;/p&gt;
+&lt;h2&gt;1. &lt;span class="caps"&gt;NM&lt;/span&gt;-Applet&amp;nbsp;Configuration&lt;/h2&gt;
+&lt;p&gt;There is a direct option to configure proxy for a network connection in
+nm-applet network manager, its pretty straightforward but in my case it didn&amp;#8217;t
+work at&amp;nbsp;all.&lt;/p&gt;
+&lt;h2&gt;2. Setting up manual proxy in&amp;nbsp;chrome&lt;/h2&gt;
+&lt;p&gt;If you are using chrome in non-standard distro then chances are that chrome
+will not allow you to define the proxy settings instead it will default to the
+system wide proxy settings, but what if your system wide proxy isn&amp;#8217;t working&amp;nbsp;?&lt;/p&gt;
+&lt;p&gt;The work around that I found was to use command line arguments to chrome.
+Required command line argument here was the one which allows us to specify a location to a &lt;span class="caps"&gt;PAC&lt;/span&gt; file which allows for auto config of all the proxy&amp;nbsp;setting&lt;/p&gt;
+&lt;p&gt;A &lt;span class="caps"&gt;PAC&lt;/span&gt;(Proxy Autoconfiguration) file is just a normal file which contains rules
+about the proxy that you want to enable. The &lt;span class="caps"&gt;PAC&lt;/span&gt; file used by me&amp;nbsp;is&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;FindProxyForURL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;{&lt;/span&gt; 
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;shExpMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;192.168.*&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;shExpMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;127.*&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;shExpMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;shExpMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;*.iiit.ac.in&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;shExpMatch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;10.*&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;isPlainHostName&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;||&lt;/span&gt;  &lt;span class="nx"&gt;dnsDomainIs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.iiit.ac.in&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;DIRECT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// You shouldn&amp;#39;t need this, but in some cases it might be handy:&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;isInNet&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;host&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;10.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;255.0.0.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;DIRECT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;// This uses the Dan&amp;#39;s Guardian port by default, squid if that isn&amp;#39;t&lt;/span&gt;
+&lt;span class="c1"&gt;// working, and direct if that isn&amp;#39;t working.  On my network, i don&amp;#39;t&lt;/span&gt;
+&lt;span class="c1"&gt;// use DIRECT, because i block outgoing access in the firewall.&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;PROXY proxy.iiit.ac.in:8080; DIRECT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So I needed to launch chrome by using the&amp;nbsp;command-  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;google-chrome-stable --proxy-pac-url=http://proxy.iiit.ac.in/proxy.pac&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Way too verbose. I wanted to find a way via which I could launch chrome with
+this flag&amp;nbsp;normally. &lt;/p&gt;
+&lt;p&gt;The fix was to copy the bash script which actually executes chrome, by default
+you can find it using &lt;code&gt;which&lt;/code&gt; command. After that you will find a line
+containing &lt;code&gt;exec&lt;/code&gt; command, you need to modify it so that it looks&amp;nbsp;like-&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;exec /opt/google/chrome/google-chrome $CHROME_USER_FLAGS "--proxy-pac-url=http://proxy.iiit.ac.in/proxy.pac"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;So I just copied the default &lt;code&gt;google-chrome-stable&lt;/code&gt; executable bash script to
+a new file named &lt;code&gt;chrome-iiit&lt;/code&gt; and that was&amp;nbsp;it.&lt;/p&gt;
+&lt;h2&gt;3. Setting up proxy inside the&amp;nbsp;terminal&lt;/h2&gt;
+&lt;p&gt;If you are not using a system wide proxy then you also need to setup proxy for
+all the connections that you might make from inside of your terminal. This was
+easy I only needed to add a couple of environment variables into my .bashrc to
+make it work. The changes were as&amp;nbsp;follows-&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## CONTENT FOR IIIT H PROXY
+export http_proxy=http://proxy.iiit.ac.in:8080/
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+export rsync_proxy=$http_proxy
+export ssh_proxy=$http_proxy
+export no_proxy=&amp;quot;localhost, 127.0.0.1, *iiit.ac.in, *iiit.net, 172.16.*.*, 172.17.*.*, 192.168.*.*, 10.*.*.*&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might need to replace the value of variables by your own proxy &lt;span class="caps"&gt;URL&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setting up proxy for&amp;nbsp;sudo&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The above changes will allow you to define proxy for all commands that you
+execute with user-level priveleges. But, if you try to execute any program
+which requires you to use root access or sudo(substitute user do) then you
+won&amp;#8217;t be able to. For this you need to add an additional line to your
+&lt;code&gt;sudoers&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;Please edit the sudoers file using &lt;code&gt;sudo visudo&lt;/code&gt; command&amp;nbsp;only!&lt;/p&gt;
+&lt;p&gt;Inside the sudoers file I only had to add an additional line to modify the
+defualt &lt;code&gt;env_variables&lt;/code&gt; so that it also includes &lt;code&gt;$http_proxy&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;### changes for IIIT H proxy
+Defaults env_keep += &amp;quot;https_proxy http_proxy&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;4. Setting up proxy for&amp;nbsp;pacman&lt;/h2&gt;
+&lt;p&gt;This was something that I didn&amp;#8217;t expect that I would need to do. But as it
+turns out, arch also expects you to manually configure proxy settings for
+Pacman(arch package manager) as well. This was also not&amp;nbsp;hard.&lt;/p&gt;
+&lt;p&gt;After a bit of googling the solution was to modify the pacman config file
+at &lt;code&gt;/etc/pacman.conf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Near lines 20-ish you will find an entry name &lt;code&gt;XferCommand&lt;/code&gt; you need to modify
+it so that it looks like -
+&lt;code&gt;XferCommand = /usr/bin/wget --passive-ftp --proxy=on -c -O %o %u&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You might notice that we are making a call to wget, so its natural that we
+modify the config file for wget and set proxy values there too. The default
+wget config file is at &lt;code&gt;/etc/wgetrc&lt;/code&gt; &lt;/p&gt;
+&lt;p&gt;Find the lines containing &lt;code&gt;https_proxy http_proxy use_proxy&lt;/code&gt; variables,
+uncomment them and add the correct&amp;nbsp;values&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# You can set the default proxies for Wget to use for http, https, and ftp.
+# They will override the value in the environment.
+https_proxy = http://proxy.iiit.ac.in:8080
+http_proxy = http://proxy.iiit.ac.in:8080
+ftp_proxy = http://proxy.iiit.ac.in:8080
+
+# If you do not want to use proxy at all, set this to off.
+use_proxy = on
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In case you want to setup proxy iniside Firefox webbrowser, you just go to
+Advanced Settings -&amp;gt; Network and then set the manual proxy&amp;nbsp;values&lt;/p&gt;
+&lt;p&gt;Phew, and that&amp;#8217;s it folks! This is all the different stuff that happens when
+you use system wide proxy&amp;nbsp;configuration.&lt;/p&gt;</content><category term="Linux"></category><category term="proxy"></category><category term="arch"></category><category term="bash"></category><category term="i3"></category><category term="i3wm"></category></entry><entry><title>Setting up autolock on i3</title><link href="https://abstatic.github.io/2017/07/05/xautolock-linux/" rel="alternate"></link><published>2017-07-05T22:17:00+05:30</published><updated>2017-07-05T22:17:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2017-07-05:/2017/07/05/xautolock-linux/</id><summary type="html">&lt;p&gt;How to setup auto screen lock on i3 and Arch&amp;nbsp;Linux&lt;/p&gt;</summary><content type="html">&lt;p&gt;i3wm comes with a very nice screenlock called &lt;code&gt;i3lock&lt;/code&gt; but as you might expect every thing is trimmed down and looks quite ugly by default. Also, it doesn&amp;#8217;t have the feature of auto screen locking which I always felt is&amp;nbsp;vital.&lt;/p&gt;
 &lt;p&gt;One funny morning I decided to look on the internet how people have modified the lock&amp;nbsp;screens.&lt;/p&gt;
 &lt;p&gt;Here is the screenshot of my locked display&amp;nbsp;-&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Screenlocked" src="http://i.imgur.com/PLTX59E.png"&gt;&lt;/p&gt;

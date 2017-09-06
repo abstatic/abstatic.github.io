@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/</loc>
-<lastmod>2017-07-29T13:59:07-00:00</lastmod>
+<lastmod>2017-09-07T03:53:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/archives.html</loc>
-<lastmod>2017-07-29T13:59:07-00:00</lastmod>
+<lastmod>2017-09-07T03:53:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/tags.html</loc>
-<lastmod>2017-07-29T13:59:07-00:00</lastmod>
+<lastmod>2017-09-07T03:53:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/categories.html</loc>
-<lastmod>2017-07-29T13:59:07-00:00</lastmod>
+<lastmod>2017-09-07T03:53:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://abstatic.github.io/pages/books/</loc>
 <lastmod>2015-03-01T12:16:00+05:30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/2017/09/07/setting proxies/</loc>
+<lastmod>2017-09-07T03:15:00+05:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -292,7 +299,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/category/linux.html</loc>
-<lastmod>2017-07-05T22:17:00+05:53</lastmod>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -313,20 +320,48 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/tag/linux.html</loc>
-<lastmod>2017-07-05T22:17:00+05:53</lastmod>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://abstatic.github.io/tag/open-source.html</loc>
-<lastmod>2017-07-05T22:17:00+05:53</lastmod>
+<loc>https://abstatic.github.io/tag/proxy.html</loc>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/arch.html</loc>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/bash.html</loc>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/i3.html</loc>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/tag/i3wm.html</loc>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/open-source.html</loc>
 <lastmod>2017-07-05T22:17:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -362,13 +397,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/tag/dragonwar.html</loc>
-<lastmod>2017-06-20T18:00:00+05:53</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://abstatic.github.io/tag/i3.html</loc>
 <lastmod>2017-06-20T18:00:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -474,13 +502,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/tag/strings.html</loc>
-<lastmod>2016-06-24T01:15:00+05:53</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://abstatic.github.io/tag/bash.html</loc>
 <lastmod>2016-06-24T01:15:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -649,7 +670,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/author/abhishek-shrivastava.html</loc>
-<lastmod>2017-06-20T18:00:00+05:53</lastmod>
+<lastmod>2017-09-07T03:15:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

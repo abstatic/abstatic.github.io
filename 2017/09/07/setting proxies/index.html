@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Coding Mantis</title>
+
+    <meta charset="utf-8" />
+    <link href="https://abstatic.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Full Atom Feed" />
+    <link href="https://abstatic.github.io/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Coding Mantis Full RSS Feed" />
+    <link href="https://abstatic.github.io/feeds/linux.atom.xml" type="application/atom+xml" rel="alternate" title="Coding Mantis Categories Atom Feed" />
+    <link rel="stylesheet" href="../../../../theme/css/poole.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/syntax.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/lanyon.css"/>
+    <link rel="stylesheet" href="../../../../theme/css/font-awesome.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+    <link rel="stylesheet" href="../../../../theme/css/styles.css"/>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74287308-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <meta name="tags" contents="Linux" />
+    <meta name="tags" contents="proxy" />
+    <meta name="tags" contents="arch" />
+    <meta name="tags" contents="bash" />
+    <meta name="tags" contents="i3" />
+    <meta name="tags" contents="i3wm" />
+
+  </head>
+
+  <body>
+<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <div class="profile">
+      <img src="../../../../theme/img/profile.jpg"/>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+  <a class="sidebar-nav-item" href="/">All</a>
+
+      <a class="sidebar-nav-item" href="../../../../category/configuration.html">Configuration</a>
+      <a class="sidebar-nav-item" href="../../../../category/gsoc.html">GSoC</a>
+      <a class="sidebar-nav-item" href="../../../../category/life.html">Life</a>
+      <a class="sidebar-nav-item" href="../../../../category/linux.html">Linux</a>
+      <a class="sidebar-nav-item" href="../../../../category/programming.html">Programming</a>
+      <a class="sidebar-nav-item" href="../../../../category/random.html">Random</a>
+
+  <a class="sidebar-nav-item" href="/archives">Blog Archives</a>
+  <a class="sidebar-nav-item" href="/tags">Browse By Tags</a>
+  <a class="sidebar-nav-item" href="/feeds/all.rss.xml">Feeds</a>
+  <a class="sidebar-nav-item" href="../../../../pages/about">About</a>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>Follow On:</p>
+    <ul style="list-style: none;">
+      <li>
+        <a href="https://plus.google.com/u/0/+AbhishekShrivastava1">
+          <i class="fa fa-google-plus-square"></i>  Google
+        </a>
+      </li>
+      <li>
+        <a href="https://in.linkedin.com/in/abshrivastava1">
+          <i class="fa fa-linkedin-square"></i>  LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/abstatic">
+          <i class="fa fa-github-square"></i>  Github
+        </a>
+      </li>
+      <li>
+        <a href="http://stackoverflow.com/users/3594927/abhishek-m">
+          <i class="fa fa-stack-overflow"></i>  StackOverflow 
+        </a>
+      </li>
+      <li>
+        <a href="mailto:abhishek.shrivastava.ts@gmail.com">
+          <i class="fa fa-envelope"></i> Email
+        </a>
+      </li>
+    </ul>
+    <p class="tiny-note">
+      <a class="muted" href="#">© Abhishek Shrivastava</a>
+    </p>
+  </div>
+</div>    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h2 class="masthead-title">
+            <a href="../../../../" title="Home">Coding Mantis</a>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+<div class="posts">
+<div class="post">
+    <h1 class="post-title">
+      Setting up proxies in&nbsp;Linux
+    </h1>
+    <span class="post-date">Thu 07 September 2017</span>
+
+    <p>At times setting up proxy on your linux distribution can be a bit tricky if
+you are using distros like Arch, Gentoo which don&#8217;t do it for&nbsp;you.</p>
+<p>This post covers all the different settings that I had to follow to configure proxy
+settings on my Arch system with i3 as its window&nbsp;manager.</p>
+<h2>1. <span class="caps">NM</span>-Applet&nbsp;Configuration</h2>
+<p>There is a direct option to configure proxy for a network connection in
+nm-applet network manager, its pretty straightforward but in my case it didn&#8217;t
+work at&nbsp;all.</p>
+<h2>2. Setting up manual proxy in&nbsp;chrome</h2>
+<p>If you are using chrome in non-standard distro then chances are that chrome
+will not allow you to define the proxy settings instead it will default to the
+system wide proxy settings, but what if your system wide proxy isn&#8217;t working&nbsp;?</p>
+<p>The work around that I found was to use command line arguments to chrome.
+Required command line argument here was the one which allows us to specify a location to a <span class="caps">PAC</span> file which allows for auto config of all the proxy&nbsp;setting</p>
+<p>A <span class="caps">PAC</span>(Proxy Autoconfiguration) file is just a normal file which contains rules
+about the proxy that you want to enable. The <span class="caps">PAC</span> file used by me&nbsp;is</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">FindProxyForURL</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">host</span><span class="p">)</span> 
+<span class="p">{</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="nx">shExpMatch</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;192.168.*&quot;</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">shExpMatch</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;127.*&quot;</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">shExpMatch</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;localhost&quot;</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">shExpMatch</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;*.iiit.ac.in&quot;</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">shExpMatch</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;10.*&quot;</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">isPlainHostName</span><span class="p">(</span> <span class="nx">host</span> <span class="p">)</span>
+    <span class="o">||</span>  <span class="nx">dnsDomainIs</span><span class="p">(</span> <span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;.iiit.ac.in&quot;</span> <span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span> 
+    <span class="p">}</span>
+
+<span class="c1">// You shouldn&#39;t need this, but in some cases it might be handy:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isInNet</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;10.0.0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;255.0.0.0&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span> 
+    <span class="p">}</span>
+
+<span class="c1">// This uses the Dan&#39;s Guardian port by default, squid if that isn&#39;t</span>
+<span class="c1">// working, and direct if that isn&#39;t working.  On my network, i don&#39;t</span>
+<span class="c1">// use DIRECT, because i block outgoing access in the firewall.</span>
+    <span class="k">return</span> <span class="s2">&quot;PROXY proxy.iiit.ac.in:8080; DIRECT&quot;</span><span class="p">;</span> 
+<span class="p">}</span>
+</pre></div>
+
+
+<p>So I needed to launch chrome by using the&nbsp;command-  </p>
+<p><code>google-chrome-stable --proxy-pac-url=http://proxy.iiit.ac.in/proxy.pac</code></p>
+<p>Way too verbose. I wanted to find a way via which I could launch chrome with
+this flag&nbsp;normally. </p>
+<p>The fix was to copy the bash script which actually executes chrome, by default
+you can find it using <code>which</code> command. After that you will find a line
+containing <code>exec</code> command, you need to modify it so that it looks&nbsp;like-</p>
+<p><code>exec /opt/google/chrome/google-chrome $CHROME_USER_FLAGS "--proxy-pac-url=http://proxy.iiit.ac.in/proxy.pac"</code></p>
+<p>So I just copied the default <code>google-chrome-stable</code> executable bash script to
+a new file named <code>chrome-iiit</code> and that was&nbsp;it.</p>
+<h2>3. Setting up proxy inside the&nbsp;terminal</h2>
+<p>If you are not using a system wide proxy then you also need to setup proxy for
+all the connections that you might make from inside of your terminal. This was
+easy I only needed to add a couple of environment variables into my .bashrc to
+make it work. The changes were as&nbsp;follows-</p>
+<div class="highlight"><pre><span></span>## CONTENT FOR IIIT H PROXY
+export http_proxy=http://proxy.iiit.ac.in:8080/
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+export rsync_proxy=$http_proxy
+export ssh_proxy=$http_proxy
+export no_proxy=&quot;localhost, 127.0.0.1, *iiit.ac.in, *iiit.net, 172.16.*.*, 172.17.*.*, 192.168.*.*, 10.*.*.*&quot;
+</pre></div>
+
+
+<p>You might need to replace the value of variables by your own proxy <span class="caps">URL</span>.</p>
+<p><strong>Setting up proxy for&nbsp;sudo</strong></p>
+<p>The above changes will allow you to define proxy for all commands that you
+execute with user-level priveleges. But, if you try to execute any program
+which requires you to use root access or sudo(substitute user do) then you
+won&#8217;t be able to. For this you need to add an additional line to your
+<code>sudoers</code> file.</p>
+<p>Please edit the sudoers file using <code>sudo visudo</code> command&nbsp;only!</p>
+<p>Inside the sudoers file I only had to add an additional line to modify the
+defualt <code>env_variables</code> so that it also includes <code>$http_proxy</code></p>
+<div class="highlight"><pre><span></span>### changes for IIIT H proxy
+Defaults env_keep += &quot;https_proxy http_proxy&quot;
+</pre></div>
+
+
+<h2>4. Setting up proxy for&nbsp;pacman</h2>
+<p>This was something that I didn&#8217;t expect that I would need to do. But as it
+turns out, arch also expects you to manually configure proxy settings for
+Pacman(arch package manager) as well. This was also not&nbsp;hard.</p>
+<p>After a bit of googling the solution was to modify the pacman config file
+at <code>/etc/pacman.conf</code></p>
+<p>Near lines 20-ish you will find an entry name <code>XferCommand</code> you need to modify
+it so that it looks like -
+<code>XferCommand = /usr/bin/wget --passive-ftp --proxy=on -c -O %o %u</code></p>
+<p>You might notice that we are making a call to wget, so its natural that we
+modify the config file for wget and set proxy values there too. The default
+wget config file is at <code>/etc/wgetrc</code> </p>
+<p>Find the lines containing <code>https_proxy http_proxy use_proxy</code> variables,
+uncomment them and add the correct&nbsp;values</p>
+<div class="highlight"><pre><span></span># You can set the default proxies for Wget to use for http, https, and ftp.
+# They will override the value in the environment.
+https_proxy = http://proxy.iiit.ac.in:8080
+http_proxy = http://proxy.iiit.ac.in:8080
+ftp_proxy = http://proxy.iiit.ac.in:8080
+
+# If you do not want to use proxy at all, set this to off.
+use_proxy = on
+</pre></div>
+
+
+<p>In case you want to setup proxy iniside Firefox webbrowser, you just go to
+Advanced Settings -&gt; Network and then set the manual proxy&nbsp;values</p>
+<p>Phew, and that&#8217;s it folks! This is all the different stuff that happens when
+you use system wide proxy&nbsp;configuration.</p>
+  </div>
+</div>
+    <div class="comments">
+      <h1>Comments</h1>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "2017/09/07/setting proxies/";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://codingmantis.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+      <script>
+        (function(document) {
+          var i = 0;
+          // snip empty header rows since markdown can't
+          var rows = document.querySelectorAll('tr');
+          for(i=0; i<rows.length; i++) {
+            var ths = rows[i].querySelectorAll('th');
+            var rowlen = rows[i].children.length;
+            if (ths.length > 0 && ths.length === rowlen) {
+              rows[i].remove();
+            }
+          }
+        })(document);
+      </script>
+
+      <script>
+        /* Lanyon & Poole are Copyright (c) 2014 Mark Otto. Adapted to Pelican 20141223 and extended a bit by @thomaswilley */
+        (function(document) {
+          var toggle = document.querySelector('.sidebar-toggle');
+          var sidebar = document.querySelector('#sidebar');
+          var checkbox = document.querySelector('#sidebar-checkbox');
+          document.addEventListener('click', function(e) {
+            var target = e.target;
+            if(!checkbox.checked ||
+            sidebar.contains(target) ||
+            (target === checkbox || target === toggle)) return;
+            checkbox.checked = false;
+            }, false);
+            })(document);
+      </script>
+     </div>
+  </body>
+</html>
