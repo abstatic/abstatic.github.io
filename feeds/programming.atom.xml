@@ -170,7 +170,7 @@ check all the one liner statements in a single carriage return. In fact
 you dont even need to add the semi&amp;nbsp;colons.&lt;/p&gt;
 &lt;p&gt;And swapping is like mother of god ! , just a,b = b,a &lt;br&gt;
 Shit. Super excited about learning this language&amp;nbsp;!  &lt;/p&gt;</content><category term="computers"></category></entry><entry><title>Finally , I make mario !!</title><link href="https://abstatic.github.io/2013/07/02/finally-i-make-mario/" rel="alternate"></link><published>2013-07-02T21:13:00+05:30</published><updated>2013-07-02T21:13:00+05:30</updated><author><name>Abhishek Shrivastava (noreply@blogger.com)</name></author><id>tag:abstatic.github.io,2013-07-02:/2013/07/02/finally-i-make-mario/</id><summary type="html">&lt;h2&gt;The Source Code&amp;nbsp;Explained&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1"&gt;.png)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After slogging for nearly a week , just right now I finally solved mario
 , from pset1. The problem consisted of printing out half-pyramids of a
 specific height, provided by the user. The output of the problem had to
@@ -186,8 +186,8 @@ Height: 8&lt;br&gt;
   ########
  #########
 &lt;/pre&gt;
-Now take …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;The Source Code&amp;nbsp;Explained&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1"&gt;.png)&lt;/a&gt;&lt;/p&gt;
+Now take a …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;The Source Code&amp;nbsp;Explained&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-Gc5sqv8qGtE/UdNAj-UMsrI/AAAAAAAAA0Y/j9SZeqf1rOw/s310/pyramid_thumb+(1).png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;After slogging for nearly a week , just right now I finally solved mario
 , from pset1. The problem consisted of printing out half-pyramids of a
 specific height, provided by the user. The output of the problem had to
@@ -330,7 +330,7 @@ generating half-pyramids, just like in mario.
 
 &lt;/div&gt;
 
-&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1"&gt;.png)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1).png"&gt;&lt;img alt="" src="http://4.bp.blogspot.com/-kXp5sk8Daig/UdBCD5xs1hI/AAAAAAAAA0I/M1UIfimfDH0/s310/pyramid_thumb+(1).png"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;But we&amp;#8217;ve got to use hashes and the output will ask for pyramid height
 and it has to look something like this&amp;nbsp;-&lt;/p&gt;
 &lt;p&gt;&lt;div

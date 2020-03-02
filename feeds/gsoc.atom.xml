@@ -534,9 +534,9 @@ here)
   +---profile (e.g. ES0004)
   + |
   + |--------1
-  + |   *-&amp;gt; ES0004_chr1_standard.png
-  + |   *-&amp;gt; ES0004_chr1_profiles.png
-  + |   *-&amp;gt; ES0004_chr1_chrome_ubuntu_1.png
+  + |   *-&amp;amp;gt; ES0004_chr1_standard.png
+  + |   *-&amp;amp;gt; ES0004_chr1_profiles.png
+  + |   *-&amp;amp;gt; ES0004_chr1_chrome_ubuntu_1.png
   + |
   + |--------2
 &lt;/pre&gt;&lt;/div&gt;
@@ -614,7 +614,7 @@ here)
   i = DEFAULT_WIDTH
   j = 1
 
-  while i &amp;lt;= width:
+  while i &amp;amp;lt;= width:
       print i
       box = (i - 1250, 0, i, 200)
       img = im.crop(box)

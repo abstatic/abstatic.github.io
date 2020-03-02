@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis - Linux</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2017-09-07T03:15:00+05:30</updated><entry><title>Setting up proxies in Linux</title><link href="https://abstatic.github.io/2017/09/07/setting%20proxies/" rel="alternate"></link><published>2017-09-07T03:15:00+05:30</published><updated>2017-09-07T03:15:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2017-09-07:/2017/09/07/setting proxies/</id><summary type="html">&lt;p&gt;This post covers all the points about setting up a manual proxy on a linux distribution that doesn&amp;#8217;t do it&amp;nbsp;automatically.&lt;/p&gt;</summary><content type="html">&lt;p&gt;At times setting up proxy on your linux distribution can be a bit tricky if
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Mantis - Linux</title><link href="https://abstatic.github.io/" rel="alternate"></link><link href="https://abstatic.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://abstatic.github.io/</id><updated>2018-10-09T16:42:00+05:30</updated><entry><title>Retiring Pelican</title><link href="https://abstatic.github.io/2018/10/09/retiring-pelican/" rel="alternate"></link><published>2018-10-09T16:42:00+05:30</published><updated>2018-10-09T16:42:00+05:30</updated><author><name>Abhishek Shrivastava (x.abhishek.flyhigh@gmail.com)</name></author><id>tag:abstatic.github.io,2018-10-09:/2018/10/09/retiring-pelican/</id><summary type="html">&lt;p&gt;Moving the blog to&amp;nbsp;Medium&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Tired of Pelican and everything&amp;nbsp;manual&lt;/h3&gt;
+&lt;p&gt;I have been using pelican and pelicanyan theme for many years now, but lately
+the overhead of maintaining a blog on pelican has become too&amp;nbsp;cumbersome. &lt;/p&gt;
+&lt;p&gt;I keep switiching distros around and everytime I have to set it up from
+scratch, but that&amp;#8217;s not really an issue as I have become quite used to it.
+What bugs me is - its kind of hard to setup proper &lt;span class="caps"&gt;SEO&lt;/span&gt; and comments. For comments I was using disqus but &lt;span class="caps"&gt;SEO&lt;/span&gt; and discoverability of this blog is shit. Also after sometime, having to do everything manually loses its&amp;nbsp;charm.&lt;/p&gt;
+&lt;p&gt;I would still be using pelican and my github site as my personal portfolio
+where I update my recent projects and whereabouts, but I&amp;#8217;d be moving my blog
+on to medium, because that&amp;#8217;s where all the cool kids are, right?&amp;nbsp;haha. &lt;/p&gt;
+&lt;p&gt;The medium publication will be &lt;a href="http://medium.com/@abshri"&gt;here&lt;/a&gt;&lt;/p&gt;</content><category term="Linux"></category><category term="pelican"></category><category term="blog"></category></entry><entry><title>Setting up proxies in Linux</title><link href="https://abstatic.github.io/2017/09/07/setting%20proxies/" rel="alternate"></link><published>2017-09-07T03:15:00+05:30</published><updated>2017-09-07T03:15:00+05:30</updated><author><name>Abhishek Shrivastava</name></author><id>tag:abstatic.github.io,2017-09-07:/2017/09/07/setting proxies/</id><summary type="html">&lt;p&gt;This post covers all the points about setting up a manual proxy on a linux distribution that doesn&amp;#8217;t do it&amp;nbsp;automatically.&lt;/p&gt;</summary><content type="html">&lt;p&gt;At times setting up proxy on your linux distribution can be a bit tricky if
 you are using distros like Arch, Gentoo which don&amp;#8217;t do it for&amp;nbsp;you.&lt;/p&gt;
 &lt;p&gt;This post covers all the different settings that I had to follow to configure proxy
 settings on my Arch system with i3 as its window&amp;nbsp;manager.&lt;/p&gt;
@@ -655,7 +664,7 @@ It can make the site completely offline and even convert all the&amp;nbsp;links.
 &lt;li&gt;&lt;code&gt;wget --mirror -p --convert-links -P ./&amp;lt;DIRECTORY&amp;gt; &amp;lt;URL&amp;gt;&lt;/code&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; --mirror       : Turns on the options suitable for mirroring.  
   -p            : Download all files that are necessary to properly display a given HTML page.  
 --convert-links : After download convert links in document for local viewing.  
- -P ./&amp;lt;LOCATION&amp;gt;: Save all files and directories to specified directory.
+ -P ./&amp;amp;lt;LOCATION&amp;amp;gt;: Save all files and directories to specified directory.
 &lt;/pre&gt;&lt;/div&gt;
 
 

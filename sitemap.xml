@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/</loc>
-<lastmod>2017-09-07T12:48:46-00:00</lastmod>
+<lastmod>2018-10-09T12:47:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/archives.html</loc>
-<lastmod>2017-09-07T12:48:46-00:00</lastmod>
+<lastmod>2018-10-09T12:47:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/tags.html</loc>
-<lastmod>2017-09-07T12:48:46-00:00</lastmod>
+<lastmod>2018-10-09T12:47:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abstatic.github.io/categories.html</loc>
-<lastmod>2017-09-07T12:48:46-00:00</lastmod>
+<lastmod>2018-10-09T12:47:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://abstatic.github.io/pages/books/</loc>
 <lastmod>2015-03-01T12:16:00+05:30</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/2018/10/09/retiring-pelican/</loc>
+<lastmod>2018-10-09T16:42:00+05:30</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -299,7 +306,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/category/linux.html</loc>
-<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<lastmod>2018-10-09T16:42:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -320,7 +327,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/tag/linux.html</loc>
-<lastmod>2017-09-07T03:15:00+05:53</lastmod>
+<lastmod>2018-10-09T16:42:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/pelican.html</loc>
+<lastmod>2018-10-09T16:42:00+05:53</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abstatic.github.io/tag/blog.html</loc>
+<lastmod>2018-10-09T16:42:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -684,7 +705,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abstatic.github.io/author/abhishek-shrivastava-xabhishekflyhighgmailcom.html</loc>
-<lastmod>2017-07-05T22:17:00+05:53</lastmod>
+<lastmod>2018-10-09T16:42:00+05:53</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
